@@ -1,9 +1,9 @@
 'use client'
-import CourseForCart from "../components/CourseforCart";
-import { fetchCourses } from "../../helpers/api";
+import CourseForCart from "../../components/CourseforCart";
+import { fetchCourses } from "../../../helpers/api";
 import { useEffect, useState } from "react";
-import { useCart } from "../components/CartContext";
-import Totalprice from "./components/totalprice";
+import { useCart } from "../../components/CartContext";
+import Totalprice from "./totalprice";
 const Cart = () => {
     const [courses , setCourses] = useState([])
 
