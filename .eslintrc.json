@@ -1,10 +1,7 @@
-{  "extends": "next/core-web-vitals",
-  "overrides": [
-    {
-      "files": ["path/to/your/file.js"], // Replace with your file path
-      "rules": {
-        "your-problematic-rule": "off" // Disable the rule for this file
-      }
-    }
-  ]
+{
+  "extends": "next",
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off"
+  }
 }
