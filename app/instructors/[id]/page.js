@@ -13,7 +13,7 @@ const Page = async ({params}) => {
 
    
         // Fetch 'I'
-        const iResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${params.id}`);
+        const iResponse = await fetch(`${process.env.PORT}/api/instructors/${params.id}`);
         if (!iResponse.ok) {
           throw new Error('Network response was not ok');
         }
@@ -22,7 +22,7 @@ const Page = async ({params}) => {
       
    const fetchIC = async ()=> {
     if (I) {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+      const response = await fetch(`${process.env.PORT}/api/courses`);
       const coursesData =await response.json();
              
 

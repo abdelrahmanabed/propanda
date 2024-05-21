@@ -9,7 +9,7 @@ const Page = async ({searchParams}) => {
   const fetchI =async() =>{
     try {
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors`);
+      const response = await fetch(`${process.env.PORT}/api/instructors`);
       const I = await response.json();
       const filteredIs = I.filter(i => {
         return (
@@ -24,7 +24,7 @@ const Page = async ({searchParams}) => {
  const I = await fetchI()
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const response = await fetch(`${process.env.PORT}/api/courses`);
 
         const coursesData = await response.json();
         const filteredCourses = coursesData.filter(course => {
@@ -41,7 +41,7 @@ const Page = async ({searchParams}) => {
     };
     const fetchFCourses = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const response = await fetch(`${process.env.PORT}/api/courses`);
 
        const fCourses = response.json()
        

@@ -12,7 +12,7 @@ const Buttonmobvid = (props) => {
            <div className='w-full h-full relative '>
             <span className=' absolute bottom-8 z-30 left-1/2 -translate-x-1/2'> الفيديو العام </span>
             <FaPlay className=' faplay absolute top-1/2  left-1/2 -translate-y-1/2 -translate-x-1/2 z-20  rounded-2xl'/> 
-           {props.coursephoto &&<Image width={500} height={500}  src={props.coursephoto`${process.env.NEXT_PUBLIC_PORT}/${course.photo.replace(/\\/g, '/')}`}/>}
+           {props.coursephoto &&<Image width={500} height={500}  src={props.coursephoto`${process.env.PORT}/${course.photo.replace(/\\/g, '/')}`}/>}
            </div></button>  )
 }
 

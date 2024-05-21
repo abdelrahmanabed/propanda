@@ -54,10 +54,10 @@ const CartIcon = (props) => {
             if (token) {
                 const encryptedUserId = Cookies.get('encryptedUserId');
                 if (encryptedUserId) {
-                    const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`);
+                    const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.JWT_SECRET}`);
                     const userId = bytes.toString(CryptoJS.enc.Utf8);
 
-                    const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, {
+                    const response = await axios.get(`${process.env.PORT}/api/users/${userId}/cart`, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
@@ -65,7 +65,7 @@ const CartIcon = (props) => {
 
                     const cartItems = response.data.cart;
                     if (Array.isArray(cartItems) && cartItems.includes(props.courseId)) {
-                        await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart/${props.courseId}`, {
+                        await axios.delete(`${process.env.PORT}/api/users/${userId}/cart/${props.courseId}`, {
                             headers: {
                                 Authorization: `Bearer ${token}`,
                             },
@@ -80,7 +80,7 @@ const CartIcon = (props) => {
                         handlePFB();
                        
             } else {
-                        await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, { itemId: props.courseId }, {
+                        await axios.put(`${process.env.PORT}/api/users/${userId}/cart`, { itemId: props.courseId }, {
                             headers: {
                                 'Content-Type': 'application/json',
                                 Authorization: `Bearer ${token}`,

@@ -8,7 +8,7 @@ const CourseForCart = (props) => {
   return (
     <div className={props.className}>
     <Link id='coursecomdivfc' href={props.href} className={`${props.linkcn}`} >
-       <div className={`${props.imagedivcn}`}><Image src={`${process.env.NEXT_PUBLIC_PORT}/${props.photo.replace(/\\/g, '/')}`} width={1024} height={1024}  className={`${props.imagecn}`}/>    </div> 
+       <div className={`${props.imagedivcn}`}><Image src={`${process.env.PORT}/${props.photo.replace(/\\/g, '/')}`} width={1024} height={1024}  className={`${props.imagecn}`}/>    </div> 
         <div id='cctfc' className={`${props.secdivcn}`}>
           <h1  className={`${props.h1cn}`}>{props.title}</h1>
           <div id='ccttfc' className={`${props.pricedivcn}`}>

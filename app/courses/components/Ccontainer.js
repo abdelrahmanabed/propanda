@@ -55,7 +55,7 @@ const Ccontainer = () => {
         const fetchData = async () => {
           try {
             if (_id) {
-              const courseResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${_id}`);
+              const courseResponse = await axios.get(`${process.env.PORT}/api/courses/${_id}`);
               const courseData = courseResponse.data;
               setCourse(courseData);
               const partsArray = courseData.parts;
@@ -65,7 +65,7 @@ const Ccontainer = () => {
               setVideos(videosArray);
               setcourseImage(courseData.photo)
               if (authorId) {
-                const authorResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${authorId}`);
+                const authorResponse = await axios.get(`${process.env.PORT}/api/instructors/${authorId}`);
                 const authorData = authorResponse.data;
                 setAuthorName(authorData.name);
                 setAuthorImage(authorData.photo);
@@ -124,7 +124,7 @@ const Ccontainer = () => {
    
          <h2 className=' text-xl lg:hidden font-black'>{currentVideo.title}</h2>
          <video className='w-full rounded-2xl'
-         src={`${process.env.NEXT_PUBLIC_PORT}/${currentVideo.videoPath.replace(/\\/g, '/')}`}
+         src={`${process.env.PORT}/${currentVideo.videoPath.replace(/\\/g, '/')}`}
           controls/>
                 <h2 className=' text-xl hidden md:block font-black'>{currentVideo.title}</h2>
                  <p className=' text-sm hidden md:block '>{currentVideo.description? currentVideo.description : "لا يوجد وصف للفيديو"}</p>

@@ -57,7 +57,7 @@ const Header = () => {
     const encryptedUserId = Cookies.get('encryptedUserId');
 
   if (encryptedUserId && token){
-    const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+    const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
     const decodedToken = jwt.decode(token);
     const userId = decodedToken.userId;
     setjwtUserId(userId)
@@ -68,7 +68,7 @@ const Header = () => {
   
     if (token && encryptedNameFromCookie ) {
       // Decrypt only if the cookie exists
-      const decryptedName = CryptoJS.AES.decrypt(encryptedNameFromCookie, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+      const decryptedName = CryptoJS.AES.decrypt(encryptedNameFromCookie, `${process.env.JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
       console.log("Decrypted Name:", decryptedName);
       setUserName(decryptedName);
   } else {

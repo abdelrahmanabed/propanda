@@ -30,13 +30,13 @@ const MyCoursesICom = () => {
 
         if (encryptedName) {
             // Decrypt the encrypted name if the cookie exists
-            const decryptedName = CryptoJS.AES.decrypt(encryptedName, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+            const decryptedName = CryptoJS.AES.decrypt(encryptedName, `${process.env.JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
             setUserName(decryptedName);
-            const decryptedEmail = CryptoJS.AES.decrypt(encryptedEmail, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+            const decryptedEmail = CryptoJS.AES.decrypt(encryptedEmail, `${process.env.JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
             setUserEmail(decryptedEmail);
-            const decryptedPN = CryptoJS.AES.decrypt(encryptedPN, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+            const decryptedPN = CryptoJS.AES.decrypt(encryptedPN, `${process.env.JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
             setUserPN(decryptedPN);
-            const decryptedID = CryptoJS.AES.decrypt(encryptedID, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+            const decryptedID = CryptoJS.AES.decrypt(encryptedID, `${process.env.JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
             setUserID(decryptedID);
             setFormValues({
                 name: decryptedName,
@@ -111,7 +111,7 @@ const MyCoursesICom = () => {
 
         // Update the user information in the database
         try {
-            const response = await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userID}`, {
+            const response = await axios.put(`${process.env.PORT}/api/users/${userID}`, {
                 [field === 'phone' ? 'phoneNumber' : field]: newValue
             });
             console.log(response.data);
@@ -121,7 +121,7 @@ const MyCoursesICom = () => {
 
         // Update the cookie with the new encrypted value
         // Update the cookie with the new encrypted value
-const encryptedValue = CryptoJS.AES.encrypt(newValue, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString();
+const encryptedValue = CryptoJS.AES.encrypt(newValue, `${process.env.JWT_SECRET}`).toString();
 Cookies.set(`encrypted${field === 'phone' ? 'PN' : field.charAt(0).toUpperCase() + field.slice(1)}`, encryptedValue);
 
         

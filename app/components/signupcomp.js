@@ -54,7 +54,7 @@ export default function SignDiv(props) {
   const handlelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/login`, lformData);
+      const response = await axios.post(`${process.env.PORT}/api/login`, lformData);
 
       if (response && response.data) {
         console.log('Login successful');
@@ -67,7 +67,7 @@ export default function SignDiv(props) {
         setCookie('encryptedEmail', encryptedEmail, { path: '/' });
         setCookie('encryptedPN', encryptedPN, { path: '/' });
 
-        const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+        const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
 
         const decodedToken = jwt.decode(token);
         const userId = decodedToken.userId;
@@ -166,7 +166,7 @@ export default function SignDiv(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/register`, formData);
+      const response = await axios.post(`${process.env.PORT}/api/register`, formData);
       console.log('User registered successfully');
   
       const { token, encryptedUserId, encryptedName,encryptedEmail,encryptedPN  } = response.data;
