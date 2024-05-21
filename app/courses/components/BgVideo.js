@@ -2,6 +2,7 @@
 import React from 'react'
 import { useVideo } from './VideoContext'; 
 import { FaPlay     } from 'react-icons/fa';
+import Image from 'next/image';
 
 const Buttonmobvid = (props) => {
     const { togglePreview } = useVideo();
