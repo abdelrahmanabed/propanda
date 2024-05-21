@@ -69,6 +69,7 @@ const instructors = async ({params}) => {
     {Icourses.length > 0 &&<div className=' self-center flex gap-3 flex-wrap justify-center coursesIc '>
         {Icourses.map(course => (
   <Course
+  key={course._id}
   href={`/courses/${course._id}`}
   photo={course.photo}
   title={course.title}
