@@ -84,7 +84,7 @@ const fetchData = async () => {
       <div id='coursePreview' className=' flex flex-col gap-3 p-3 sm:p-5 md:p-3'>
      <div id='vdiv' className='h-fit md:h-fit flex-col gap-5 p-3'>
            <h1 id="cdt" className=" text-lg md:text-xl lg:text-2xl  sm:w-2/3 md:w-1/2 lg:w-2/3 w-full xl:w-full overflow-hidden  xl:text-3xl md:relative relative top-5 right-3 z-10 font-black">{course.title}</h1>
-           <p id="cddes" className=" w-full text-sm right-0 sm:w-2/3 md:w-1/2 lg:w-2/3 md:relative top-0 sm:text-base p-8 md:p-12">"{course.description}"</p>
+           <p id="cddes" className=" w-full text-sm right-0 sm:w-2/3 md:w-1/2 lg:w-2/3 md:relative top-0 sm:text-base p-8 md:p-12">{course.description}</p>
        <Buttonmobvid/>
       </div> 
 
