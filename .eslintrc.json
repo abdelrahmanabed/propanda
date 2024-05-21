@@ -1,3 +1,10 @@
-{
-  "extends": "next/core-web-vitals"
+{  "extends": "next/core-web-vitals",
+  "overrides": [
+    {
+      "files": ["path/to/your/file.js"], // Replace with your file path
+      "rules": {
+        "your-problematic-rule": "off" // Disable the rule for this file
+      }
+    }
+  ]
 }

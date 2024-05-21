@@ -92,7 +92,7 @@ const SearchInput = (props) => {
                             {searchResults.map(course => (
                                 <li className=' ' key={course._id} onClick={() => handleItemClick(course._id)}>
                                     <Link className=' h-14 p-2 rounded-2xl flex gap-3  items-center' href={"/courses/"+course._id}>
-                                        <Image height={1024} width={1024} alt="" className='w-12 h-12 rounded-2xl' src={`http://localhost:5000/${course.photo.replace(/\\/g, '/')}`}></Image>
+                                        <Image height={1024} width={1024} alt="" className='w-12 h-12 rounded-2xl' src={`${process.env.NEXT_PUBLIC_PORT}/${course.photo.replace(/\\/g, '/')}`}></Image>
                                         <div className='flex flex-col justify-between  w-full'>
                                             <span className=' text-sm'>{course.title} </span>
                                             <span className=' text-xs'>{}</span>
