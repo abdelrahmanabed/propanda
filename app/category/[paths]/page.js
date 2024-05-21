@@ -1,37 +1,24 @@
-import axios from 'axios';
 import Course from '../../components/course';
 import InstructorCard from '../../components/instructorCard';
 import Keenslider from '../../components/Keenslider';
 
 const Page = async ({params}) => {
 
-
-
-  const fetchI =async() =>{
-    try {
-
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${params.paths}`);
-      const I = response.data;
-      return I
-    } catch (error) {
-      console.error('Error fetching courses:', error);
-      // Handle error here
-    }
-  }
-
-    const fetchCourses = async () => {
-      try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}`);
-        const courses = response.data;
-        return courses;
-      } catch (error) {
-        console.error('Error fetching courses:', error);
-        // Handle error here
+ 
+      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${params.paths}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
+      const I = await response.json();
+   
 
-    };
-    const courses = await fetchCourses() ;
-    const I = await fetchI() ;
+
+      const cresponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const courses = await cresponse.json();
+    
 
 
 

@@ -1,10 +1,9 @@
-import axios from "axios";
 
     // Fetch courses from the server when the component mounts
   export const fetchNewCourses = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
-        const newCourses = response.data
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const newCourses = response.json()
         return newCourses
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -14,8 +13,8 @@ import axios from "axios";
 
     export const fetchCourses = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
-        const courses = response.data
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const courses = response.json()
         return courses
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -26,8 +25,8 @@ import axios from "axios";
       try {
         if (id) {
           // Fetch course data
-          const courseResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${id}`);
-          const courseData = courseResponse.data;
+          const courseResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${id}`);
+          const courseData = courseResponse.json();
         return courseData
           // Fetch author data
     
@@ -41,8 +40,8 @@ import axios from "axios";
       try {
         if (id) {
           // Fetch course data
-          const authorResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${authorId}`);
-          const authorData = authorResponse.data;
+          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${authorId}`);
+          const authorData = authorResponse.json();
         return authorData
           // Fetch author data
     

@@ -1,6 +1,5 @@
 
 import Course from '../components/course';
-import axios from 'axios';
 
 import InstructorCard from '../components/instructorCard';
 import Keenslider from '../components/Keenslider';
@@ -10,8 +9,8 @@ const Page = async ({searchParams}) => {
   const fetchI =async() =>{
     try {
 
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors`);
-      const I = response.data;
+      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors`);
+      const I = await response.json();
       const filteredIs = I.filter(i => {
         return (
           i.name.toLowerCase().includes(searchParams.search.toLowerCase())           );
@@ -25,9 +24,9 @@ const Page = async ({searchParams}) => {
  const I = await fetchI()
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
 
-        const coursesData = response.data;
+        const coursesData = await response.json();
         const filteredCourses = coursesData.filter(course => {
           return (
             course.title.toLowerCase().includes(searchParams.search.toLowerCase())
@@ -42,9 +41,9 @@ const Page = async ({searchParams}) => {
     };
     const fetchFCourses = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
 
-       const fCourses = response.data
+       const fCourses = response.json()
        
         return fCourses;
       } catch (error) {
@@ -182,7 +181,7 @@ const Page = async ({searchParams}) => {
   return (
     <div id='searchpage' className='p-3 flex flex-col min-h-96 backdrop-blur-xl gap-7'>
 
-{I.length > 0&& 
+{I &&I.length > 0&& 
         <>
           <span className='p-3 pb-0'>
             نتائج البحث عن <span className='font-extrabold'>{searchParams.search}</span>
@@ -204,7 +203,7 @@ const Page = async ({searchParams}) => {
         </>
       }
 
-      {  courses.length > 0 ? (
+      { courses && courses.length > 0 ? (
         <>
           <span className='p-3 pb-0'>
             نتائج البحث عن <span className='font-extrabold'>{searchParams.search}</span>
@@ -242,7 +241,7 @@ const Page = async ({searchParams}) => {
                 
                 <h2> هل تبحث عن كورسات في مجال <span className=' font-extrabold'>{title}</span> </h2>
                 
-                {fCourses.length>0 &&
+                {fCourses&& fCourses.length>0 &&
 <Keenslider>
                 {fCourses&& fCourses
                   .filter(course => course.category === category)

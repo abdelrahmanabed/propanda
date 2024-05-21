@@ -1,6 +1,4 @@
 
-
-import axios from 'axios';
 import { IoMdCheckmark } from "react-icons/io";
 import { FaCircle } from "react-icons/fa6";
 import Image from 'next/image';
@@ -12,7 +10,7 @@ import { Suspense } from 'react';
 import Loading from '../../components/loading';
 import Buttonmobvid from '../components/BgVideo';
 
-export default async function Page({params}) {
+export default async function CourseDet({params}) {
 // Reference to the parent element you want to calculate the position against
 const CourseDuration = ({ duration }) => {
   // Check if duration is available
@@ -43,27 +41,17 @@ const CourseDuration = ({ duration }) => {
 
 
 
-const fetchData = async () => {
-    try {
-        const courseResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${params._id}`);
-        const course = courseResponse.data;
-        return course
-        // Fetch course data
-      
-       
-      
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };  
-  const course = await fetchData()
+
+        const courseResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${params._id}`);
+        const course = await courseResponse.json();
+    
 
   const fetchAuthorData = async () => {
     try {
         // Fetch author data
         if (course.author) {
-          const authorResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`);
-          const authorData = authorResponse.data;
+          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`);
+          const authorData = authorResponse.json();
           return authorData
         }
       

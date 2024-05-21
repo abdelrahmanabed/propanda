@@ -1,5 +1,4 @@
 
-import axios from 'axios';
 import Image from 'next/image';
 import { FaFacebook } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
@@ -12,23 +11,19 @@ const Page = async ({params}) => {
 
 
 
-    const fetchData = async () => {
-      try {
+   
         // Fetch 'I'
-        const iResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${params.id}`);
-        const I = iResponse.data;
-       return I
+        const iResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${params.id}`);
+        if (!iResponse.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const I = await iResponse.json();
 
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        // Handle error here
-      }
-    };
-  const I = await fetchData()
+      
    const fetchIC = async ()=> {
     if (I) {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
-      const coursesData = response.data;
+      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+      const coursesData =await response.json();
              
 
       // Filter courses based on 'I'

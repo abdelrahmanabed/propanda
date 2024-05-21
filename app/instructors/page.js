@@ -1,22 +1,17 @@
 import InstructorCard from '../components/instructorCard'
-import axios from 'axios';
 import Keenslider from '../components/Keenslider';
 import Buttonforchange from './components/Buttonforchange';
 
 
 const Page = async ({searchParams} ) => {
 
-    const fetchInstructors = async () => {
-      try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors${searchParams.category ? `/category/${searchParams.category}` : ''}`);
-        const I = response.data;
-        return I
-      } catch (error) {
-        console.error('Error fetching courses:', error);
-        // Handle error here
-      }
-    };
-const I = await fetchInstructors()
+   
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors${searchParams.category ? `/category/${searchParams.category}` : ''}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const I = await response.json();
+      
 
 
   return (
