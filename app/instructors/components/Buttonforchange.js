@@ -21,7 +21,7 @@ const Buttonforchange = ( props ) => {
             <option value="">Select category</option>
             <option value="languages">اللغات</option>
             <option value="programming">البرمجة والتكنولوجيا</option>
-            <option value="learning">التعليم</option>
+            <option value="learning">التعلم</option>
             <option value="designing">التصميم</option>
             <option value="hse"> السلامة و الصحة المهنية</option>
             <option value="marketing">التسويق</option>
