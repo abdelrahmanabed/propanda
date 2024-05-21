@@ -1,10 +1,10 @@
 
 import InfoCom from '../components/InfoCom'
 
-const Profile = () => {
+const Page = () => {
   return (
     <div><InfoCom/></div>
   )
 }
 
-export default Profile
+export default Page

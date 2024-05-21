@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import InstructorCard from '../components/instructorCard';
 import Keenslider from '../components/Keenslider';
-const Search = async ({searchParams}) => {
+const Page = async ({searchParams}) => {
  
 
   const fetchI =async() =>{
@@ -271,4 +271,4 @@ const Search = async ({searchParams}) => {
   );
 };
 
-export default Search;
+export default Page;

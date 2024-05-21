@@ -12,7 +12,7 @@ import { Suspense } from 'react';
 import Loading from '../../components/loading';
 import Buttonmobvid from '../components/BgVideo';
 
-export default async function CourseDet({params}) {
+export default async function Page({params}) {
 // Reference to the parent element you want to calculate the position against
 const CourseDuration = ({ duration }) => {
   // Check if duration is available

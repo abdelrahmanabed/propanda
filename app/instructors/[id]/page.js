@@ -7,7 +7,7 @@ import { RiWhatsappFill } from "react-icons/ri";
 import Course from '../../components/course';
 
 
-const instructors = async ({params}) => {
+const Page = async ({params}) => {
 
 
 
@@ -86,4 +86,4 @@ const instructors = async ({params}) => {
   )
 }
 
-export default instructors
+export default Page

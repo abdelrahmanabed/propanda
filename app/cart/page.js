@@ -3,11 +3,11 @@ import Cart from "./components/cart";
 
 
 
-const page =  () => {
+const Page =  () => {
 
 
     return (
 <Cart/>
   )
 }
-export default page
+export default Page

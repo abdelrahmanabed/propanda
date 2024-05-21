@@ -4,7 +4,7 @@ import Keenslider from '../components/Keenslider';
 import Buttonforchange from './components/Buttonforchange';
 
 
-const instructors = async ({searchParams} ) => {
+const Page = async ({searchParams} ) => {
 
     const fetchInstructors = async () => {
       try {
@@ -47,4 +47,4 @@ const I = await fetchInstructors()
   )
 }
 
-export default instructors
+export default Page

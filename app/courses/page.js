@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const CoursesPage = () => {
+const Page = () => {
   return (
     <div  className='sm:p-3 p-3 flex flex-col  gap-5 sm:px-8'> 
          <span className=' m-5 mb-0 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'>تصنيفات الدورات التدريبية</span>
@@ -67,4 +67,4 @@ const CoursesPage = () => {
   )
 }
 
-export default CoursesPage
+export default Page

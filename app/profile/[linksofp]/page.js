@@ -1,7 +1,7 @@
 import Pslider from "../components/profileSlider";
 
 
-const page = () => {
+const Page = () => {
 
 
   // Check if the current pathname is a valid path
@@ -12,4 +12,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default Page;

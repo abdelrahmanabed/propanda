@@ -1,11 +1,11 @@
 
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <div> <h1>سجل دخولك لتصل الى جميع ميزات بروباندا</h1>
     </div>
   )
 }
 
-export default page
+export default Page
