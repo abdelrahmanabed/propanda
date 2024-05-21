@@ -1,0 +1,133 @@
+import axios from 'axios';
+import Course from '../../components/course';
+import InstructorCard from '../../components/instructorCard';
+import Keenslider from '../../components/Keenslider';
+
+const Page = async ({params}) => {
+
+
+
+  const fetchI =async() =>{
+    try {
+
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${params.paths}`);
+      const I = response.data;
+      return I
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      // Handle error here
+    }
+  }
+
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}`);
+        const courses = response.data;
+        return courses;
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+        // Handle error here
+      }
+
+    };
+    const courses = await fetchCourses() ;
+    const I = await fetchI() ;
+
+
+
+   
+
+  const categoriesKeywordsMap = {
+    programming: { title: 'البرمجة و التكنولوجيا', keywords: ['code', 'js', 'software', 'لغة'] },
+    languages: { title: 'اللغات', keywords: ['french', 'english', 'lang', 'لغة'] },
+     designing: { title: 'التصميم', keywords: ['code', 'js', 'software', 'لغة'] },
+    learning: { title: 'التعلم', keywords: ['french', 'english', 'lang', 'لغة'] }, 
+    skills: { title: 'المهارات', keywords: ['code', 'js', 'software', 'لغة'] },
+    hse: { title: 'السلامة والصحة المهنية', keywords: ['french', 'english', 'lang', 'لغة'] },
+    marketing: { title: 'التسويق', keywords: ['french', 'english', 'lang', 'لغة'] },
+  };
+
+  return (
+    <div  className="p-3 flex flex-col min-h-96 backdrop-blur-xl gap-7">
+      <div className="coursesrelatedtosomcategories p-3 flex flex-col gap-7">
+        {/* Filter courses by categories */}
+        {Object.entries(categoriesKeywordsMap).map(([category, { title }]) => {
+          if (category === params.paths) {
+            return (<>
+              <div key={category} className="flex flex-col gap-3">
+                <h2>  الدورات الاشهر <span className="font-extrabold">{title}</span> </h2>
+               {courses.length > 0 && 
+               <Keenslider>
+                  {courses.map(course => (
+                      <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
+                      className="keen-slider__slide min-w-fit">
+                        <Course
+                          href={`/courses/${course._id}`}
+                          photo={course.photo}
+                          title={course.title}
+                          price={course.price}
+                          courseId={course._id}
+                          instructor={course.author}
+
+                        />
+                      </div>
+                    ))}
+                </Keenslider>}
+              </div>
+                   <div id='mostrecent' key={category} className="flex flex-col gap-3">
+                   <h2>احدث دورات في <span className="font-extrabold">{title}</span> </h2>
+                  {courses.length > 0 && 
+                          <Keenslider>
+                        {courses.map(course => (
+                         <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
+                         className="keen-slider__slide min-w-fit">
+                           <Course
+                             href={`/courses/${course._id}`}
+                             photo={course.photo}
+                             title={course.title}
+                             price={course.price}
+                             courseId={course._id}
+                             instructor={course.author}
+   
+                           />
+                         </div>
+                       ))}
+                  </Keenslider> }
+                 </div></>
+            );
+          }
+          return null;
+        })}
+      </div>
+
+      <div>
+     
+      <div className='Irelatedtosomcategories p-3 flex flex-col gap-3'>
+      <h2>محاضرين في القسم     
+        </h2>
+
+          {I.length > 0  &&
+          
+          <Keenslider>
+              { I.map((i) => (
+                <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
+      className="keen-slider__slide min-w-fit">
+        <InstructorCard
+        image={i.photo}
+        name={i.name}
+        des={i.bio}
+        href={"/instructors/"+i._id}
+        />    </div>
+
+
+              ))}  </Keenslider>}
+
+
+    </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default Page;
