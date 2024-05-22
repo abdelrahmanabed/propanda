@@ -1,4 +1,3 @@
-'use client'
 import InstructorCard from '../components/instructorCard'
 import Keenslider from '../components/Keenslider';
 import Buttonforchange from './components/Buttonforchange';
@@ -35,8 +34,7 @@ const Page = async ({searchParams} ) => {
         />    </div>
 
 
-              ))} 
- </Keenslider>}
+              ))}  </Keenslider>}
 
 
     </div>
