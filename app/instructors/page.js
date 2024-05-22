@@ -34,7 +34,8 @@ const Page = async ({searchParams} ) => {
         />    </div>
 
 
-              ))}  </Keenslider>}
+              ))} 
+ </Keenslider>}
 
 
     </div>

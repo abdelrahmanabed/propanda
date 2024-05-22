@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import { FaFacebook } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
@@ -8,11 +7,6 @@ import Course from '../../components/course';
 
 const Page = async ({params}) => {
 
-
-
-
-   
-        // Fetch 'I'
         const iResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${params.id}`);
         if (!iResponse.ok) {
           throw new Error('Network response was not ok');

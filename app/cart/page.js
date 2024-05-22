@@ -1,7 +1,4 @@
-
 import Cart from "./components/cart";
-
-
 
 const Page =  () => {
 

@@ -1,4 +1,4 @@
-
+' use client'
 
     // Fetch favorite courses from internal storage or API
 export const fetchCartCourses = async () => {
