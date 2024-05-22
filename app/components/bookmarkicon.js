@@ -40,10 +40,10 @@ const Bookmarkicon = (props) => {
           if (token) {
             const encryptedUserId = Cookies.get('encryptedUserId');
             if (encryptedUserId) {
-              const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.JWT_SECRET}`);
+              const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`);
               const userId = bytes.toString(CryptoJS.enc.Utf8);
     
-              const response = await axios.get(`${process.env.PORT}/api/users/${userId}/favoriteCourses`, {
+              const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses`, {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
@@ -51,7 +51,7 @@ const Bookmarkicon = (props) => {
     
               const favoriteCourses = response.data.favoriteCourses;
               if (Array.isArray(favoriteCourses) && favoriteCourses.includes(props.courseId)) {
-                await axios.delete(`${process.env.PORT}/api/users/${userId}/favoriteCourses/${props.courseId}`, {
+                await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses/${props.courseId}`, {
                   headers: {
                     Authorization: `Bearer ${token}`,
                   },
@@ -66,7 +66,7 @@ const Bookmarkicon = (props) => {
                 setState('in-reveal');
                 handlePFB();
               } else {
-                await axios.put(`${process.env.PORT}/api/users/${userId}/favoriteCourses`, { courseId: props.courseId }, {
+                await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses`, { courseId: props.courseId }, {
                   headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,

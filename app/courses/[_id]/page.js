@@ -6,7 +6,6 @@ import Bookmarkicon from '../../components/bookmarkicon';
 import CartIcon from '../../components/carticon';
 import PriceDiv from '../components/PriceDiv';
 import Ccontainer from '../components/Ccontainer';
-import { Suspense } from 'react';
 import Loading from '../../components/loading';
 import Buttonmobvid from '../components/BgVideo';
 
@@ -42,7 +41,7 @@ const CourseDuration = ({ duration }) => {
 
 
 
-        const courseResponse = await fetch(`${process.env.PORT}/api/courses/${params._id}`);
+        const courseResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${params._id}`);
         const course = await courseResponse.json();
     
 
@@ -50,7 +49,7 @@ const CourseDuration = ({ duration }) => {
     try {
         // Fetch author data
         if (course.author) {
-          const authorResponse = await fetch(`${process.env.PORT}/api/instructors/${course.author}`);
+          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`);
           const authorData = authorResponse.json();
           return authorData
         }
@@ -82,7 +81,7 @@ const CourseDuration = ({ duration }) => {
 )}        <span id='cda' className=' text-lg'> {author.name}</span>
       </div>      
       
-    <PriceDiv video={`${process.env.PORT}/${course.parts[0].videos[0].videoPath.replace(/\\/g, '/')}`} coursephoto={`${process.env.PORT}/${course.photo.replace(/\\/g, '/')}`}>
+    <PriceDiv video={`${process.env.NEXT_PUBLIC_PORT}/${course.parts[0].videos[0].videoPath.replace(/\\/g, '/')}`} coursephoto={`${process.env.NEXT_PUBLIC_PORT}/${course.photo.replace(/\\/g, '/')}`}>
   
 
        <div className=' w-full gap-3 flex'>
@@ -150,8 +149,7 @@ const CourseDuration = ({ duration }) => {
         
       </div>
 </div>
-<Suspense fallback={<Loading/>}>
-<Ccontainer/></Suspense>
+<Ccontainer/>
 
     </div>}</>
     )

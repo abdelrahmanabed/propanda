@@ -3,7 +3,7 @@ import  CryptoJS from 'crypto-js';
 
 const Userbtn = () => {
         const token = Cookies.get('token');
-        const secretKey = process.env.JWT_SECRET;
+        const secretKey = process.env.NEXT_PUBLIC_JWT_SECRET;
       
         console.log("Token:", token);
         console.log("Encrypted Name from Cookie:", encryptedNameFromCookie);

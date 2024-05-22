@@ -27,10 +27,10 @@ const {removeFromCart} = useCart()
             if (token) {
                 const encryptedUserId = Cookies.get('encryptedUserId');
                 if (encryptedUserId) {
-                    const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.JWT_SECRET}`);
+                    const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`);
                     const userId = bytes.toString(CryptoJS.enc.Utf8);
 
-                    const response = await axios.get(`${process.env.PORT}/api/users/${userId}/cart`, {
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
@@ -38,7 +38,7 @@ const {removeFromCart} = useCart()
 
                     const cartItems = response.data.cart;
                     if (Array.isArray(cartItems) && cartItems.includes(props.courseId)) {
-                        await axios.delete(`${process.env.PORT}/api/users/${userId}/cart/${props.courseId}`, {
+                        await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart/${props.courseId}`, {
                             headers: {
                                 Authorization: `Bearer ${token}`,
                             },

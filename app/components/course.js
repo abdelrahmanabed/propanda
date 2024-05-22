@@ -6,7 +6,7 @@ import axios from 'axios';
 
     const getInstructorInfoForCard = async () => {
       try {
-        const response = await axios.get(`${process.env.PORT}/api/instructors/${props.instructor}`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`);
         const info = response.data;
         return info.name
       } catch (error) {
@@ -25,7 +25,7 @@ const Course = async(props) => {
   return (
     <div className='relative group w-fit flex flex-col gap-2'>
     <Link id='coursecomdiv' href={props.href} className='  flex-col h-96 w-80 flex  items-center backdrop-blur-md    ' >
-        <Image src={`${process.env.PORT}/${props.photo.replace(/\\/g, '/')}`} width={1024} height={1024} className=' rounded-2xl    w-full'/>    
+        <Image src={`${process.env.NEXT_PUBLIC_PORT}/${props.photo.replace(/\\/g, '/')}`} width={1024} height={1024} className=' rounded-2xl    w-full'/>    
         
         
         

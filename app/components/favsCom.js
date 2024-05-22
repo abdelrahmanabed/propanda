@@ -29,7 +29,7 @@ const FavsCom = () => {
     // Fetch courses from the server
     const fetchCourses = async () => {
         try {
-            const response = await axios.get(`${process.env.PORT}/api/courses`);
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
             console.log("Favorite Courses:", favCourses);
             console.log("Courses from Server:", response.data);
             
