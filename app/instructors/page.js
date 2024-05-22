@@ -1,3 +1,4 @@
+'use client'
 import InstructorCard from '../components/instructorCard'
 import Keenslider from '../components/Keenslider';
 import Buttonforchange from './components/Buttonforchange';
