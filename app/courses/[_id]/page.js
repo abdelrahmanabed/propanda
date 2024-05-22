@@ -6,7 +6,6 @@ import Bookmarkicon from '../../components/bookmarkicon';
 import CartIcon from '../../components/carticon';
 import PriceDiv from '../components/PriceDiv';
 import Ccontainer from '../components/Ccontainer';
-import Loading from '../../components/Loading.1';
 import Buttonmobvid from '../components/BgVideo';
 
 export default async function CourseDet({params}) {
