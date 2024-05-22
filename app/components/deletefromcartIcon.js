@@ -1,3 +1,4 @@
+'use client'
 import React, { useRef, useState } from 'react';
 import { Player } from '@lordicon/react';
 import axios from 'axios';

@@ -2,11 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Bookmarkicon from './bookmarkicon';
 import CartIcon from './carticon';
-import axios from 'axios';
 
-    const getInstructorInfoForCard = async () => {
+    
+    
+const Course = async(props) => {
+const getInstructorInfoForCard = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`);
         const info = response.data;
         return info.name
       } catch (error) {
@@ -14,9 +16,6 @@ import axios from 'axios';
         // Handle error here
       }
     };
-    
-const Course = async(props) => {
-
 
   const authorName = await getInstructorInfoForCard() 
 
