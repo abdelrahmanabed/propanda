@@ -7,6 +7,7 @@ import CartIcon from '../../components/carticon';
 import PriceDiv from '../components/PriceDiv';
 import Ccontainer from '../components/Ccontainer';
 import Buttonmobvid from '../components/BgVideo';
+import { Suspense } from "react";
 
 export default async function Page({params}) {
 // Reference to the parent element you want to calculate the position against
@@ -71,7 +72,8 @@ const CourseDuration = ({ duration }) => {
      <div id='vdiv' className='h-fit md:h-fit flex-col gap-5 p-3'>
            <h1 id="cdt" className=" text-lg md:text-xl lg:text-2xl  sm:w-2/3 md:w-1/2 lg:w-2/3 w-full xl:w-full overflow-hidden  xl:text-3xl md:relative relative top-5 right-3 z-10 font-black">{course.title}</h1>
            <p id="cddes" className=" w-full text-sm right-0 sm:w-2/3 md:w-1/2 lg:w-2/3 md:relative top-0 sm:text-base p-8 md:p-12">{course.description}</p>
-       <Buttonmobvid/>
+           <Suspense fallback={<div>...loading</div>}>
+       <Buttonmobvid/></Suspense>
       </div> 
 
       <div id='cauthordiv' className=' gap-4 mt-3 back flex items-center '>
@@ -79,15 +81,17 @@ const CourseDuration = ({ duration }) => {
  <div className='w-14 h-14 overflow-hidden rounded-2xl flex items-center '> <Image src={`${process.env.NEXT_PUBLIC_PORT}/${author.photo.replace(/\\/g, '/')}`} width={1024} height={1024} className=' rounded-2xl    w-full'/></div> 
 )}        <span id='cda' className=' text-lg'> {author.name}</span>
       </div>      
-      
+      <Suspense fallback={<div>...loading</div>}>
     <PriceDiv video={`${process.env.NEXT_PUBLIC_PORT}/${course.parts[0].videos[0].videoPath.replace(/\\/g, '/')}`} coursephoto={`${process.env.NEXT_PUBLIC_PORT}/${course.photo.replace(/\\/g, '/')}`}>
-  
+ 
 
        <div className=' w-full gap-3 flex'>
         <span id='cdp' className='w-32 flex justify-center font-medium text-2xl'><span className=' text-sm flex items-end font-normal'>EGP</span> {course.price} </span>
        <Bookmarkicon className="courseDet" courseId={course._id}/>
        </div> 
-        <button id='cdadd' className='  relative w-full flex overflow-hidden' ><CartIcon className='flex  courseDet bg-opacity-0 justify-center items-start md:p-6 pt-6 h-28  w-full' courseId={course._id}/>
+        <button id='cdadd' className='  relative w-full flex overflow-hidden' >
+          
+          <CartIcon className='flex  courseDet bg-opacity-0 justify-center items-start md:p-6 pt-6 h-28  w-full' courseId={course._id}/>
           <span  className=' absolute right-1/2 translate-x-1/2  bottom-6   ' >اضف الى السلة</span>
         
         
@@ -108,14 +112,15 @@ const CourseDuration = ({ duration }) => {
 <label className='flex flex-col items-center justify-center  font-semibold text-sm'><span className=' text-xs font-normal'>عدد الاقسام</span> {course.content.numberOfParts} </label>
 )}  
 
-    </div></PriceDiv>
+    </div></PriceDiv> </Suspense>
       
 
 
       <div id='courseContent' className='flex justify-center md:w-fit   md:hidden rounded-2xl gap-4'>
+        <Suspense fallback={<div>...load</div>}>
       {course.content && course.content.courseDuration && (
   <CourseDuration duration={course.content.courseDuration} />
-)}  
+)}  </Suspense>
       {course.content && course.content.numberOfArticles && (
 <label className=' flex flex-col items-center justify-center  font-semibold text-xs'><span className=' text-xs font-normal'>عدد المقالات</span> {course.content.numberOfArticles} </label>
 )}  
@@ -134,7 +139,8 @@ const CourseDuration = ({ duration }) => {
         </span>
         
         {course.requirements && course.requirements.map((requirement, index) => (
-          <span className='flex  gap-1 items-start' key={index}><FaCircle className=' FaCircle'/> {requirement}</span>
+          <span className='flex  gap-1 items-start' key={index}>        <Suspense fallback={<div>...load</div>}><FaCircle className=' FaCircle'/></Suspense>
+           {requirement}</span>
         ))}
       </div>
 
@@ -142,13 +148,16 @@ const CourseDuration = ({ duration }) => {
       <span className='font-black'> ماذا سوف تتعلم
         </span>
         {course.whatWillLearn && course.whatWillLearn.map((item, index) => (
-          <span className='flex gap-1 items-start' key={index}><IoMdCheckmark className=' text-xl w-12'/> {item}</span>
+          <span className='flex gap-1 items-start' key={index}>        <Suspense fallback={<div>...load</div>}><IoMdCheckmark className=' text-xl w-12'/> </Suspense>
+          {item}</span>
         ))}
 
         
       </div>
 </div>
-<Ccontainer/>
+<Suspense fallback={<div>...load</div>}>
+
+<Ccontainer/></Suspense>
 
     </div>}</>
     )
