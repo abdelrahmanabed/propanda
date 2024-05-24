@@ -24,9 +24,7 @@ export default function RootLayout({ children }) {
    <VideoProvider>
 <CartProvider>
  <div id="thecontainer" className=" relative mx-auto">
- <Suspense fallback={<div>Loading header...</div>}>
    <Header/>
-   </Suspense>
 
 <div id="maincontainer" className=" relative mx-auto">
         {children}</div>   

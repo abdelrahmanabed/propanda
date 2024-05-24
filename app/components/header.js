@@ -16,7 +16,7 @@ import SearchInput from './SearchInput';
 import jwt from 'jsonwebtoken';
 import BigNav from './BigNav';
 import MobileNav from './MobileNav';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 
 const Header = () => {
@@ -30,7 +30,6 @@ const Header = () => {
   const [jwtUserId , setjwtUserId] = useState("")
   const [decryptedUserId , setdecryptedUserId] = useState("")
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const token = Cookies.get('token');
   const unavRef = useRef(null);
 
@@ -41,14 +40,13 @@ const Header = () => {
       };
   
       // Example usage with pathname and searchParams
-      const url = `${pathname}?${searchParams}`;
-      console.log(url); // Log the URL for demonstration purposes
+      // Log the URL for demonstration purposes
   
       // Call your handleRouteChange function when pathname or searchParams change
       handleRouteChange();
   
       // Cleanup function is not needed as we're not adding event listeners
-    }, [pathname, searchParams]);
+    }, [pathname]);
   
   useEffect(() => {
     const token = Cookies.get('token');
