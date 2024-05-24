@@ -1,6 +1,7 @@
 import { Tajawal } from "next/font/google";
 import "./globals.css";
 
+import Header from "./components/header";
 import Footer from "./components/Footer";
 import { VideoProvider } from "./courses/components/VideoContext"; // Update the import path as necessary
 import { CartProvider } from "./components/CartContext";
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
    <VideoProvider>
 <CartProvider>
  <div id="thecontainer" className=" relative mx-auto">
+                    <Header/>
 <div id="maincontainer" className=" relative mx-auto">
         {children}</div>   
         <Footer/></div></CartProvider></VideoProvider>

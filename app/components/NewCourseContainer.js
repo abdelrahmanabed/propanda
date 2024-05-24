@@ -2,7 +2,7 @@
 import "keen-slider/keen-slider.min.css"
 import Course from "./course";
 import Keenslider from "./Keenslider";
-import { fetchNewCourses } from "../../helpers/api";
+import { fetchNewCourses } from "../helpers/api";
 
 
 const NewCourseContainer = async () => {

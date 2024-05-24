@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import CourseForCart from "./CourseforCart";
 import { useCart } from "./CartContext";
 import Totalprice from "../cart/components/totalprice";
-import { fetchCourses } from "../../helpers/api";
+import { fetchCourses } from "../helpers/api";
 
 
 

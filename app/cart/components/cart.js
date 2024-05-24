@@ -1,6 +1,6 @@
 'use client'
 import CourseForCart from "../../components/CourseforCart";
-import { fetchCourses } from "../../../helpers/api";
+import { fetchCourses } from "../../helpers/api";
 import { useEffect, useState } from "react";
 import { useCart } from "../../components/CartContext";
 import Totalprice from "./totalprice";
