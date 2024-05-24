@@ -113,7 +113,7 @@ export default function CompOut({ children }) {
      </div>
 
      {children}
-   </div> </> : <SignDiv/> }
+   </div> </> : "SignDiv" }
     
     
     </>
