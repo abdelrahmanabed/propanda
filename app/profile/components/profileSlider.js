@@ -1,10 +1,8 @@
 'use client'
 import InfoCom from '../../components/InfoCom'
-import React, { Suspense } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import FavsCom from '../../components/favsCom'
 
-import Loading from '../../components/loading'
 
 const Pslider = () => {
   const pathname = usePathname();
@@ -23,7 +21,7 @@ const Pslider = () => {
   const isValidPath = validPaths.includes(pathname);
 
   // If the path is not valid, redirect to /profile
-  React.useEffect(() => {
+useEffect(() => {
     if (!isValidPath) {
       router.push('/profile');
     }
@@ -34,8 +32,8 @@ const Pslider = () => {
       {pathname === '/profile/info' && <InfoCom/>}
       {pathname === '/profile/security' && <InfoCom/>}
       {pathname === '/profile/favourites' &&
-       <Suspense fallback={<Loading/>}>
-       <FavsCom/></Suspense>
+      
+       <FavsCom/>
        }
       {pathname === '/profile/myCourses' && <InfoCom/>}
       {pathname === '/profile/payment-options' && <InfoCom/>}

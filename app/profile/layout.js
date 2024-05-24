@@ -1,9 +1,11 @@
 
+import { Suspense } from "react";
 import CompOut from "./components/CompOut";
 
 export default function RootLayout({ children }) {
 
   return (
-  <CompOut>{children}</CompOut>
+    <Suspense fallback={<div>load</div>}>
+  <CompOut>{children}</CompOut></Suspense>
   );
 }

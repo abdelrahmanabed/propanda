@@ -5,7 +5,6 @@ import { IoMenu } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from 'next/navigation'
 import Cookies from 'js-cookie';
-import SignDiv from "../../components/signupcomp";
 
 export default function CompOut({ children }) {
     const token = Cookies.get('token');
