@@ -63,7 +63,7 @@ const MobileSearch = (props) => {
     };
     const handleShowResults = () => {
 
-                router.push(`/search?search=${searchValue}`);
+                router.push(`/search/data?q=${searchValue}`);
     };
 
     return (

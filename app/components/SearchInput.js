@@ -67,7 +67,7 @@ const SearchInput = (props) => {
     };
     const handleShowResults = () => {
         setIsSearchVisible(false);
-                router.push(`/search?search=${searchValue}`);
+                router.push(`/search/data?q=${searchValue}`);
     };
 
     return (

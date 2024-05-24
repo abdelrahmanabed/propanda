@@ -1,8 +1,8 @@
 
-import Course from '../components/course';
+import Course from '../../components/course';
 
-import InstructorCard from '../components/instructorCard';
-import Keenslider from '../components/Keenslider';
+import InstructorCard from '../../components/instructorCard';
+import Keenslider from '../../components/Keenslider';
 const Page = async ({searchParams}) => {
  
 
@@ -13,7 +13,7 @@ const Page = async ({searchParams}) => {
       const I = await response.json();
       const filteredIs = I.filter(i => {
         return (
-          i.name.toLowerCase().includes(searchParams.search.toLowerCase())           );
+          i.name.toLowerCase().includes(searchParams.q.toLowerCase())           );
       });
       return filteredIs
     } catch (error) {
@@ -29,7 +29,7 @@ const Page = async ({searchParams}) => {
         const coursesData = await response.json();
         const filteredCourses = coursesData.filter(course => {
           return (
-            course.title.toLowerCase().includes(searchParams.search.toLowerCase())
+            course.title.toLowerCase().includes(searchParams.q.toLowerCase())
           
           );
         });
@@ -184,7 +184,7 @@ const Page = async ({searchParams}) => {
 {I &&I.length > 0&& 
         <>
           <span className='p-3 pb-0'>
-            نتائج البحث عن <span className='font-extrabold'>{searchParams.search}</span>
+            نتائج البحث عن <span className='font-extrabold'>{searchParams.q}</span>
           </span>
           <span className='p-3 py-0 text-xs'> عدد النتائج <span className=' font-extrabold'>{I.length}</span> </span>
 <Keenslider>            {I && I.map(i => (
@@ -206,7 +206,7 @@ const Page = async ({searchParams}) => {
       { courses && courses.length > 0 ? (
         <>
           <span className='p-3 pb-0'>
-            نتائج البحث عن <span className='font-extrabold'>{searchParams.search}</span>
+            نتائج البحث عن <span className='font-extrabold'>{searchParams.q}</span>
           </span>
           <span className='p-3 py-0 text-xs'> عدد النتائج <span className=' font-extrabold'>{courses.length}</span> </span>
 <Keenslider>            {courses && courses.map(course => (
@@ -227,14 +227,14 @@ const Page = async ({searchParams}) => {
         </>
       ) : (
         <div className=' flex justify-center items-center'>
-          <p > لا يوجد كورسات تتطابق مع {searchParams.search} </p>
+          <p > لا يوجد كورسات تتطابق مع {searchParams.q} </p>
         </div>
       )}
 
 <div className='coursesrelatedtosomcategories flex flex-col gap-7'>
         {/* Filter courses by categories */}
         {Object.entries(categoriesKeywordsMap).map(([category, { title, keywords }]) => {
-          if (keywords.some(keyword => searchParams.search.toLowerCase().includes(keyword))) {
+          if (keywords.some(keyword => searchParams.q.toLowerCase().includes(keyword))) {
             return (
               
               <div key={category} className=' p-3 rounded-2xl overflow-hidden flex flex-col gap-3'>
