@@ -3,6 +3,7 @@ import "keen-slider/keen-slider.min.css"
 import Course from "./course";
 import Keenslider from "./Keenslider";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 const NewCourseContainer =  () => {
@@ -10,8 +11,8 @@ const NewCourseContainer =  () => {
   useEffect(()=>{
     const fetchNewCourses = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
-        const newCourses = response.json()
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const newCourses = response.data
         setnewCourses(newCourses) 
       } catch (error) {
         console.error('Error fetching courses:', error);
