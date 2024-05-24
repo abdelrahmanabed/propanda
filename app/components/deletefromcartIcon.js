@@ -1,13 +1,11 @@
 'use client'
 import React, { useRef, useState } from 'react';
-import { Player } from '@lordicon/react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useCart } from './CartContext';
 const DeletefromcartIcon = (props) => {
-    const playerRef = useRef(null);
     const [showDMessage, setShowDMessage] = useState(false);
 
 const {removeFromCart} = useCart()
