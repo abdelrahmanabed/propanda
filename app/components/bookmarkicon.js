@@ -1,38 +1,28 @@
 'use client'
-import React, { useRef, useEffect, useState } from 'react';
-import { Player } from '@lordicon/react';
+import React, { useEffect, useState } from 'react';
+import { BsBookmark } from "react-icons/bs";
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js';
+import { BsBookmarkCheck } from "react-icons/bs";
+
 const Bookmarkicon = (props) => {
-    const playerRef = useRef(null);
-    const [ state, setState] = useState("in-reveal")
-    const [ added, setAdded] = useState("./wired-outline-400-bookmark")
+
+    const [ state, setState] = useState(false)
   
     
     useEffect(() => {
       if (!localStorage.getItem('favcourses')) {
           localStorage.setItem('favcourses', JSON.stringify([]));
       }
-      handlePFB();
 
       const favCourses = JSON.parse(localStorage.getItem('favcourses'));
       if (favCourses.includes(props.courseId)) {
-          setState('morph-checked');
-          handlePFB();
+          setState(true);
       }
   }, []);
     
-    const handlePFB = () => {
-        playerRef.current?.playFromBeginning();
-      };
-      const handleGTLF = () => {
-        playerRef.current?.goToLastFrame()
-
-
-    };
  
-      const ICON = require(`${added}`); // Replace with your actual icon data
       
       const handleBookmarkClick = async () => {
         try {
@@ -63,8 +53,7 @@ const Bookmarkicon = (props) => {
                  
                 }
                 console.log('Course removed from favoriteCourses array');
-                setState('in-reveal');
-                handlePFB();
+                setState(false);
               } else {
                 await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses`, { courseId: props.courseId }, {
                   headers: {
@@ -77,8 +66,7 @@ const Bookmarkicon = (props) => {
                 const updatedFavCourses = [...favCourses, props.courseId];
               localStorage.setItem('favcourses', JSON.stringify(updatedFavCourses));
                 console.log('Course added to favoriteCourses array');
-                setState('morph-checked');
-                handlePFB();
+                setState(true);
               }
             }
           } else {
@@ -87,13 +75,11 @@ const Bookmarkicon = (props) => {
             if (favCourses.includes(props.courseId)) {
               const newFavCourses = favCourses.filter(course => course !== props.courseId);
               localStorage.setItem('favcourses', JSON.stringify(newFavCourses));
-              setState('in-reveal');
-              handlePFB();
+              setState(false);
             } else {
               const updatedFavCourses = [...favCourses, props.courseId];
               localStorage.setItem('favcourses', JSON.stringify(updatedFavCourses));
-              setState('morph-checked');
-              handlePFB();
+              setState(true);
             }
           }
         } catch (error) {
@@ -105,15 +91,16 @@ const Bookmarkicon = (props) => {
         onClick={handleBookmarkClick}
          className={` backdrop-blur-md
          
-         ${state === 'in-reveal' ? '' : 'clicked'}
+         ${!state ? '' : 'clicked'}
          duration-300 flex justify-center  items-center  top-7 left-7 ${ props.className}  `}
         
 
         >
-
-          <Player   state={state}  onComplete={ handleGTLF} 
-            size={state === 'morph-checked' ? 40 : 25}
-          ref={playerRef} icon={ICON}  colorize={"#000"} currentState={props.currentState}/>
+         <BsBookmark currentState={props.currentState} className={`${ state ? " absolute opacity-0 text-4xl" : " static opacity-100 text-2xl "} duration-300`}/>
+           
+           <BsBookmarkCheck className={`${ !state ? " absolute opacity-0" : " static opacity-100 text-4xl"} duration-300`}/>
+           
+          
         </div>
       );
     };

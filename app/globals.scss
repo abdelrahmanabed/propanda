@@ -107,6 +107,19 @@ body{
       
       }
 }
+.notify{
+    border-radius: 50% ;
+    height: 15px;
+    width: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    left: 15px;
+    top: -5px;
+    color: $main-color2;
+    font-weight: 900;
+    background-color: $dark-btn;
+}
 #header {
     left: 50%;transform: translateX(-50%);
     &.bt {

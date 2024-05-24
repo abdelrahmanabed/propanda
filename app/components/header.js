@@ -3,21 +3,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState, useEffect, useRef } from 'react';
 import SignDiv from './signupcomp';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { FiUser } from "react-icons/fi";
+import { FiUserPlus } from "react-icons/fi";
 import { FaTimes } from 'react-icons/fa'; // Import the close icon
 import Cookies from 'js-cookie';
 import Usernav from './usernav';
 import CryptoJS from 'crypto-js';
 import CartBtn from './cartbutton';
 import CartDiv from './cartdiv';
-import ArrowIcon from './arrow';
+import { FaArrowLeft } from "react-icons/fa";
 import SearchInput from './SearchInput';
 import jwt from 'jsonwebtoken';
 import BigNav from './BigNav';
 import MobileNav from './MobileNav';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { ImUser } from "react-icons/im";
 
 
 const Header = () => {
@@ -180,7 +179,7 @@ const Header = () => {
       <div className={`${showEnterCart? "max-w-52 opacity-100 ":"max-w-0  "} text-white duration-300 overflow-hidden `}> 
         <span className={` w-52 text-nowrap `}>اضغط للدخول الى السلة</span></div>
           {!showEnterCart &&  <CartBtn color="#000" className="absolute top-1/2 -translate-y-1/2  xl:left-3 xl:translate-x-0  left-1/2 -translate-x-1/2"/>}
-          {showEnterCart && <ArrowIcon className="absolute left-3 rotate-90"/> }
+          {showEnterCart && <FaArrowLeft className="absolute left-5  animate-pulse"/> }
         </Link>
         <CartDiv className={ `${showCartNav?"max-h-screen w-96  p-3 opacity-100 pb-24 " :" w-0 max-h-0 p-0 opacity-0  "} ${ isHeaderFixed ? "mt-3":""}`}/>
 
@@ -194,7 +193,7 @@ const Header = () => {
       id="userbtn"
       className={` ${showUserNav? "open":""} h-12 md:h-14 text-sm  w-fit absolute left-4 top-1/2 -translate-y-1/2  rounded-2xl md:rounded-3xl items-center justify-center gap-1 duration-300 `}
     >
-      <ImUser  className=' bg-black p-1 rounded-lg text-2xl text-white' />
+      <FiUser  className=' bg-black p-1 rounded-lg text-2xl text-white' />
 {userName}
      
     </button>
@@ -213,7 +212,7 @@ const Header = () => {
       ) : (
         <>
           التسجيل
-          <FontAwesomeIcon className="text-md md:text-xl" icon={faUserPlus} />
+          <FiUserPlus className="text-md md:text-xl"  />
         </>
       )}
     </button>
