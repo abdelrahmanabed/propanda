@@ -3,10 +3,23 @@ import "keen-slider/keen-slider.min.css"
 import Course from "./course";
 import Keenslider from "./Keenslider";
 import { fetchNewCourses } from "../helpers/api";
+import { useEffect, useState } from "react";
 
 
-const NewCourseContainer = async () => {
-const newCourses = await fetchNewCourses()
+const NewCourseContainer =  () => {
+  const [newCourses, setnewCourses] = useState([])
+  useEffect(()=>{
+    const fetchNewCourses = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const newCourses = response.json()
+        setnewCourses(newCourses) 
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
+    };
+    fetchNewCourses()
+  },[])
     return (
         <div className=" mx-3  mb-3 flex flex-col gap-3  overflow-hidden ">
           <span className=" text-lg">احدث الدورات التعليمية</span>
