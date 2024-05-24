@@ -12,7 +12,7 @@ $bgc-colour: #e2e2e285;
 $dark-colour: #aaaaaa85;
 $main-btn:#00BDFF;
 $dark-btn:#007daa;
-$background-color: #6fd9ff93;
+$background-color: #a3d9ff;
 $sub-background-color:  #58fdb570;
 $border:16px;
 $sub_btn:#00ffae;
@@ -319,7 +319,16 @@ body{
     .submit-btn{
         background-color: $main-btn;
         color: $harddark;
+        padding: 18px;
+        font-weight: 600;
     }
+    #signindiv{.submit-btn{
+        background-color: $sub-btn;
+        color: $harddark;
+        padding: 18px;
+        font-weight: 600;
+    }}
+    
     top: 72px;  
     border-radius: $border $border 0 0;
 
@@ -361,7 +370,7 @@ body{
         }
     }
 }
-#signupdiv, #signindiv{
+#signupdiv{
     border-radius: $border;
 
 
@@ -378,7 +387,7 @@ body{
             font-size: larger;
             transition: 0.4s;
             padding: 6px;
-            
+        
         }
         input{
         width: 100%;
@@ -410,6 +419,87 @@ body{
         }
         &:not(:empty) ~ label{
             background-color: $sub_color2;
+            top: 0;
+            font-size: small;
+            padding: 6px;
+            font-weight: bold;
+            border-radius: $border;
+            color: #000;
+
+        }
+        &.invalid ~ label {
+            background-color: rgb(235, 87, 87);
+            top: 0;
+            font-size: small;
+            padding: 6px;
+            font-weight: bold;
+            border-radius: $border;
+            color: #000;
+
+        }
+       
+    }
+    label.error {
+        background-color: rgb(235, 87, 87);
+        top: 0;
+        font-size: small;
+        padding: 6px;
+        font-weight: bold;
+        border-radius: $border;
+        color: #000;
+
+    }
+}}
+
+#signindiv{
+    border-radius: $border;
+
+
+    div{
+        
+        position: relative;
+        label{
+            color: rgb(118, 118, 118);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px;
+            pointer-events: none;
+            font-size: larger;
+            transition: 0.4s;
+            padding: 6px;
+        
+        }
+        input{
+        width: 100%;
+        font-size: larger;
+        padding:14px 10px;
+        outline: 0;
+        border-radius: $border;
+        background-color: $input;
+
+        &:focus ~ label {
+            background-color: $sub-background-color;
+            top: 0;
+            font-size: small;
+            padding: 6px;
+            color: #000;
+            font-weight: bold;
+            border-radius: $border;
+
+        }
+        &:valid ~ label {
+            background-color: $sub-background-color;
+            top: 0;
+            font-size: small;
+            padding: 6px;
+            font-weight: bold;
+            border-radius: $border;
+            color: #000;
+
+        }
+        &:not(:empty) ~ label{
+            background-color: $sub-background-color;
             top: 0;
             font-size: small;
             padding: 6px;
@@ -526,13 +616,13 @@ body{
     justify-content: center;
 }
 .navmlink{
-    background: $semidark;
+    background: $sub_btn;
     height: 120px;
     justify-content: center;
     color: $main_color;
 }
 .navmlink2{
-    background: $input;
+    background: $main-btn;
     height: 120px;
     justify-content: center;
     color: $main_color;
@@ -964,7 +1054,7 @@ max-width: 420px;}
 
 .faplay{
     background-color: $main_color2;
-    color: #000000;
+    color: $sub_btn;
     width: 100%;
     height: 100%;
     padding:60px;
@@ -1487,4 +1577,10 @@ margin: 12px;}
       opacity: 0; /* Endet mit 0 Opazität */
     }
   }
-  
+  #signdiv{
+    
+  }
+
+  .faangledown{
+    color: $dark_sub;
+  }

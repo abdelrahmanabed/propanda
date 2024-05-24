@@ -84,7 +84,7 @@ const Ccontainer = () => {
 
     <div key={index} id='pcontainer' className='flex flex-col gap-1'>
 
-      <div onClick={() => handleViewContent(index)} id='pt' className=' p-3 flex items-center gap-3 rounded-2xl justify-between'><div className='flex items-center gap-3'><span className="pnumber h-8 w-8 min-w-8 flex justify-center items-center rounded-full">{index+1}</span>  <h1>{part.title}</h1></div>  <FaAngleDown/></div>
+      <div onClick={() => handleViewContent(index)} id='pt' className=' p-3 flex items-center gap-3 rounded-2xl justify-between'><div className='flex items-center gap-3'><span className="pnumber h-8 w-8 min-w-8 flex justify-center items-center rounded-full">{index+1}</span>  <h1>{part.title}</h1></div>  <FaAngleDown className='faangledown'/></div>
       <ul className={`' ' ${expandedSectionIndex === index ? 'open p-3' : 'max-h-0   overflow-hidden'}   duration-500 flex flex-col lg:grid  lg:grid-cols-2 xl:grid-cols-3 gap-2 rounded-3xl `} id='pul'>
       { part.videos.map((video, videoIndex) => (
 

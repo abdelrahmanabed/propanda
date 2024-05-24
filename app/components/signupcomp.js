@@ -228,9 +228,9 @@ export default function SignDiv(props) {
               <label htmlFor="password" >Password</label>
               <span  className="text-red-500">{lerrorMessages.password}</span>
             </div>
-            <div className=' bg  flex-col flex justify-between gap-3 items-center'>
-            <button  type="submit" className="  submit-btn    rounded-2xl w-full p-5">تسجبل دخول</button>
-            <Link href='' ><span >لا تتذكر كلمة السر ؟</span></Link>
+            <div className=' bg  flex-col flex justify-between gap-3 '>
+             <Link href='' ><span className=' text-xs' >لا تتذكر كلمة السر ؟</span></Link>
+             <button  type="submit" className="  submit-btn    rounded-2xl w-full p-5">تسجبل دخول</button>
             </div>
           </form></div>
 
