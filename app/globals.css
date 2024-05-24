@@ -572,6 +572,8 @@ body #thecontainer {
   overflow: hidden;
   position: relative;
   border-radius: 16px;
+  background-position: bottom;
+  background-size: contain;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;

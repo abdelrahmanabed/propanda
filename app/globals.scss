@@ -654,6 +654,9 @@ body{
     overflow: hidden;
     position: relative;
     border-radius:  $border;
+    background-position: bottom;
+    background-size:  contain;
+
     @media screen and (min-width: 768px) {
         height: calc(100vh - 108px);
         
