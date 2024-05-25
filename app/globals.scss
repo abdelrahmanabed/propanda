@@ -4,7 +4,7 @@
 
 $main_color: #000;
 $main_color2: #ffffff;
-$sub_color: #eeeeee;
+$sub_color: #eeeeeec5;
 $sub_color2: #6fd9ff93;
 $background: #b7e8ff;
 $bg-colour: #6fd9ff93;
@@ -806,7 +806,7 @@ body{
 
         }
         @media screen and (min-width: 768px) {
-            background-color: $main-btn;
+            background-color: $bgc-colour;
             border-radius: $border;
      
          }

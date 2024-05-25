@@ -102,7 +102,7 @@ body #thecontainer {
   padding: 12px;
 }
 #navdiv #navbtn {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   color: #000;
   z-index: 500;
 }
@@ -190,7 +190,7 @@ body #thecontainer {
   padding: 12px;
   width: 50%;
   border-radius: 16px;
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   align-items: center;
 }
 #navdiv ul.main li a.yes {
@@ -443,7 +443,7 @@ body #thecontainer {
 }
 
 #regbtn {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   color: #000;
   display: flex;
   padding: 5px;
@@ -490,10 +490,10 @@ body #thecontainer {
 }
 
 #searchbtn {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 #searchbtn.open {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 
 .searchinput {
@@ -505,11 +505,11 @@ body #thecontainer {
 }
 
 #logodiv, #logodivm {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 
 #subbtn {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   color: #000;
 }
 #subbtn:hover {
@@ -522,7 +522,7 @@ body #thecontainer {
 }
 
 .navlink {
-  background: #eeeeee;
+  background: rgba(238, 238, 238, 0.7725490196);
   height: 120px;
   justify-content: center;
 }
@@ -556,7 +556,7 @@ body #thecontainer {
 }
 
 #navtogmob {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 #navtogmob.open {
   background-color: rgba(207, 207, 207, 0.5843137255);
@@ -640,12 +640,12 @@ body #thecontainer {
 }
 
 #courseRequirements {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   border-radius: 16px;
 }
 
 #targetC {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   border-radius: 16px;
 }
 
@@ -687,7 +687,7 @@ body #thecontainer {
   width: 100%;
 }
 #coursePage #cauthordiv {
-  background: #eeeeee;
+  background: rgba(238, 238, 238, 0.7725490196);
   padding: 7px;
   border-radius: 16px;
   width: -moz-fit-content;
@@ -700,7 +700,7 @@ body #thecontainer {
   border-radius: 16px;
 }
 #coursePage #priceDiv {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   padding: 12px;
   border-radius: 16px;
 }
@@ -709,7 +709,7 @@ body #thecontainer {
 }
 @media screen and (min-width: 768px) {
   #coursePage #priceDiv {
-    background-color: #00BDFF;
+    background-color: rgba(255, 255, 255, 0.6784313725);
     border-radius: 16px;
   }
 }
@@ -779,7 +779,7 @@ body #thecontainer {
 
 #ccontainer {
   border-radius: 16px;
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 @media screen and (min-width: 768px) {
   #ccontainer {
@@ -954,7 +954,7 @@ body #thecontainer {
 }
 #userNav .usernavlink {
   transition: 0.3s;
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   border-radius: 16px;
 }
 #userNav .usernavlink:hover {
@@ -993,7 +993,7 @@ body #thecontainer {
 }
 
 #profilelayout button {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 #profilelayout ul {
   background-color: rgba(202, 202, 202, 0.8352941176);
@@ -1029,7 +1029,7 @@ body #thecontainer {
   width: 100%;
 }
 #profilelayout ul li a.selected {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   font-size: large;
 }
 
@@ -1042,7 +1042,7 @@ body #thecontainer {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   padding: 12px;
   border-radius: 16px;
   height: 120px;
@@ -1116,7 +1116,7 @@ body #thecontainer {
 
 #lordcbdiv {
   border-radius: 16px;
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 #lordcbdiv:hover {
   background-color: #000;
@@ -1143,7 +1143,7 @@ body #thecontainer {
   border-radius: 16px;
 }
 #searchR a, #searchMR a {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 #searchR button, #searchMR button {
   background-color: #00BDFF;
@@ -1158,12 +1158,12 @@ body #thecontainer {
 }
 
 #searchMR {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   border-radius: 16px;
   z-index: 200;
 }
 #searchMR a {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
 }
 
 #searchpage {
@@ -1381,7 +1381,7 @@ input {
 }
 
 .cartpage .linkcartpage {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.7725490196);
   border-radius: 16px;
 }
 
