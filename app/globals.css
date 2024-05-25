@@ -42,8 +42,8 @@ html, body {
 }
 
 body {
-  background-image: linear-gradient(to right top, #d1d1d1, #d3d3d3, #d6d6d6, #d8d8d8, #dbdbdb, #dadada, #dadada, #d9d9d9, #d4d4d4, #cfcfcf, #cbcbcb, #c6c6c6);
-  background-size: 100%;
+  background-color: rgba(238, 238, 238, 0.9333333333);
+  background-image: url("../public/imgs/img-noise-361x370.png");
 }
 body #maincontainer {
   max-width: 2000px;
@@ -954,7 +954,7 @@ body #thecontainer {
 
 #userNav {
   border-radius: 16px;
-  background-color: rgba(202, 202, 202, 0.8352941176);
+  background-color: #ffffff;
 }
 #userNav .usernavlink {
   transition: 0.3s;

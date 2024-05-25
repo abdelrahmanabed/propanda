@@ -82,7 +82,8 @@ $harddark: #000000bd;
         margin: 0;
       }
 body{
-    background-image: linear-gradient(to right top, #d1d1d1, #d3d3d3, #d6d6d6, #d8d8d8, #dbdbdb, #dadada, #dadada, #d9d9d9, #d4d4d4, #cfcfcf, #cbcbcb, #c6c6c6);    background-size: 100%;
+    background-color:#eeee;
+background-image: url('../public/imgs/img-noise-361x370.png');
     #maincontainer{
     max-width: 2000px;
     position: relative;
@@ -1061,7 +1062,7 @@ max-width: 420px;}
 
 #userNav{
     border-radius: $border;
-    background-color: $dark-colour;
+    background-color: $gray;
 
     .usernavlink{
         transition: 0.3s;
