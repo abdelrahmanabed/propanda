@@ -42,9 +42,7 @@ html, body {
 }
 
 body {
-  background-image: linear-gradient(to right top, #969696, #ababab, #c0c0c0, #d6d6d6, #ececec);
-  margin: 0;
-  padding: 0;
+  background-image: linear-gradient(to right top, #d1d1d1, #d3d3d3, #d6d6d6, #d8d8d8, #dbdbdb, #dadada, #dadada, #d9d9d9, #d4d4d4, #cfcfcf, #cbcbcb, #c6c6c6);
   background-size: 100%;
 }
 body #maincontainer {
@@ -78,7 +76,7 @@ body #thecontainer {
   transform: translateX(-50%);
 }
 #header.bt {
-  background-color: rgba(226, 226, 226, 0.5215686275);
+  background-color: rgba(215, 215, 215, 0.6784313725);
   width: calc(100% - 24px);
   max-width: 2000px;
   border-radius: 16px;
@@ -104,7 +102,7 @@ body #thecontainer {
   padding: 12px;
 }
 #navdiv #navbtn {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   color: #000;
   z-index: 500;
 }
@@ -192,7 +190,7 @@ body #thecontainer {
   padding: 12px;
   width: 50%;
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: #eeeeee;
   align-items: center;
 }
 #navdiv ul.main li a.yes {
@@ -325,7 +323,7 @@ body #thecontainer {
   padding: 14px 10px;
   outline: 0;
   border-radius: 16px;
-  background-color: rgba(211, 211, 211, 0.4745098039);
+  background-color: rgba(207, 207, 207, 0.5843137255);
 }
 #signupdiv div input:focus ~ label {
   background-color: rgba(111, 217, 255, 0.5764705882);
@@ -396,7 +394,7 @@ body #thecontainer {
   padding: 14px 10px;
   outline: 0;
   border-radius: 16px;
-  background-color: rgba(211, 211, 211, 0.4745098039);
+  background-color: rgba(207, 207, 207, 0.5843137255);
 }
 #signindiv div input:focus ~ label {
   background-color: rgba(88, 253, 181, 0.4392156863);
@@ -445,15 +443,15 @@ body #thecontainer {
 }
 
 #regbtn {
-  background-color: #ffffff;
-  color: rgba(0, 0, 0, 0.7411764706);
+  background-color: #eeeeee;
+  color: #000;
   display: flex;
   padding: 5px;
   font-weight: bolder;
 }
 #regbtn.open {
   left: calc(100% - 43px);
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
 }
 @media screen and (min-width: 768px) {
   #regbtn.open {
@@ -492,26 +490,26 @@ body #thecontainer {
 }
 
 #searchbtn {
-  background-color: #ffffff;
+  background-color: #eeeeee;
 }
 #searchbtn.open {
-  background-color: #ffffff;
+  background-color: #eeeeee;
 }
 
 .searchinput {
-  background-color: rgba(211, 211, 211, 0.4745098039);
+  background-color: rgba(207, 207, 207, 0.5843137255);
 }
 
 #mobsearchbtn {
   background-color: transparent;
 }
 
-#logodiv {
-  background-color: #ffffff;
+#logodiv, #logodivm {
+  background-color: #eeeeee;
 }
 
 #subbtn {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   color: #000;
 }
 #subbtn:hover {
@@ -524,7 +522,7 @@ body #thecontainer {
 }
 
 .navlink {
-  background: #ffffff;
+  background: #eeeeee;
   height: 120px;
   justify-content: center;
 }
@@ -558,10 +556,10 @@ body #thecontainer {
 }
 
 #navtogmob {
-  background-color: #ffffff;
+  background-color: #eeeeee;
 }
 #navtogmob.open {
-  background-color: rgba(211, 211, 211, 0.4745098039);
+  background-color: rgba(207, 207, 207, 0.5843137255);
 }
 
 #herodiv {
@@ -586,24 +584,10 @@ body #thecontainer {
     background-position: center;
   }
 }
-@media screen and (min-width: 1200px) {
-  #herodiv {
-    background-image: url("../public/imgs/hero2.png");
-    background-size: contain;
-    background-position: bottom;
-  }
-}
-@media screen and (min-width: 1500px) {
-  #herodiv {
-    background-size: contain;
-    background-position: bottom;
-    background-position: left;
-  }
-}
 #herodiv .content {
   padding: 12px;
   border-radius: 16px;
-  background-color: rgba(226, 226, 226, 0.5215686275);
+  background-color: rgba(215, 215, 215, 0.6784313725);
   width: calc(100% - 24px);
 }
 #herodiv .content h1 {
@@ -611,7 +595,7 @@ body #thecontainer {
 }
 @media screen and (min-width: 768px) {
   #herodiv .content {
-    background-color: rgba(226, 226, 226, 0.5215686275);
+    background-color: rgba(215, 215, 215, 0.6784313725);
     border-radius: 16px;
     margin-right: 12px;
     width: -moz-fit-content;
@@ -656,12 +640,12 @@ body #thecontainer {
 }
 
 #courseRequirements {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   border-radius: 16px;
 }
 
 #targetC {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   border-radius: 16px;
 }
 
@@ -703,7 +687,7 @@ body #thecontainer {
   width: 100%;
 }
 #coursePage #cauthordiv {
-  background: #ffffff;
+  background: #eeeeee;
   padding: 7px;
   border-radius: 16px;
   width: -moz-fit-content;
@@ -716,7 +700,7 @@ body #thecontainer {
   border-radius: 16px;
 }
 #coursePage #priceDiv {
-  background-color: #eee;
+  background-color: #eeeeee;
   padding: 12px;
   border-radius: 16px;
 }
@@ -725,7 +709,7 @@ body #thecontainer {
 }
 @media screen and (min-width: 768px) {
   #coursePage #priceDiv {
-    background-color: rgba(226, 226, 226, 0.5215686275);
+    background-color: rgba(241, 241, 241, 0.5215686275);
     border-radius: 16px;
   }
 }
@@ -769,7 +753,7 @@ body #thecontainer {
 }
 
 #videobg {
-  background: rgba(226, 226, 226, 0.5215686275);
+  background: rgba(215, 215, 215, 0.6784313725);
   border-radius: 0;
   z-index: 180;
   right: auto;
@@ -795,7 +779,7 @@ body #thecontainer {
 
 #ccontainer {
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: #eeeeee;
 }
 @media screen and (min-width: 768px) {
   #ccontainer {
@@ -813,13 +797,13 @@ body #thecontainer {
   }
 }
 #ccontainer #pcontainer .pnumber {
-  background-color: #a3d9ff;
+  background-color: #00BDFF;
 }
 #ccontainer #pcontainer #pt {
-  background-color: rgba(226, 226, 226, 0.5215686275);
+  background-color: rgba(0, 0, 0, 0.7411764706);
 }
 #ccontainer #pcontainer #pli .pnumber {
-  background-color: #ffffff;
+  background-color: #00BDFF;
 }
 @media screen and (min-width: 1024px) {
   #ccontainer #pcontainer #pli {
@@ -827,7 +811,7 @@ body #thecontainer {
   }
 }
 #ccontainer #pcontainer #pli button {
-  background-color: #a3d9ff;
+  background-color: white;
   overflow: hidden;
 }
 #ccontainer #pcontainer #pli button span {
@@ -843,7 +827,7 @@ body #thecontainer {
 @media screen and (min-width: 1200px) {
   #coursevideosdivbg {
     width: 100%;
-    background: rgba(170, 170, 170, 0.5215686275);
+    background: rgba(241, 241, 241, 0.5215686275);
     z-index: 199;
   }
 }
@@ -851,13 +835,13 @@ body #thecontainer {
 #coursevideosdiv {
   height: 100%;
   z-index: 200;
-  background: rgba(170, 170, 170, 0.5215686275);
+  background: rgba(241, 241, 241, 0.5215686275);
 }
 #coursevideosdiv #mddiv {
   height: calc(100% - 116px);
 }
 #coursevideosdiv #closecoursevideosdiv {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
   height: 32px;
   width: 32px;
   border-radius: 16px;
@@ -889,7 +873,7 @@ body #thecontainer {
 }
 
 #ovdiv {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
   border-radius: 16px;
   max-height: 100%;
 }
@@ -927,7 +911,7 @@ body #thecontainer {
   padding: 4px;
 }
 .pinvideodiv.open {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
 }
 .pinvideodiv.open .thebtn {
   color: white;
@@ -966,11 +950,11 @@ body #thecontainer {
 
 #userNav {
   border-radius: 16px;
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
 }
 #userNav .usernavlink {
   transition: 0.3s;
-  background-color: #ffffff;
+  background-color: #eeeeee;
   border-radius: 16px;
 }
 #userNav .usernavlink:hover {
@@ -984,10 +968,10 @@ body #thecontainer {
 }
 
 #lordidiv, #lordcdiv {
-  background-color: rgba(226, 226, 226, 0.5215686275);
+  background-color: rgba(215, 215, 215, 0.6784313725);
 }
 #lordidiv.courseDet, #lordcdiv.courseDet {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
   border-radius: 16px;
   width: 100%;
 }
@@ -996,7 +980,7 @@ body #thecontainer {
 }
 
 #lordcdiv.courseDet {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
   border-radius: 16px;
   width: 100%;
 }
@@ -1009,10 +993,10 @@ body #thecontainer {
 }
 
 #profilelayout button {
-  background-color: #ffffff;
+  background-color: #eeeeee;
 }
 #profilelayout ul {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
   border-radius: 16px;
   margin-top: 12px;
 }
@@ -1045,20 +1029,20 @@ body #thecontainer {
   width: 100%;
 }
 #profilelayout ul li a.selected {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   font-size: large;
 }
 
 #infocomp ul {
   border-radius: 16px;
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
   min-height: 700px;
 }
 #infocomp ul li {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #ffffff;
+  background-color: #eeeeee;
   padding: 12px;
   border-radius: 16px;
   height: 120px;
@@ -1099,7 +1083,7 @@ body #thecontainer {
   transition: 0.3s;
 }
 #infocomp ul li form button.cancel {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
 }
 #infocomp ul li form button:hover {
   background-color: transparent;
@@ -1119,7 +1103,7 @@ body #thecontainer {
 
 #favscomp, #cartcomp {
   border-radius: 16px;
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
   z-index: 152;
   min-height: 700px;
 }
@@ -1132,7 +1116,7 @@ body #thecontainer {
 
 #lordcbdiv {
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: #eeeeee;
 }
 #lordcbdiv:hover {
   background-color: #000;
@@ -1144,7 +1128,7 @@ body #thecontainer {
   left: 50vw;
   transform: translate(-50%);
   z-index: 200;
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
 }
 
 .cartNavPrice {
@@ -1152,14 +1136,14 @@ body #thecontainer {
 }
 
 .cartNavPricep {
-  background-color: rgba(226, 226, 226, 0.5215686275);
+  background-color: rgba(215, 215, 215, 0.6784313725);
 }
 #searchR, #searchMR {
   background-color: rgba(111, 217, 255, 0.5764705882);
   border-radius: 16px;
 }
 #searchR a, #searchMR a {
-  background-color: #ffffff;
+  background-color: #eeeeee;
 }
 #searchR button, #searchMR button {
   background-color: #00BDFF;
@@ -1174,12 +1158,12 @@ body #thecontainer {
 }
 
 #searchMR {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   border-radius: 16px;
   z-index: 200;
 }
 #searchMR a {
-  background-color: #ffffff;
+  background-color: #eeeeee;
 }
 
 #searchpage {
@@ -1246,7 +1230,7 @@ input {
 }
 
 .insCard {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
 }
 
 .coursesrelatedtosomcategories {
@@ -1256,7 +1240,7 @@ input {
 
 .Irelatedtosomcategories {
   border-radius: 16px;
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
 }
 
 #categoriesdiv {
@@ -1264,11 +1248,11 @@ input {
 }
 @media screen and (min-width: 640px) {
   #categoriesdiv {
-    background-color: rgba(170, 170, 170, 0.5215686275);
+    background-color: rgba(241, 241, 241, 0.5215686275);
   }
 }
 #categoriesdiv .mob-grid {
-  background-color: rgba(170, 170, 170, 0.5215686275);
+  background-color: rgba(241, 241, 241, 0.5215686275);
   padding: 12px;
   border-radius: 16px;
 }
@@ -1390,14 +1374,14 @@ input {
   }
 }
 #cartpage {
-  background: #eee;
+  background: #ffffff;
   padding: 12px;
   border-radius: 16px;
   margin: 12px;
 }
 
 .cartpage .linkcartpage {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   border-radius: 16px;
 }
 
@@ -1439,5 +1423,5 @@ input {
   }
 }
 .faangledown {
-  color: #008d5e;
+  color: white;
 }/*# sourceMappingURL=globals.css.map */

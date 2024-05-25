@@ -4,22 +4,22 @@
 
 $main_color: #000;
 $main_color2: #ffffff;
-$sub_color: #ffffff;
+$sub_color: #eeeeee;
 $sub_color2: #6fd9ff93;
 $background: #b7e8ff;
 $bg-colour: #6fd9ff93;
-$bgc-colour: #e2e2e285;
-$dark-colour: #aaaaaa85;
+$bgc-colour: #d7d7d7ad;
+$dark-colour: #f1f1f185;
 $main-btn:#00BDFF;
 $dark-btn:#007daa;
 $background-color: #a3d9ff;
 $sub-background-color:  #58fdb570;
 $border:16px;
 $sub_btn:#00ffae;
-$input:#d3d3d379;
+$input:#cfcfcf95;
 $wall:#a4fffa;
 $dark_sub:#008d5e;
-$gray : #eee;
+$gray : #ffffff;
 $semidark:#5a5a5a57;
 $harddark: #000000bd;
  @keyframes rotate {
@@ -82,10 +82,7 @@ $harddark: #000000bd;
         margin: 0;
       }
 body{
-    background-image: linear-gradient(to right top, #969696, #ababab, #c0c0c0, #d6d6d6, #ececec);
-            margin: 0;
-	padding: 0;
-    background-size: 100%;
+    background-image: linear-gradient(to right top, #d1d1d1, #d3d3d3, #d6d6d6, #d8d8d8, #dbdbdb, #dadada, #dadada, #d9d9d9, #d4d4d4, #cfcfcf, #cbcbcb, #c6c6c6);    background-size: 100%;
     #maincontainer{
     max-width: 2000px;
     position: relative;
@@ -533,8 +530,8 @@ body{
 }}
 
 #regbtn {
-    background-color: $main-color2;
-    color: $harddark;
+    background-color: $sub_color;
+    color: $main-color;
     display: flex;
     padding: 5px;
     font-weight:bolder;
@@ -593,8 +590,8 @@ body{
     background-color: transparent;
    
 }
-#logodiv{
-    background-color: $main-color2;
+#logodiv, #logodivm{
+    background-color: $sub-color;
 }
 
 #subbtn {
@@ -663,20 +660,8 @@ body{
         background-position: center;
 
     }
-    @media screen and (min-width: 1200px) {
-        background-image: url("../public/imgs/hero2.png");
-        background-size:contain;
-        background-position: bottom;
 
 
-    }
-    @media screen and (min-width: 1500px) {
-        background-size:contain;
-        background-position: bottom;
-
-        background-position: left;
-
-    }
     .content{
          padding: 12px;
          border-radius: $border;
@@ -811,7 +796,7 @@ body{
     }
 
     #priceDiv {            
-        background-color: $gray;
+        background-color: $sub-color;
         padding: 12px;
         border-radius: $border;
       
@@ -821,7 +806,7 @@ body{
 
         }
         @media screen and (min-width: 768px) {
-            background-color: $bgc-colour;
+            background-color: $dark-colour;
             border-radius: $border;
      
          }
@@ -894,7 +879,7 @@ top: 220px;
 }
 #ccontainer{
     border-radius: $border;
-    background-color:$main_color2;
+    background-color:$sub_color;
     @media screen and (min-width: 768px) {
         width: calc(100% - 353px);
     }
@@ -908,11 +893,11 @@ top: 220px;
     }
         #pcontainer{
             .pnumber{
-                background-color: $background-color;
+                background-color: $main_btn;
                 
             }
         #pt{
-             background-color: $bgc-colour;
+             background-color: $harddark;
             @media screen and (min-width: 1024px) {
           
             }
@@ -923,7 +908,7 @@ top: 220px;
         #pli{
             
             .pnumber{
-                background-color: $main-color2;
+                background-color: $main-btn;
                 
             }
             @media screen and (min-width: 1024px) {
@@ -931,7 +916,7 @@ top: 220px;
           
             }
             button{            
-                background-color: $background-color; 
+                background-color: white; 
                 overflow: hidden;
                 span{
                     max-width: 90%;
@@ -1098,7 +1083,7 @@ max-width: 420px;}
     }
     background-color: $bgc-colour;
     &.clicked{
-        background-color: $sub_color;
+        background-color: $main-color2;
     }
 
 }
@@ -1108,7 +1093,7 @@ max-width: 420px;}
         border-radius: $border;
         width: 100%;
     }   &.clicked{
-        background-color: $sub_color;
+        background-color: $main-color2;
         align-items:center ;
     }
     &.clicked~span{
@@ -1585,5 +1570,5 @@ margin: 12px;}
   }
 
   .faangledown{
-    color: $dark_sub;
+    color: white;
   }

@@ -155,7 +155,7 @@ const Header = () => {
       </div>
 
       <div className=' relative hidden md:flex duration-500 justify-between gap-2 items-center w-fit '>
-      <div id='logodiv' className="logo  h-14 rounded-2xl p-2">
+      <div id='logodivm' className="logo  h-14 rounded-2xl p-2">
       <Link href={"/"}>   <Image src="/imgs/prologo1.svg" className='h-10' alt="Logo" width={90} height={100} /></Link>
       </div>
 
