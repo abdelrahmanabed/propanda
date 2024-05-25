@@ -4,14 +4,14 @@
 
 $main_color: #000;
 $main_color2: #ffffff;
-$sub_color: #eeeeeec5;
-$sub_color2: #6fd9ff93;
-$background: #b7e8ff;
-$bg-colour: #6fd9ff93;
+$sub_color: #eeeeeedf;
+$sub_color2: #58fdb570;
+$background: #58fdb570;
+$bg-colour: #58fdb587;
 $bgc-colour: #ffffffad;
 $dark-colour: #cacacad5;
-$main-btn:#00BDFF;
-$dark-btn:#007daa;
+$main-btn:#00ffae;
+$dark-btn:#008d5e;
 $background-color: #a3d9ff;
 $sub-background-color:  #58fdb570;
 $border:16px;
@@ -257,7 +257,7 @@ body{
                 padding: 12px;
             width: 50%;
             border-radius: $border;
-            background-color: $sub_color;
+            background-color: $main_color2;
             align-items: center;
             &:hover {
                 background-color: $main-color;
@@ -658,7 +658,6 @@ body{
     border-radius:  $border;
     background-position: bottom;
     background-size:  contain;
-
     @media screen and (min-width: 768px) {
         height: calc(100vh - 108px);
         
@@ -672,6 +671,7 @@ body{
          border-radius: $border;
          background-color: $bgc-colour;
          width: calc(100% - 24px);
+
 
         h1{
             color: $harddark;
@@ -730,11 +730,11 @@ body{
     border-radius: $border;
 }
 #courseRequirements{
-    background-color: $sub_color;
+    background-color: $main-color2;
     border-radius: $border;
 }
 #targetC{
-    background-color: $sub_color;
+    background-color: $main-color2;
     border-radius: $border;
 }
 #coursecomdiv{
@@ -767,7 +767,7 @@ body{
     #vdiv{
       border-radius: $border;
       position: relative;
-        background-color:  $sub_color2;
+        background-color:  $sub-btn;
 
     
      
@@ -785,7 +785,7 @@ body{
     }
     
     #cauthordiv{
-        background: $sub-color;
+        background: $main-color2;
         padding: 7px;
         border-radius: $border;
         width: fit-content;
@@ -801,7 +801,7 @@ body{
     }
 
     #priceDiv {            
-        background-color: $sub-color;
+        background-color: $main-color2;
         padding: 12px;
         border-radius: $border;
       
@@ -884,7 +884,7 @@ top: 220px;
 }
 #ccontainer{
     border-radius: $border;
-    background-color:$sub_color;
+    background-color:$main-color2;
     @media screen and (min-width: 768px) {
         width: calc(100% - 353px);
     }
@@ -898,11 +898,11 @@ top: 220px;
     }
         #pcontainer{
             .pnumber{
-                background-color: $main_btn;
-                
+                background-color: $dark_sub;
+                color: white;
             }
         #pt{
-             background-color: $harddark;
+             background-color: $sub-background-color;
             @media screen and (min-width: 1024px) {
           
             }
@@ -913,15 +913,15 @@ top: 220px;
         #pli{
             
             .pnumber{
-                background-color: $main-btn;
-                
+                background-color: $harddark;
+                color: white;
             }
             @media screen and (min-width: 1024px) {
                 width: 100%;
           
             }
             button{            
-                background-color: white; 
+                background-color: $sub-color;
                 overflow: hidden;
                 span{
                     max-width: 90%;
@@ -1046,8 +1046,8 @@ max-width: 420px;}
     }
 
 .faplay{
-    background-color: $main_color2;
-    color: $sub_btn;
+    background-color: $dark_sub;
+    color: $main-color2;
     width: 100%;
     height: 100%;
     padding:60px;
@@ -1289,7 +1289,6 @@ max-width: 420px;}
     background-color: $main_color2;
 .searchRbtn{
         background-color: $main-btn;
-        color: $main_color2;
     }    
 }
 #searchMR {
@@ -1575,5 +1574,5 @@ margin: 12px;}
   }
 
   .faangledown{
-    color: white;
+    color: rgb(0, 0, 0);
   }

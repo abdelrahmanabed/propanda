@@ -27,10 +27,9 @@ class Particlesjs extends React.Component {
     const options = {
       fullScreen:false,
           background: {
-            image: " linear-gradient(to right top, #66deff, #58d4ff, #4fcaff, #4dbfff, #53b4ff)",
-            opacity:"0.2",
+            opacity:"0.8",
             color: {
-              value: "",
+              value: "00ffae",
             },
           },
           fpsLimit: 90,
@@ -57,13 +56,13 @@ class Particlesjs extends React.Component {
           },
           particles: {
             color: {
-              value: "#003E4F",
+              value: "#fff",
             },
             links: {
-              color: "#003E4F",
+              color: "#fff",
               distance: 200,
               enable: true,
-              opacity: 0.5,
+              opacity: 1,
               width: 1,
             },
             move: {
@@ -83,7 +82,7 @@ class Particlesjs extends React.Component {
               value: 150,
             },
             opacity: {
-              value: 0.8,
+              value: 1,
             },
             shape: {
                 type: "circle",
