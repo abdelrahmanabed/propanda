@@ -87,7 +87,7 @@ body #thecontainer {
 .signinbtn {
   position: relative;
   transition-duration: 0.4s;
-  background-color: #00ffae;
+  background-color: #ffffff;
   padding: 8px;
   border-radius: 16px;
   transform-origin: left;
@@ -102,7 +102,7 @@ body #thecontainer {
   padding: 12px;
 }
 #navdiv #navbtn {
-  background-color: rgba(238, 238, 238, 0.7725490196);
+  background-color: #ffffff;
   color: #000;
   z-index: 500;
 }
@@ -443,7 +443,7 @@ body #thecontainer {
 }
 
 #regbtn {
-  background-color: rgba(238, 238, 238, 0.7725490196);
+  background-color: #ffffff;
   color: #000;
   display: flex;
   padding: 5px;
@@ -490,14 +490,16 @@ body #thecontainer {
 }
 
 #searchbtn {
-  background-color: rgba(238, 238, 238, 0.7725490196);
-}
-#searchbtn.open {
-  background-color: rgba(238, 238, 238, 0.7725490196);
+  background-color: #ffffff;
 }
 
 .searchinput {
-  background-color: rgba(207, 207, 207, 0.5843137255);
+  background-color: rgba(238, 238, 238, 0.7725490196);
+}
+@media screen and (min-width: 768px) {
+  .searchinput {
+    background-color: rgba(238, 238, 238, 0.7725490196);
+  }
 }
 
 #mobsearchbtn {
@@ -505,7 +507,7 @@ body #thecontainer {
 }
 
 #logodiv, #logodivm {
-  background-color: rgba(238, 238, 238, 0.7725490196);
+  background-color: #ffffff;
 }
 
 #subbtn {
@@ -556,10 +558,10 @@ body #thecontainer {
 }
 
 #navtogmob {
-  background-color: rgba(238, 238, 238, 0.7725490196);
+  background-color: #ffffff;
 }
 #navtogmob.open {
-  background-color: rgba(207, 207, 207, 0.5843137255);
+  background-color: rgba(255, 255, 255, 0.6784313725);
 }
 
 #herodiv {
@@ -1116,7 +1118,7 @@ body #thecontainer {
 
 #lordcbdiv {
   border-radius: 16px;
-  background-color: rgba(238, 238, 238, 0.7725490196);
+  background-color: #ffffff;
 }
 #lordcbdiv:hover {
   background-color: #000;

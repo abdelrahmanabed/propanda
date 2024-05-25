@@ -136,7 +136,7 @@ body{
 .signinbtn{
     position: relative;
     transition-duration: 0.4s;
-    background-color: $sub_btn; 
+    background-color: $main-color2; 
     padding: 8px;
     border-radius: $border;
     transform-origin: left;  
@@ -151,7 +151,7 @@ body{
         
     }
     #navbtn {
-        background-color: $sub_color;
+        background-color: $main-color2;
         color: $main_color;
         z-index: 500;
         &:hover{
@@ -530,7 +530,7 @@ body{
 }}
 
 #regbtn {
-    background-color: $sub_color;
+    background-color: $main-color2;
     color: $main-color;
     display: flex;
     padding: 5px;
@@ -576,14 +576,17 @@ body{
 }
 
 #searchbtn{
-    background-color:$sub_color;
-    &.open{
-        background-color:$sub_color;
-
-    }
+    background-color:$main-color2;
+   
 }
 .searchinput{
-    background-color: $input;
+    background-color: $sub-color;
+
+    @media screen and (min-width: 768px) {
+           background-color: $sub-color;
+
+
+    }   
 
 }
 #mobsearchbtn{
@@ -591,7 +594,7 @@ body{
    
 }
 #logodiv, #logodivm{
-    background-color: $sub-color;
+    background-color: $main-color2;
 }
 
 #subbtn {
@@ -637,9 +640,11 @@ body{
     color: $main_color2;
 }
 #navtogmob{
-    background-color: $sub_color;
+    background-color: $main-color2;
     &.open{
-        background-color: $input;        
+         
+        background-color: $bgc-colour;
+        
     }
 }
 
@@ -1238,7 +1243,7 @@ max-width: 420px;}
 }
 #lordcbdiv{
     border-radius: $border;
-    background-color: $sub_color;
+    background-color: $main_color2;
     &:hover {
         background-color: $main-color;
         color: $main_color2;
