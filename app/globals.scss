@@ -8,8 +8,8 @@ $sub_color: #eeeeee;
 $sub_color2: #6fd9ff93;
 $background: #b7e8ff;
 $bg-colour: #6fd9ff93;
-$bgc-colour: #d7d7d7ad;
-$dark-colour: #f1f1f185;
+$bgc-colour: #ffffffad;
+$dark-colour: #cacacad5;
 $main-btn:#00BDFF;
 $dark-btn:#007daa;
 $background-color: #a3d9ff;
@@ -806,12 +806,12 @@ body{
 
         }
         @media screen and (min-width: 768px) {
-            background-color: $dark-colour;
+            background-color: $main-btn;
             border-radius: $border;
      
          }
         #cdp{
-            background-color: $main-color;
+            background-color: $main_color;
             padding: 15px;
             border-radius: $border;
             color: $main-color2;

@@ -76,7 +76,7 @@ body #thecontainer {
   transform: translateX(-50%);
 }
 #header.bt {
-  background-color: rgba(215, 215, 215, 0.6784313725);
+  background-color: rgba(255, 255, 255, 0.6784313725);
   width: calc(100% - 24px);
   max-width: 2000px;
   border-radius: 16px;
@@ -451,7 +451,7 @@ body #thecontainer {
 }
 #regbtn.open {
   left: calc(100% - 43px);
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
 }
 @media screen and (min-width: 768px) {
   #regbtn.open {
@@ -587,7 +587,7 @@ body #thecontainer {
 #herodiv .content {
   padding: 12px;
   border-radius: 16px;
-  background-color: rgba(215, 215, 215, 0.6784313725);
+  background-color: rgba(255, 255, 255, 0.6784313725);
   width: calc(100% - 24px);
 }
 #herodiv .content h1 {
@@ -595,7 +595,7 @@ body #thecontainer {
 }
 @media screen and (min-width: 768px) {
   #herodiv .content {
-    background-color: rgba(215, 215, 215, 0.6784313725);
+    background-color: rgba(255, 255, 255, 0.6784313725);
     border-radius: 16px;
     margin-right: 12px;
     width: -moz-fit-content;
@@ -709,7 +709,7 @@ body #thecontainer {
 }
 @media screen and (min-width: 768px) {
   #coursePage #priceDiv {
-    background-color: rgba(241, 241, 241, 0.5215686275);
+    background-color: #00BDFF;
     border-radius: 16px;
   }
 }
@@ -753,7 +753,7 @@ body #thecontainer {
 }
 
 #videobg {
-  background: rgba(215, 215, 215, 0.6784313725);
+  background: rgba(255, 255, 255, 0.6784313725);
   border-radius: 0;
   z-index: 180;
   right: auto;
@@ -827,7 +827,7 @@ body #thecontainer {
 @media screen and (min-width: 1200px) {
   #coursevideosdivbg {
     width: 100%;
-    background: rgba(241, 241, 241, 0.5215686275);
+    background: rgba(202, 202, 202, 0.8352941176);
     z-index: 199;
   }
 }
@@ -835,13 +835,13 @@ body #thecontainer {
 #coursevideosdiv {
   height: 100%;
   z-index: 200;
-  background: rgba(241, 241, 241, 0.5215686275);
+  background: rgba(202, 202, 202, 0.8352941176);
 }
 #coursevideosdiv #mddiv {
   height: calc(100% - 116px);
 }
 #coursevideosdiv #closecoursevideosdiv {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
   height: 32px;
   width: 32px;
   border-radius: 16px;
@@ -873,7 +873,7 @@ body #thecontainer {
 }
 
 #ovdiv {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
   border-radius: 16px;
   max-height: 100%;
 }
@@ -911,7 +911,7 @@ body #thecontainer {
   padding: 4px;
 }
 .pinvideodiv.open {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
 }
 .pinvideodiv.open .thebtn {
   color: white;
@@ -950,7 +950,7 @@ body #thecontainer {
 
 #userNav {
   border-radius: 16px;
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
 }
 #userNav .usernavlink {
   transition: 0.3s;
@@ -968,10 +968,10 @@ body #thecontainer {
 }
 
 #lordidiv, #lordcdiv {
-  background-color: rgba(215, 215, 215, 0.6784313725);
+  background-color: rgba(255, 255, 255, 0.6784313725);
 }
 #lordidiv.courseDet, #lordcdiv.courseDet {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
   border-radius: 16px;
   width: 100%;
 }
@@ -980,7 +980,7 @@ body #thecontainer {
 }
 
 #lordcdiv.courseDet {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
   border-radius: 16px;
   width: 100%;
 }
@@ -996,7 +996,7 @@ body #thecontainer {
   background-color: #eeeeee;
 }
 #profilelayout ul {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
   border-radius: 16px;
   margin-top: 12px;
 }
@@ -1035,7 +1035,7 @@ body #thecontainer {
 
 #infocomp ul {
   border-radius: 16px;
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
   min-height: 700px;
 }
 #infocomp ul li {
@@ -1083,7 +1083,7 @@ body #thecontainer {
   transition: 0.3s;
 }
 #infocomp ul li form button.cancel {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
 }
 #infocomp ul li form button:hover {
   background-color: transparent;
@@ -1103,7 +1103,7 @@ body #thecontainer {
 
 #favscomp, #cartcomp {
   border-radius: 16px;
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
   z-index: 152;
   min-height: 700px;
 }
@@ -1128,7 +1128,7 @@ body #thecontainer {
   left: 50vw;
   transform: translate(-50%);
   z-index: 200;
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
 }
 
 .cartNavPrice {
@@ -1136,7 +1136,7 @@ body #thecontainer {
 }
 
 .cartNavPricep {
-  background-color: rgba(215, 215, 215, 0.6784313725);
+  background-color: rgba(255, 255, 255, 0.6784313725);
 }
 #searchR, #searchMR {
   background-color: rgba(111, 217, 255, 0.5764705882);
@@ -1230,7 +1230,7 @@ input {
 }
 
 .insCard {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
 }
 
 .coursesrelatedtosomcategories {
@@ -1240,7 +1240,7 @@ input {
 
 .Irelatedtosomcategories {
   border-radius: 16px;
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
 }
 
 #categoriesdiv {
@@ -1248,11 +1248,11 @@ input {
 }
 @media screen and (min-width: 640px) {
   #categoriesdiv {
-    background-color: rgba(241, 241, 241, 0.5215686275);
+    background-color: rgba(202, 202, 202, 0.8352941176);
   }
 }
 #categoriesdiv .mob-grid {
-  background-color: rgba(241, 241, 241, 0.5215686275);
+  background-color: rgba(202, 202, 202, 0.8352941176);
   padding: 12px;
   border-radius: 16px;
 }
