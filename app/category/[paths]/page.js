@@ -49,7 +49,7 @@ const Page = async ({params}) => {
                {courses.length > 0 && 
                <Keenslider>
                   {courses.map(course => (
-                     <Suspense fallback={<CourseLoading/>} >
+                     <Suspense  key={course._id} fallback={<CourseLoading/>} >
                       <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                       className="keen-slider__slide min-w-fit">
                         <Course
