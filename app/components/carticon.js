@@ -61,7 +61,7 @@ const CartIcon = (props) => {
                         });
                         removeFromCart(props.courseId)
                         console.log('Item removed from cartItems array');
-                         setShowDMessage(true);
+                         setShowDMessage(false);
                          setIsLoading(false)   
                         
                         setTimeout(() => {
@@ -104,7 +104,7 @@ const CartIcon = (props) => {
                 } else {
                     addToCart(props.courseId)
                     setState(true);
-                    setShowMessage(true);
+                    setShowMessage(false);
                     setIsLoading(false)
 
                     setTimeout(() => {
