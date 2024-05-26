@@ -5,11 +5,13 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js';
 import { BsBookmarkCheck } from "react-icons/bs";
+import Loading from "./loading";
 
 const Bookmarkicon = (props) => {
 
     const [ state, setState] = useState(false)
-  
+    const [isLoading, setIsLoading] = useState(false);
+
     
     useEffect(() => {
       if (!localStorage.getItem('favcourses')) {
@@ -25,6 +27,7 @@ const Bookmarkicon = (props) => {
  
       
       const handleBookmarkClick = async () => {
+        setIsLoading(true)
         try {
           const token = Cookies.get('token');
           if (token) {
@@ -53,7 +56,10 @@ const Bookmarkicon = (props) => {
                  
                 }
                 console.log('Course removed from favoriteCourses array');
-                setState(false);
+                setIsLoading(false);
+                setTimeout(() => {
+                  setState(false);
+              }, 1);
               } else {
                 await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses`, { courseId: props.courseId }, {
                   headers: {
@@ -66,8 +72,10 @@ const Bookmarkicon = (props) => {
                 const updatedFavCourses = [...favCourses, props.courseId];
               localStorage.setItem('favcourses', JSON.stringify(updatedFavCourses));
                 console.log('Course added to favoriteCourses array');
-                setState(true);
-              }
+                setIsLoading(false);
+                setTimeout(() => {
+                  setState(true);
+              }, 1);              }
             }
           } else {
             // No token, manage courses in localStorage
@@ -75,12 +83,16 @@ const Bookmarkicon = (props) => {
             if (favCourses.includes(props.courseId)) {
               const newFavCourses = favCourses.filter(course => course !== props.courseId);
               localStorage.setItem('favcourses', JSON.stringify(newFavCourses));
-              setState(false);
-            } else {
+              setIsLoading(false);
+              setTimeout(() => {
+                setState(false);
+            }, 1);            } else {
               const updatedFavCourses = [...favCourses, props.courseId];
               localStorage.setItem('favcourses', JSON.stringify(updatedFavCourses));
-              setState(true);
-            }
+              setIsLoading(false);
+              setTimeout(() => {
+                setState(true);
+            }, 1);            }
           }
         } catch (error) {
           console.error('Error:', error);
@@ -96,10 +108,11 @@ const Bookmarkicon = (props) => {
         
 
         >
+       {isLoading? <Loading/>:   <>
          <BsBookmark currentState={props.currentState} className={`${ state ? " absolute opacity-0 text-4xl" : " static opacity-100 text-2xl "} duration-300`}/>
            
            <BsBookmarkCheck className={`${ !state ? " absolute opacity-0" : " static opacity-100 text-4xl"} duration-300`}/>
-           
+           </>}
           
         </div>
       );
