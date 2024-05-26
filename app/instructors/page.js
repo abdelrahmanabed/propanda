@@ -1,7 +1,8 @@
+import { Suspense } from 'react';
 import InstructorCard from '../components/instructorCard'
 import Keenslider from '../components/Keenslider';
 import Buttonforchange from './components/Buttonforchange';
-
+import CourseLoading from '../components/courseLoading'
 
 const Page = async ({searchParams} ) => {
 
@@ -23,7 +24,8 @@ const Page = async ({searchParams} ) => {
       المحاضرين
           {I.length > 0  &&
 <Keenslider>
-              { I.map((i) => (
+  
+              { I.map((i) => (<Suspense fallback={<CourseLoading/>}>
                 <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
       className="keen-slider__slide min-w-fit">
         <InstructorCard
@@ -33,7 +35,7 @@ const Page = async ({searchParams} ) => {
         href={`/instructors/${i._id}`}
         />    </div>
 
-
+</Suspense>
               ))}  </Keenslider>}
 
 

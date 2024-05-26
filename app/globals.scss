@@ -759,7 +759,23 @@ background-image: url('../public/imgs/img-noise-361x370.png');
 
     }
 }
+#courseLoading{
+    background-color: $gray;
+    padding: 12px;
+    width: 320px;
+    height: 384px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: $border;
+    div{
+        background-color: $sub_color;
+        border-radius: $border;
+width: 142px;
+height: 64px;
 
+    }
+}
 .cxdiv{
     top: 153px;
 }
@@ -1070,8 +1086,8 @@ max-width: 420px;}
         border-radius: $border;
         &:hover{
             background-color: transparent;
-            border: $main_color2 2px solid;
-            color: white;
+            border: $main_color 1px solid;
+            color: rgb(0, 0, 0);
         }
 
     }
@@ -1461,16 +1477,16 @@ input {
 
 //////////////////////////////////////////////////////////////////////////
 .loadingcenter {
-    height:  calc(100vh - 100px);
+   
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .wave {
-    width: 40px;
-    height: 40px;
+    width: 7px;
+    height: 7px;
     background: $main_color;
-    margin: 0px;
+    margin: 1px;
     animation: wave 1s linear infinite;
     border-radius: 50%;
   }

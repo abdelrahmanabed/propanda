@@ -671,6 +671,23 @@ body #thecontainer {
   color: #000000;
 }
 
+#courseLoading {
+  background-color: #ffffff;
+  padding: 12px;
+  width: 320px;
+  height: 384px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  border-radius: 16px;
+}
+#courseLoading div {
+  background-color: rgba(238, 238, 238, 0.8745098039);
+  border-radius: 16px;
+  width: 142px;
+  height: 64px;
+}
+
 .cxdiv {
   top: 153px;
 }
@@ -963,8 +980,8 @@ body #thecontainer {
 }
 #userNav .usernavlink:hover {
   background-color: transparent;
-  border: #ffffff 2px solid;
-  color: white;
+  border: #000 1px solid;
+  color: rgb(0, 0, 0);
 }
 
 .FaCircle {
@@ -1314,17 +1331,16 @@ input {
 }
 
 .loadingcenter {
-  height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .wave {
-  width: 40px;
-  height: 40px;
+  width: 7px;
+  height: 7px;
   background: #000;
-  margin: 0px;
+  margin: 1px;
   animation: wave 1s linear infinite;
   border-radius: 50%;
 }

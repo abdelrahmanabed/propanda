@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import Course from '../../components/course';
 import InstructorCard from '../../components/instructorCard';
 import Keenslider from '../../components/Keenslider';
+import CourseLoading from '../../components/courseLoading';
 
 const Page = async ({params}) => {
 
@@ -37,7 +38,7 @@ const Page = async ({params}) => {
 
   return (
     <div  className="p-3 flex flex-col min-h-96 backdrop-blur-xl gap-7">
-      <Suspense fallback={<div>..loading</div>} ><div className="coursesrelatedtosomcategories p-3 flex flex-col gap-7">
+     <div className="coursesrelatedtosomcategories p-3 flex flex-col gap-7">
         
         {/* Filter courses by categories */}
         {Object.entries(categoriesKeywordsMap).map(([category, { title }]) => {
@@ -48,6 +49,7 @@ const Page = async ({params}) => {
                {courses.length > 0 && 
                <Keenslider>
                   {courses.map(course => (
+                     <Suspense fallback={<CourseLoading/>} >
                       <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                       className="keen-slider__slide min-w-fit">
                         <Course
@@ -59,7 +61,8 @@ const Page = async ({params}) => {
                           instructor={course.author}
 
                         />
-                      </div>
+                      </div>      </Suspense>
+
                     ))}
                 </Keenslider>}
               </div>
@@ -88,7 +91,6 @@ const Page = async ({params}) => {
           return null;
         })}
       </div>
-      </Suspense>
       <div>
      
       <div className='Irelatedtosomcategories p-3 flex flex-col gap-3'>
