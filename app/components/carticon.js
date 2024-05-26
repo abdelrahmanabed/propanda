@@ -67,7 +67,7 @@ const CartIcon = (props) => {
                         setTimeout(() => {
                             setShowDMessage(false);
                             setState(false);
-                        }, 100);
+                        }, 1);
                        
             } else {
                         await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, { itemId: props.courseId }, {
