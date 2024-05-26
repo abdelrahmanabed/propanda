@@ -24,8 +24,7 @@ const Page = async ({searchParams} ) => {
       المحاضرين
           {I.length > 0  &&
 <Keenslider>
-  
-              { I.map((i) => (<Suspense fallback={<CourseLoading/>}>
+              { I.map((i) => (
                 <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
       className="keen-slider__slide min-w-fit">
         <InstructorCard
@@ -35,7 +34,6 @@ const Page = async ({searchParams} ) => {
         href={`/instructors/${i._id}`}
         />    </div>
 
-</Suspense>
               ))}  </Keenslider>}
 
 
