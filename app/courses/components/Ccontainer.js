@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import {  FaAngleDown, FaTimes,    } from 'react-icons/fa';
-import Keenslider from '../../components/Keenslider';
+import { useKeenSlider } from "keen-slider/react"
+import "keen-slider/keen-slider.min.css"
 
 const Ccontainer = () => {
     const [course, setCourse] = useState({});
@@ -78,6 +79,14 @@ const Ccontainer = () => {
       
         fetchData();
       }, [_id, author]);
+      const [sliderRef] = useKeenSlider({
+        mode: "free",
+        rtl: true,
+   
+        slides: { perView: "auto", spacing: 10 },
+        
+      })
+      
   return (<> <div id='ccontainer' className='   flex-col flex gap-3 m-3 p-3'>
   <span className='m-3'>محتويات الدورة التعليمية</span>
   {course.parts && course.parts.map((part, index) => (
@@ -158,7 +167,7 @@ const Ccontainer = () => {
    <span className={`text-white thebtn cursor-pointer rounded-full ${viewcontent?"w-fit hidden ":"p-5 "}`} onClick={ handleViewPs} >قائمة الاجزاء</span>
    {viewcontent && 
     
-           <Keenslider className=' '>
+    <div ref={sliderRef} className="keen-slider">
           {course.parts.map((part, partIndex)=>(
           <button key={partIndex}
           onClick={()=>{
@@ -173,14 +182,14 @@ const Ccontainer = () => {
            <span className='text-sm   max-w-72 '>{part.title}</span>
    
           </button>))}
-         </Keenslider>}
+         </div>}
           </div>
           </div>
           </div>
           <div className={` open max-h-72 hidden p-3  flex-col gap-5 md:flex  justify-center pinvideodiv      bottom-9 right-3 `}>
      <div className=' flex flex-col gap-3'> 
    <span className={`text-white thebtn rounded-full w-fit `}  >قائمة الاجزاء</span>
-    <Keenslider>
+   <div ref={sliderRef} className="keen-slider">
            
           {course.parts.map((part, partIndex)=>(
           <button key={partIndex}
@@ -196,7 +205,7 @@ const Ccontainer = () => {
            <span className='text-sm   max-w-72 '>{part.title}</span>
    
           </button>))}
-         </Keenslider>
+         </div>
           </div>
           </div>
           </div>

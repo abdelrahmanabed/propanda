@@ -1401,7 +1401,57 @@ input {
         border-radius: $border;
 
 }
+.arrow {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -35px;
+  fill: #000000;
+  border-radius: $border;
+  cursor: pointer; 
+  padding: 10px;
+  background: $gray;
+  @media screen and (min-width: 768px) {
+    transform: translateY(-50%);
+    width: 50px;
+    height: 230px;
+   top: 50%;
+    
+}
+}
 
+.arrow--left {
+  left: 0;
+  @media screen and (min-width: 768px) {
+    left: -40px;
+    right: auto;
+    padding-right: 0;
+  }
+  @media screen and (min-width: 1024px) {
+    left: 0;
+    right: auto;
+    padding-right: 10px ;
+  }
+}
+
+.arrow--right {
+  left: 60px;
+  right: auto;
+  @media screen and (min-width: 768px) {
+  left: auto;
+  right: -40px;
+  padding-left: 0px;
+} 
+ @media screen and (min-width: 1024px) {
+    left: auto;
+    right: 0;
+    padding-left: 10px;
+  }
+}
+
+.arrow--disabled {
+  fill: rgba(124, 124, 124, 0.5);
+}
 #categoriesdiv{
     border-radius: $border;
     @media screen and (min-width: 640px) {
