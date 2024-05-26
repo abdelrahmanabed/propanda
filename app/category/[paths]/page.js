@@ -47,6 +47,7 @@ const Page = async ({params}) => {
               <div key={category} className="flex flex-col gap-3">
                 <h2>  الدورات الاشهر <span className="font-extrabold">{title}</span> </h2>
                {courses.length > 0 && 
+               <Suspense fallback={<div></div>}>
                <Keenslider>
                   {courses.map(course => (
                       <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
@@ -63,7 +64,7 @@ const Page = async ({params}) => {
                       </div>    
 
                     ))}
-                </Keenslider>}
+                </Keenslider></Suspense>}
               </div>
                    <div id='mostrecent' key={category} className="flex flex-col gap-3">
                    <h2>احدث دورات في <span className="font-extrabold">{title}</span> </h2>
