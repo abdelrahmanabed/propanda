@@ -45,7 +45,7 @@ const Page = async ({params}) => {
           if (category === params.paths) {
             return (<>
               <div key={category} className="flex flex-col gap-3">
-                <h2>  الدورات الاشهر <span className="font-extrabold">{title}</span> </h2>
+                <h2 className='text-xs md:text-base'>  الدورات الاشهر <span className="font-extrabold">{title}</span> </h2>
                {courses.length > 0 && 
                <Suspense fallback={<div></div>}>
                <Keenslider>
@@ -67,7 +67,7 @@ const Page = async ({params}) => {
                 </Keenslider></Suspense>}
               </div>
                    <div id='mostrecent' key={category} className="flex flex-col gap-3">
-                   <h2>احدث دورات في <span className="font-extrabold">{title}</span> </h2>
+                   <h2 className='text-xs md:text-base' >احدث دورات في <span className="font-extrabold">{title}</span> </h2>
                   {courses.length > 0 && 
                           <Keenslider>
                         {courses.map(course => (
