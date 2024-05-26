@@ -7,12 +7,14 @@ import TrashIcon from './trashicon';
 import { useCart } from './CartContext';
 import { BsCart } from "react-icons/bs";
 import { BsCartCheck } from "react-icons/bs";
+import Loading from "./loading";
 
 const CartIcon = (props) => {
     const{addToCart, removeFromCart, cartItems}= useCart()
     const [state, setState] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
     const [showDMessage, setShowDMessage] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
   
 
@@ -34,7 +36,9 @@ const CartIcon = (props) => {
 
       
     const handleCartClick = async () => {
+       setIsLoading(true)
         try {
+            
             const token = Cookies.get('token');
             if (token) {
                 const encryptedUserId = Cookies.get('encryptedUserId');
@@ -57,11 +61,13 @@ const CartIcon = (props) => {
                         });
                         removeFromCart(props.courseId)
                         console.log('Item removed from cartItems array');
-                        setState(false);
-                        setShowDMessage(true);
+                         setShowDMessage(true);
+                         setIsLoading(false)   
+                        
                         setTimeout(() => {
                             setShowDMessage(false);
-                        }, 1000);
+                            setState(false);
+                        }, 100);
                        
             } else {
                         await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, { itemId: props.courseId }, {
@@ -72,28 +78,35 @@ const CartIcon = (props) => {
                         });
                         addToCart(props.courseId)
                         console.log('Item added to cartItems array');
-                        setState(true);
                         setShowMessage(true);
+                        setIsLoading(false)      
+
                         setTimeout(() => {
-                            setShowMessage(false);
-                        }, 1000);
+                            setShowMessage(false);  
+                          setState(true);
+
+                        }, 100);
                     }
                 }
             } else {
                 // No token, manage items in localStorage
                 if (cartItems.includes(props.courseId)) {
                     removeFromCart(props.courseId)
-                    setState(false);
                     setShowDMessage(true);
+                    setIsLoading(false)
+                    setState(false);
+
                     setTimeout(() => {
                         setShowDMessage(false);
-                    }, 1000);
+                    }, 11);
                   
                    
                 } else {
                     addToCart(props.courseId)
                     setState(true);
                     setShowMessage(true);
+                    setIsLoading(false)
+
                     setTimeout(() => {
                         setShowMessage(false);
                     }, 1000);
@@ -112,9 +125,9 @@ const CartIcon = (props) => {
                 ${!state ? 'h-16 w-16 rounded-2xl' : 'clicked'}
                 duration-300 flex  w-12 h-12   ${ props.className}   `}
         >
-           <BsCart currentState={props.currentState} className={`${ state ? " absolute opacity-0 text-4xl" : " static opacity-100 text-2xl "} duration-300`}/>
+         {isLoading? <Loading/> : <> <BsCart currentState={props.currentState} className={`${ state ? " absolute opacity-0 text-4xl" : " static opacity-100 text-2xl "} duration-300`}/>
            
-           <BsCartCheck className={`${ !state ? " absolute opacity-0" : " static opacity-100 text-4xl"} duration-300`}/>
+           <BsCartCheck className={`${ !state ? " absolute opacity-0" : " static opacity-100 text-4xl"} duration-300`}/></>}
 
         </div>
                                 {showMessage && <div className="messageyes duration-500 fixed p-3 text-xl flex flex-col justify-center items-center md:text-3xl rounded-2xl "> <span >تم اضافته الى السلة</span></div>}
