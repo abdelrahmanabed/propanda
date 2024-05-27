@@ -114,7 +114,7 @@ const CartIcon = (props) => {
                 ${!state ? 'h-16 w-16 rounded-2xl' : 'clicked'}
                 duration-300 flex  w-12 h-12   ${ props.className}   `}
         >
-         {isLoading? <Loading/> : <> <BsCart currentState={props.currentState} className={`${ state ? " absolute opacity-0 text-4xl" : " static opacity-100 text-2xl "} duration-300`}/>
+         {isLoading? <Loading/> : <> <BsCart  className={`${ state ? " absolute opacity-0 text-4xl" : " static opacity-100 text-2xl "} duration-300`}/>
            
            <BsCartCheck className={`${ !state ? " absolute opacity-0" : " static opacity-100 text-4xl"} duration-300`}/></>}
 

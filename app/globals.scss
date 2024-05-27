@@ -4,12 +4,12 @@
 
 $main_color: #000;
 $main_color2: #ffffff;
-$sub_color: #eeeeeedf;
+$sub_color: #eeeeee;
 $sub_color2: #58fdb570;
 $background: #00ffae7b;
 $bg-colour: #58fdb587;
 $bgc-colour: #ffffffad;
-$dark-colour: #cacacad5;
+$dark-colour: #e2e2e2d5;
 $main-btn:#00ffae;
 $dark-btn:#008d5e;
 $background-color: #a3d9ff;
@@ -82,7 +82,7 @@ $harddark: #000000c1;
         margin: 0;
       }
 body{
-    background-color:#eeee;
+    background-color:#ffffffee;
 background-image: url('../public/imgs/img-noise-361x370.png');
     #maincontainer{
     max-width: 2000px;
@@ -121,7 +121,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
 #header {
     left: 50%;transform: translateX(-50%);
     &.bt {
-        background-color: $bgc-colour;
+        background-color: $dark-colour;
         width: calc(100% - 24px);
             max-width: 2000px;
         
@@ -152,7 +152,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
         
     }
     #navbtn {
-        background-color: $main-color2;
+        background-color: $sub-color;
         color: $main_color;
         z-index: 500;
         &:hover{
@@ -176,12 +176,13 @@ background-image: url('../public/imgs/img-noise-361x370.png');
             }
             }
             background-color: transparent;
-            border: #000 solid 1px;
+            border: $main-btn solid 0.5px;
+            color: $main-btn;
 
         }
         &.open{
             background-color: transparent;
-            border: #000 solid 1px;
+            border: $main-btn solid 0.5px;
         }
     }
     ul.main{
@@ -243,7 +244,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
                     background-color: $main_color;
                     width: calc(100% + 24px) ;
                     padding: 15px;
-                    color: $main_color2;
+                    color: $main_btn;
                 }
                 &.second{
                     transition-delay: 0 ;
@@ -258,13 +259,14 @@ background-image: url('../public/imgs/img-noise-361x370.png');
                 padding: 12px;
             width: 50%;
             border-radius: $border;
-            background-color: $main_color2;
+            background-color: $main-color2;
             align-items: center;
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(119, 119, 120, 0.1) 0px 0px 8px;
             &:hover {
                 background-color: $main-color;
                 width: calc(100% + 24px) ;
                 padding: 15px;
-                color: #fff;
+                color: $main-btn;
             }
         }
         }
@@ -314,6 +316,8 @@ background-image: url('../public/imgs/img-noise-361x370.png');
 
 }
 #mainsigndiv{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+
     .submit-btn{
         background-color: $main-btn;
         color: $harddark;
@@ -337,9 +341,11 @@ background-image: url('../public/imgs/img-noise-361x370.png');
 
     }
 #signdiv{
- 
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+
     @media screen and (min-width: 768px) {
-  
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
    border-radius: $border;
 
    }
@@ -555,36 +561,36 @@ background-image: url('../public/imgs/img-noise-361x370.png');
  
     &:hover{
         background-color: transparent;
-        border: #000 1px solid;
+        border: $main-btn 1px solid;
         color: #000;
     }
 }
 
 #userbtn {
-    background-color: $main_color2;
-    color: $main_color;
+    background-color: $main_color;
+    color: $main-btn;
     display: flex;
     border-radius: 18px;
     padding: 12px;
     &.open{
         background-color: transparent;
-        border: #000 1px solid;
+        border: $main-btn 1px solid;
     }
     &:hover{
         background-color: transparent;
-        border: #000 1px solid;
+        border: $main-btn 1px solid;
     }
 }
 
 #searchbtn{
-    background-color:$main-color2;
+    background-color:$sub-color;
    
 }
 .searchinput{
-    background-color: $sub-color;
+    background-color: $input;
 
     @media screen and (min-width: 768px) {
-           background-color: $dark-colour;
+           background-color: $input;
 
 
     }   
@@ -595,7 +601,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
    
 }
 #logodiv, #logodivm{
-    background-color: $main-color2;
+    background-color: $sub-color;
 }
 
 #subbtn {
@@ -638,10 +644,10 @@ background-image: url('../public/imgs/img-noise-361x370.png');
     background: $main-color;
     height: 120px;
     justify-content: center;
-    color: $main_color2;
+    color: $main-btn;
 }
 #navtogmob{
-    background-color: $main-color2;
+    background-color: $sub-color;
     &.open{
          
         background-color: $bgc-colour;
@@ -672,7 +678,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
          border-radius: $border;
          background-color: $bgc-colour;
          width: calc(100% - 24px);
-
+         box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 
         h1{
             color: $harddark;
@@ -708,7 +714,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
          color: $main-btn;
          transition: 0.4s;
        
-
+         box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
       
 
          @media screen and (min-width: 768px) {
@@ -731,15 +737,15 @@ background-image: url('../public/imgs/img-noise-361x370.png');
     border-radius: $border;
 }
 #courseRequirements{
-    background-color: $main-color2;
+    background-color: $sub-color;
     border-radius: $border;
 }
 #targetC{
-    background-color: $main-color2;
+    background-color: $sub-color;
     border-radius: $border;
 }
 #coursecomdiv{
-    background-color: $main-color2;
+    background-color: $sub-color;
     border-radius: $border;
     overflow: hidden;
     img{
@@ -802,7 +808,7 @@ height: 64px;
     }
     
     #cauthordiv{
-        background: $main-color2;
+        background: $sub-color;
         padding: 7px;
         border-radius: $border;
         width: fit-content;
@@ -818,7 +824,7 @@ height: 64px;
     }
 
     #priceDiv {            
-        background-color: rgb(255, 255, 255);
+        background-color: $sub_color;
         padding: 12px;
         border-radius: $border;
 
@@ -827,7 +833,7 @@ height: 64px;
 
         }
         @media screen and (min-width: 768px) {
-            background-color: $bgc-colour;
+            background-color: $dark-colour;
             border-radius: $border;
      
          }
@@ -848,8 +854,8 @@ height: 64px;
         }
     }
     #courseContent{
-        color: #000;
-        background-color: $sub-background-color;
+        
+        border:#00ffae 2px solid;
         @media screen and (min-width: 768px) {
             
         }
@@ -873,7 +879,7 @@ height: 64px;
     }
 
     #videobg{
-    background: $bgc-colour;
+    background: $sub-color;
     border-radius: 0;
     z-index: 180;
     right: auto;
@@ -881,7 +887,6 @@ height: 64px;
       width:calc(100% - 24px);
       top: 150px;
       border-radius: $border;
-
     @media screen and (min-width: 768px) {
         span{
         }
@@ -899,7 +904,7 @@ top: 220px;
 }
 #ccontainer{
     border-radius: $border;
-    background-color:$main-color2;
+    background-color:$sub_color;
     @media screen and (min-width: 768px) {
         width: calc(100% - 353px);
     }
@@ -936,7 +941,7 @@ top: 220px;
           
             }
             button{            
-                background-color: $sub-color;
+                background-color: $main-color2;
                 overflow: hidden;
                 span{
                     max-width: 90%;
@@ -1076,15 +1081,15 @@ max-width: 420px;}
 
 #userNav{
     border-radius: $border;
-    background-color: $gray;
+    background-color: $sub-color;
 
     .usernavlink{
         transition: 0.3s;
-        background-color: $sub_color;
+        background-color: $main-color2;
         border-radius: $border;
         &:hover{
             background-color: transparent;
-            border: $main_color 1px solid;
+            border: $main-btn 1px solid;
             color: rgb(0, 0, 0);
         }
 
@@ -1097,7 +1102,7 @@ max-width: 420px;}
 }
 #lordidiv, #lordcdiv{
     &.courseDet{
-        background-color: $dark-colour;
+        background-color: $main_color2;
         border-radius: $border;
         width: 100%;
         @media screen and (min-width: 768px) {
@@ -1116,7 +1121,7 @@ max-width: 420px;}
 }
 #lordcdiv{
     &.courseDet{
-        background-color: $dark-colour;
+        background-color: $main_color2;
         border-radius: $border;
         width: 100%;
         padding-bottom: 20px;
@@ -1264,17 +1269,17 @@ max-width: 420px;}
 }
 #cartcompdiv {
     border-radius: $border;
-    background-color: $main_color2;
+    background-color: $sub-color;
     z-index: 152;
     
 
 }
 #lordcbdiv{
     border-radius: $border;
-    background-color: $main_color2;
+    background-color: $sub_color;
     &:hover {
         background-color: $main-color;
-        color: $main_color2;
+        color: $main_btn;
     }
 }
 
@@ -1292,7 +1297,7 @@ max-width: 420px;}
  
 }
 .cartNavPricep{
-    background-color:$bgc-colour;
+    background-color:$dark-colour;
 
    
     @media screen and (min-width: 1024px) {
@@ -1304,17 +1309,18 @@ max-width: 420px;}
 
 #searchR, #searchMR {
     
-    background-color: $bg_colour;
+    background-color: $bg-colour;
     border-radius: $border;
     a{
-        background-color: $sub_color;
+        background-color: $main-color2;
     }
     button{
         background-color: $main-btn;
+        color: $main_color;
     }
 }
 #searchR{
-    background-color: $main_color2;
+    background-color: $sub_color;
 .searchRbtn{
         background-color: $main-btn;
     }    
@@ -1324,7 +1330,7 @@ max-width: 420px;}
     border-radius: $border;
     z-index: 200;
     a{
-        background-color: $sub_color;
+        background-color: $main-color2;
     }
 }
 
@@ -1344,7 +1350,7 @@ max-width: 420px;}
     margin-bottom: 20px;
     font-size: 16px;
     color: #333;
-    border: 2px solid #ccc;
+    border: 2px solid $main-btn;
     border-radius:$border;
     background-color: #fff;
     cursor: pointer;
@@ -1376,7 +1382,7 @@ max-width: 420px;}
     option {
   
       padding: 10px;
-      background-color: #fff; // Adjust background color of options
+      background-color: $main-btn; // Adjust background color of options
       color: #333; // Adjust text color of options
     }
   }
@@ -1401,7 +1407,8 @@ input {
 }
 
 .insCard{
-    background-color: $dark-colour;
+    background-color: $main-btn;
+    
 }
 
 .coursesrelatedtosomcategories{
@@ -1421,7 +1428,7 @@ input {
   border-radius: $border;
   cursor: pointer; 
   padding: 10px;
-  background: $gray;
+  background: $sub_color;
   @media screen and (min-width: 768px) {
     transform: translateY(-50%);
     width: 50px;
@@ -1465,13 +1472,16 @@ input {
 }
 #categoriesdiv{
     border-radius: $border;
+    a{
+
+    }
     @media screen and (min-width: 640px) {
-        background-color: $dark-colour;
+        box-shadow: rgba(0, 250, 142, 0.504) 0px 4px 16px, rgba(0, 250, 142, 0.504) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 
 
    }
 .mob-grid{
- background-color: $dark-colour;
+    box-shadow: rgba(0, 250, 142, 0.504) 0px 22px 70px 4px;
  padding: 12px;
  border-radius: $border;
 }
@@ -1498,10 +1508,11 @@ input {
         .we {
             flex-wrap: wrap;
             a{
-                background-color: $bg-colour;
+                background-color: $bgc-colour;
                 border-radius: $border;
                 padding: 24px;
                 transition: 0.4s;
+                color: #000;
                 @media screen and (max-width: 1024px) {
                     font-weight:normal;
                     font-size: small;
@@ -1515,9 +1526,10 @@ input {
             }
         }
         .social{
-            a{
+            a{      border: $main-btn 2px solid;
+                    color: $main-btn;
+                    background-color: transparent;
                 font-size: x-large ;
-                background-color: $bg-colour;
                 border-radius: 50px;
                 padding: 12px; 
                 transition: 0.4s;
@@ -1526,8 +1538,9 @@ input {
                 padding: 12px;
                 }
                 &:hover{
-                    background-color: $main-btn;
-                    color: $harddark;
+                                      background-color: $main-btn;
+        color: $harddark;
+
                 }  
             }
         }
@@ -1651,4 +1664,8 @@ margin: 12px;}
 
   .faangledown{
     color: rgb(0, 0, 0);
+  }
+
+  #mobnav{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   }

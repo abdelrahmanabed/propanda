@@ -27,8 +27,8 @@ const CartBtn = (props) => {
   
 
     return (
-        <div
-                 className={` backdrop-blur-xl       
+        <div 
+                 className={` backdrop-blur-xl        
                   ${ props.className}   `}
         >
            { state&& <span className='absolute notify '>{cartItems.length}</span>}
