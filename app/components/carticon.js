@@ -12,8 +12,7 @@ import Loading from "./loading";
 const CartIcon = (props) => {
     const{addToCart, removeFromCart, cartItems}= useCart()
     const [state, setState] = useState(false);
-    const [showMessage, setShowMessage] = useState(false);
-    const [showDMessage, setShowDMessage] = useState(false);
+   
     const [isLoading, setIsLoading] = useState(false);
 
   
@@ -61,11 +60,9 @@ const CartIcon = (props) => {
                         });
                         removeFromCart(props.courseId)
                         console.log('Item removed from cartItems array');
-                         setShowDMessage(false);
                          setIsLoading(false)   
                         
                         setTimeout(() => {
-                            setShowDMessage(false);
                             setState(false);
                         }, 1);
                        
@@ -78,11 +75,9 @@ const CartIcon = (props) => {
                         });
                         addToCart(props.courseId)
                         console.log('Item added to cartItems array');
-                        setShowMessage(true);
                         setIsLoading(false)      
 
                         setTimeout(() => {
-                            setShowMessage(false);  
                           setState(true);
 
                         }, 1);
@@ -92,24 +87,18 @@ const CartIcon = (props) => {
                 // No token, manage items in localStorage
                 if (cartItems.includes(props.courseId)) {
                     removeFromCart(props.courseId)
-                    setShowDMessage(true);
                     setIsLoading(false)
                     setState(false);
 
-                    setTimeout(() => {
-                        setShowDMessage(false);
-                    }, 11);
+                   
                   
                    
                 } else {
                     addToCart(props.courseId)
                     setState(true);
-                    setShowMessage(false);
                     setIsLoading(false)
 
-                    setTimeout(() => {
-                        setShowMessage(false);
-                    }, 1000);
+                   
                 }
             }
         } catch (error) {
@@ -130,9 +119,7 @@ const CartIcon = (props) => {
            <BsCartCheck className={`${ !state ? " absolute opacity-0" : " static opacity-100 text-4xl"} duration-300`}/></>}
 
         </div>
-                                {showMessage && <div className="messageyes duration-500 fixed p-3 text-xl flex flex-col justify-center items-center md:text-3xl rounded-2xl "> <span >تم اضافته الى السلة</span></div>}
-                                {showDMessage &&  <div className="messageyes flex flex-col justify-center items-center duration-500 fixed p-3 text-xl md:text-3xl rounded-2xl "><TrashIcon state="morph-trash-in"/> <span >تم ازالته من السلة</span></div>}
-
+                           
                                 </>
     );
 };
