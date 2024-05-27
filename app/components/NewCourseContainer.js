@@ -1,25 +1,15 @@
-'use client'
 import "keen-slider/keen-slider.min.css"
-import Course from "./course";
-import Keenslider from "./Keenslider";
-import { useEffect, useState } from "react";
-import axios from "axios";
+
+const Course = dynamic(() => import("./course"), { ssr: false });
+const Keenslider = dynamic(() => import("./Keenslider"), { ssr: false });
+import dynamic from 'next/dynamic';
 
 
-const NewCourseContainer =  () => {
-  const [newCourses, setnewCourses] = useState([])
-  useEffect(()=>{
-    const fetchNewCourses = async () => {
-      try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
-        const newCourses = response.data
-        setnewCourses(newCourses) 
-      } catch (error) {
-        console.error('Error fetching courses:', error);
-      }
-    };
-    fetchNewCourses()
-  },[])
+const NewCourseContainer = async () => {
+  
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const newCourses = await response.json()
+     
     return (
         <div className=" mx-3  mb-3 flex flex-col gap-3  overflow-hidden ">
           <span className=" text-lg">احدث الدورات التعليمية</span>

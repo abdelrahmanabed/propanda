@@ -2,7 +2,6 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { Suspense, useState } from "react"
-import CourseLoading from "./courseLoading"
 
 function Arrow(props) {
   const disabled = props.disabled ? " arrow--disabled" : ""

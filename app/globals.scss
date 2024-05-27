@@ -151,8 +151,9 @@ body{
         
     }
     #navbtn {
-        background-color: $sub-color;
-        color: $main_color;
+        background-color: $main-color2;
+        box-shadow: rgba(103, 103, 103, 0.1) 0px 0px 16px;    
+            color: $main_color;
         z-index: 500;
         &:hover{
             &~ul.main{max-height: 320px;
@@ -539,6 +540,7 @@ body{
 }}
 
 #regbtn {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
     background-color: $main-btn;
     color: $main-color;
     display: flex;
@@ -569,6 +571,7 @@ body{
 }
 
 #userbtn {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
     background-color: $main_color;
     color: $main-btn;
     display: flex;
@@ -585,11 +588,11 @@ body{
 }
 
 #searchbtn{
-    background-color:$sub-color;
-   
+    background-color: $main-color2;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;   
 }
 .searchinput{
-    background-color: $input;
+    background-color: $sub-color;
 
     @media screen and (min-width: 768px) {
            background-color: $input;
@@ -603,7 +606,9 @@ body{
    
 }
 #logodiv, #logodivm{
-    background-color: $sub-color;
+    background-color: $main-color2;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+
 }
 
 #subbtn {
@@ -649,8 +654,9 @@ body{
     color: $main-btn;
 }
 #navtogmob{
-    background-color: $sub-color;
-    &.open{
+    background-color: $main-color2;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+        &.open{
          
         background-color: $bgc-colour;
         
@@ -825,7 +831,8 @@ height: 64px;
         border-radius:  $border;
     }
 
-    #priceDiv {            
+    #priceDiv {  
+        box-shadow: rgba(103, 103, 103, 0.1) 0px 0px 16px;             
         background-color: $bgc-colour;
         padding: 12px;
         border-radius: $border;
@@ -973,7 +980,7 @@ top: 220px;
     }
     height: 100%;
     z-index: 200;
-    background: $dark-colour;
+    background: $bgc-colour;
     #closecoursevideosdiv{ background-color: $dark-colour;
         height:  32px;
         width: 32px;
@@ -1277,8 +1284,9 @@ max-width: 420px;}
 }
 #lordcbdiv{
     border-radius: $border;
-    background-color: $sub_color;
-    &:hover {
+    background-color: $main-color2;
+    box-shadow: rgba(103, 103, 103, 0.1) 0px 0px 16px;    
+        &:hover {
         background-color: $main-color;
         color: $main_btn;
     }
@@ -1313,7 +1321,7 @@ max-width: 420px;}
     background-color: $bg-colour;
     border-radius: $border;
     a{
-        background-color: $main-color2;
+        background-color: $sub-color;
     }
     button{
         background-color: $main-btn;
@@ -1321,17 +1329,18 @@ max-width: 420px;}
     }
 }
 #searchR{
-    background-color: $sub_color;
-.searchRbtn{
+    background-color: $main_color2;
+    box-shadow: rgba(103, 103, 103, 0.1) 0px 0px 16px;   
+    .searchRbtn{
         background-color: $main-btn;
     }    
 }
 #searchMR {
-    background-color: $sub_color;
-    border-radius: $border;
+    background-color: $main_color2;
+    box-shadow: rgba(103, 103, 103, 0.1) 0px 0px 16px;       border-radius: $border;
     z-index: 200;
     a{
-        background-color: $main-color2;
+        background-color: $sub-color;
     }
 }
 
@@ -1475,7 +1484,6 @@ input {
 
     }
     @media screen and (min-width: 640px) {
-        box-shadow: rgba(0, 250, 142, 0.504) 0px 4px 16px, rgba(0, 250, 142, 0.504) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 
 
    }

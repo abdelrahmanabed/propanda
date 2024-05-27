@@ -7,17 +7,11 @@ const Page = async ({params}) => {
 
  
       const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${params.paths}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
       const I = await response.json();
    
 
 
       const cresponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
       const courses = await cresponse.json();
     
 
