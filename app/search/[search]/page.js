@@ -239,7 +239,7 @@ const Page = async ({searchParams}) => {
               
               <div key={category} className=' p-3 rounded-2xl overflow-hidden flex flex-col gap-3'>
                 
-                <h2> هل تبحث عن كورسات في مجال <span className=' font-extrabold'>{title}</span> </h2>
+                <h2> هل تبحث عن كورسات في مجال <span className=' text-xs font-extrabold'>{title}</span> </h2>
                 
                 {fCourses&& fCourses.length>0 &&
 <Keenslider>
