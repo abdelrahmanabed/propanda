@@ -50,7 +50,7 @@ const Keenslider = ({ children }) => {
   })
   console.log("cs", currentSlide)
   return ( <Suspense fallback={<div className=" flex gap-3"></div>}>
-    <div className=" relative py-9 md:p-9 lg:px-16">
+    <div className=" relative py-9 md:p-9  md:px-16">
     {loaded && instanceRef.current && (
           <>
             <Arrow

@@ -1408,7 +1408,7 @@ input {
 }
 
 .insCard{
-    background-color: $main-btn;
+    background-color: $bgc-colour;
     
 }
 
@@ -1442,14 +1442,13 @@ input {
 .arrow--left {
   left: 0;
   @media screen and (min-width: 768px) {
-    left: -40px;
+    left: 0;
     right: auto;
-    padding-right: 0;
+    padding-right: 10px;
   }
   @media screen and (min-width: 1024px) {
     left: 0;
     right: auto;
-    padding-right: 10px ;
   }
 }
 
@@ -1458,13 +1457,12 @@ input {
   right: auto;
   @media screen and (min-width: 768px) {
   left: auto;
-  right: -40px;
-  padding-left: 0px;
+  right: 0px;
+  padding-left: 10px;
 } 
  @media screen and (min-width: 1024px) {
     left: auto;
     right: 0;
-    padding-left: 10px;
   }
 }
 

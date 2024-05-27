@@ -1265,7 +1265,7 @@ input {
 }
 
 .insCard {
-  background-color: #00ffae;
+  background-color: rgba(255, 255, 255, 0.6784313725);
 }
 
 .coursesrelatedtosomcategories {
@@ -1301,16 +1301,15 @@ input {
 }
 @media screen and (min-width: 768px) {
   .arrow--left {
-    left: -40px;
+    left: 0;
     right: auto;
-    padding-right: 0;
+    padding-right: 10px;
   }
 }
 @media screen and (min-width: 1024px) {
   .arrow--left {
     left: 0;
     right: auto;
-    padding-right: 10px;
   }
 }
 
@@ -1321,15 +1320,14 @@ input {
 @media screen and (min-width: 768px) {
   .arrow--right {
     left: auto;
-    right: -40px;
-    padding-left: 0px;
+    right: 0px;
+    padding-left: 10px;
   }
 }
 @media screen and (min-width: 1024px) {
   .arrow--right {
     left: auto;
     right: 0;
-    padding-left: 10px;
   }
 }
 
