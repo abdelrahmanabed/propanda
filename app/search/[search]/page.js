@@ -179,7 +179,7 @@ const Page = async ({searchParams}) => {
 
 
   return (
-    <div id='searchpage' className='p-3 flex flex-col min-h-96 backdrop-blur-xl gap-7'>
+    <div id='searchpage' className=' flex flex-col min-h-96 backdrop-blur-xl gap-7'>
 
 {I &&I.length > 0&& 
         <>
@@ -237,7 +237,7 @@ const Page = async ({searchParams}) => {
           if (keywords.some(keyword => searchParams.q.toLowerCase().includes(keyword))) {
             return (
               
-              <div key={category} className=' p-3 rounded-2xl overflow-hidden flex flex-col gap-3'>
+              <div key={category} className='  rounded-2xl overflow-hidden flex flex-col gap-3'>
                 
                 <h2> هل تبحث عن كورسات في مجال <span className=' text-xs font-extrabold'>{title}</span> </h2>
                 
