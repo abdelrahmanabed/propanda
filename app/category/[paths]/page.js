@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import Course from '../../components/course';
 import InstructorCard from '../../components/instructorCard';
 import Keenslider from '../../components/Keenslider';
-import CourseLoading from '../../components/courseLoading';
 
 const Page = async ({params}) => {
 
@@ -29,7 +28,7 @@ const Page = async ({params}) => {
   const categoriesKeywordsMap = {
     programming: { title: 'البرمجة و التكنولوجيا', keywords: ['code', 'js', 'software', 'لغة'] },
     languages: { title: 'اللغات', keywords: ['french', 'english', 'lang', 'لغة'] },
-     designing: { title: 'التصميم', keywords: ['code', 'js', 'software', 'لغة'] },
+    designing: { title: 'التصميم', keywords: ['code', 'js', 'software', 'لغة'] },
     learning: { title: 'التعلم', keywords: ['french', 'english', 'lang', 'لغة'] }, 
     skills: { title: 'المهارات', keywords: ['code', 'js', 'software', 'لغة'] },
     hse: { title: 'السلامة والصحة المهنية', keywords: ['french', 'english', 'lang', 'لغة'] },

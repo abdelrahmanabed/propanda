@@ -256,13 +256,13 @@ body #thecontainer {
 }
 #mainsigndiv .submit-btn {
   background-color: #00ffae;
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
   padding: 18px;
   font-weight: 600;
 }
 #mainsigndiv #signindiv .submit-btn {
   background-color: #00ffae;
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
   padding: 18px;
   font-weight: 600;
 }
@@ -397,7 +397,7 @@ body #thecontainer {
   background-color: rgba(207, 207, 207, 0.5843137255);
 }
 #signindiv div input:focus ~ label {
-  background-color: rgba(88, 253, 181, 0.4392156863);
+  background-color: rgba(0, 255, 145, 0.3176470588);
   top: 0;
   font-size: small;
   padding: 6px;
@@ -406,7 +406,7 @@ body #thecontainer {
   border-radius: 16px;
 }
 #signindiv div input:valid ~ label {
-  background-color: rgba(88, 253, 181, 0.4392156863);
+  background-color: rgba(0, 255, 145, 0.3176470588);
   top: 0;
   font-size: small;
   padding: 6px;
@@ -415,7 +415,7 @@ body #thecontainer {
   color: #000;
 }
 #signindiv div input:not(:empty) ~ label {
-  background-color: rgba(88, 253, 181, 0.4392156863);
+  background-color: rgba(0, 255, 145, 0.3176470588);
   top: 0;
   font-size: small;
   padding: 6px;
@@ -443,7 +443,7 @@ body #thecontainer {
 }
 
 #regbtn {
-  background-color: #ffffff;
+  background-color: #00ffae;
   color: #000;
   display: flex;
   padding: 5px;
@@ -498,7 +498,7 @@ body #thecontainer {
 }
 @media screen and (min-width: 768px) {
   .searchinput {
-    background-color: rgba(238, 238, 238, 0.8745098039);
+    background-color: rgba(202, 202, 202, 0.8352941176);
   }
 }
 
@@ -547,7 +547,7 @@ body #thecontainer {
   background: #00ffae;
   height: 120px;
   justify-content: center;
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
 }
 
 .navmlink4 {
@@ -593,7 +593,7 @@ body #thecontainer {
   width: calc(100% - 24px);
 }
 #herodiv .content h1 {
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
 }
 @media screen and (min-width: 768px) {
   #herodiv .content {
@@ -614,12 +614,12 @@ body #thecontainer {
   z-index: 1; /* Place the shadow above the content */
 }
 #herodiv #herobtn {
-  background-color: #00ffae;
+  background-color: #000;
   padding: 12px;
   border-radius: 16px;
   font-size: large;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.7411764706);
+  font-weight: 900;
+  color: #00ffae;
   transition: 0.4s;
 }
 @media screen and (min-width: 768px) {
@@ -633,8 +633,8 @@ body #thecontainer {
   }
 }
 #herodiv #herobtn:hover {
-  background-color: #008d5e;
-  color: white;
+  background-color: #00ffae;
+  color: #000;
 }
 
 #courseContent {
@@ -663,7 +663,7 @@ body #thecontainer {
 }
 #coursecomdiv #coursecdp {
   background-color: #000;
-  color: #fff;
+  color: #00ffae;
 }
 #coursecomdiv #cct {
   width: 100%;
@@ -713,13 +713,13 @@ body #thecontainer {
   width: fit-content;
 }
 #coursePage #cdt {
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
 }
 #coursePage #cddes {
   border-radius: 16px;
 }
 #coursePage #priceDiv {
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
   padding: 12px;
   border-radius: 16px;
 }
@@ -736,7 +736,7 @@ body #thecontainer {
   background-color: #000;
   padding: 15px;
   border-radius: 16px;
-  color: #ffffff;
+  color: #00ffae;
 }
 #coursePage #priceDiv #cdadd {
   border-radius: 16px;
@@ -747,13 +747,8 @@ body #thecontainer {
 }
 #coursePage #courseContent {
   color: #000;
-  background-color: rgba(88, 253, 181, 0.4392156863);
+  background-color: rgba(0, 255, 145, 0.3176470588);
   padding: 8px;
-}
-@media screen and (min-width: 768px) {
-  #coursePage #courseContent {
-    background-color: #00ffae;
-  }
 }
 @media screen and (min-width: 768px) {
   #coursePage #courseReq {
@@ -820,10 +815,10 @@ body #thecontainer {
   color: white;
 }
 #ccontainer #pcontainer #pt {
-  background-color: rgba(88, 253, 181, 0.4392156863);
+  background-color: rgba(0, 255, 145, 0.3176470588);
 }
 #ccontainer #pcontainer #pli .pnumber {
-  background-color: rgba(0, 0, 0, 0.7411764706);
+  background-color: rgba(0, 0, 0, 0.7568627451);
   color: white;
 }
 @media screen and (min-width: 1024px) {
@@ -918,16 +913,16 @@ body #thecontainer {
   transition: 0.4s;
 }
 .pinvideodiv span {
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
 }
 .pinvideodiv .thebtn {
   background-color: #00ffae;
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
   font-weight: bold;
 }
 .pinvideodiv .fatimes {
   background-color: rgba(88, 253, 181, 0.5294117647);
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
   border-radius: 16px;
   padding: 4px;
 }
@@ -939,7 +934,7 @@ body #thecontainer {
   background-color: transparent;
 }
 .pinvideodiv.open .pinvideo {
-  background-color: rgba(0, 0, 0, 0.7411764706);
+  background-color: rgba(0, 0, 0, 0.7568627451);
   border-radius: 16px;
   color: #000;
   transition: 0.4s;
@@ -949,7 +944,7 @@ body #thecontainer {
 }
 .pinvideodiv.open .pinvideo.current {
   background-color: #00ffae;
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
 }
 .pinvideodiv.open .pinvideo.current span {
   color: black;
@@ -996,17 +991,29 @@ body #thecontainer {
   border-radius: 16px;
   width: 100%;
 }
+@media screen and (min-width: 768px) {
+  #lordidiv.courseDet, #lordcdiv.courseDet {
+    background-color: #ffffff;
+  }
+}
 #lordidiv.clicked, #lordcdiv.clicked {
-  background-color: #ffffff;
+  background-color: #00ffae;
+  color: #000;
 }
 
 #lordcdiv.courseDet {
   background-color: rgba(202, 202, 202, 0.8352941176);
   border-radius: 16px;
   width: 100%;
+  padding-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  #lordcdiv.courseDet {
+    background-color: #ffffff;
+  }
 }
 #lordcdiv.clicked {
-  background-color: #ffffff;
+  background-color: #00ffae;
   align-items: center;
 }
 #lordcdiv.clicked ~ span {
@@ -1266,7 +1273,7 @@ input {
   height: 50px;
   position: absolute;
   top: -35px;
-  fill: #000000;
+  fill: #00ffae;
   border-radius: 16px;
   cursor: pointer;
   padding: 10px;
@@ -1369,7 +1376,7 @@ input {
 }
 .footer .footercon .we a:hover {
   background-color: #00ffae;
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
 }
 .footer .footercon .social a {
   font-size: x-large;
@@ -1386,7 +1393,7 @@ input {
 }
 .footer .footercon .social a:hover {
   background-color: #00ffae;
-  color: rgba(0, 0, 0, 0.7411764706);
+  color: rgba(0, 0, 0, 0.7568627451);
 }
 
 .loadingcenter {
@@ -1468,7 +1475,7 @@ input {
 }
 
 .deletecn:hover {
-  background-color: rgba(88, 253, 181, 0.4392156863);
+  background-color: rgba(0, 255, 145, 0.3176470588);
 }
 
 .star-field {

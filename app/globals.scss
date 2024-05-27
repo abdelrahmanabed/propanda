@@ -6,14 +6,14 @@ $main_color: #000;
 $main_color2: #ffffff;
 $sub_color: #eeeeeedf;
 $sub_color2: #58fdb570;
-$background: #58fdb570;
+$background: #00ffae7b;
 $bg-colour: #58fdb587;
 $bgc-colour: #ffffffad;
 $dark-colour: #cacacad5;
 $main-btn:#00ffae;
 $dark-btn:#008d5e;
 $background-color: #a3d9ff;
-$sub-background-color:  #58fdb570;
+$sub-background-color:  #00ff9151;
 $border:16px;
 $sub_btn:#00ffae;
 $input:#cfcfcf95;
@@ -21,7 +21,7 @@ $wall:#a4fffa;
 $dark_sub:#008d5e;
 $gray : #ffffff;
 $semidark:#5a5a5a57;
-$harddark: #000000bd;
+$harddark: #000000c1;
  @keyframes rotate {
         0% {
           transform: rotate(0deg);
@@ -531,7 +531,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
 }}
 
 #regbtn {
-    background-color: $main-color2;
+    background-color: $main-btn;
     color: $main-color;
     display: flex;
     padding: 5px;
@@ -584,7 +584,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
     background-color: $sub-color;
 
     @media screen and (min-width: 768px) {
-           background-color: $sub-color;
+           background-color: $dark-colour;
 
 
     }   
@@ -700,12 +700,12 @@ background-image: url('../public/imgs/img-noise-361x370.png');
     }
 
     #herobtn{
-        background-color: $main-btn;
+        background-color: $main-color;
          padding: 12px;
          border-radius: $border;
          font-size: large; 
-         font-weight: 700;
-         color: $harddark;
+         font-weight: 900;
+         color: $main-btn;
          transition: 0.4s;
        
 
@@ -719,8 +719,8 @@ background-image: url('../public/imgs/img-noise-361x370.png');
             align-self: start;
         }
          &:hover{
-            background-color:$dark-btn;
-            color: white;
+            background-color:$main-btn;
+            color: $main_color;
            
              
          }
@@ -750,7 +750,7 @@ background-image: url('../public/imgs/img-noise-361x370.png');
     }
     #coursecdp{
         background-color: $main-color;
-        color: #fff;
+        color: $main-btn;
     }
     #cct{
         width: calc(100%) ;
@@ -818,10 +818,9 @@ height: 64px;
     }
 
     #priceDiv {            
-        background-color: $main-color2;
+        background-color: rgb(255, 255, 255);
         padding: 12px;
         border-radius: $border;
-      
 
         button{
             border-radius: $border;
@@ -836,7 +835,7 @@ height: 64px;
             background-color: $main_color;
             padding: 15px;
             border-radius: $border;
-            color: $main-color2;
+            color: $main-btn;
             
 
         }
@@ -852,8 +851,7 @@ height: 64px;
         color: #000;
         background-color: $sub-background-color;
         @media screen and (min-width: 768px) {
-            background-color: $sub_btn;
-
+            
         }
         padding: 8px;
         
@@ -1102,10 +1100,17 @@ max-width: 420px;}
         background-color: $dark-colour;
         border-radius: $border;
         width: 100%;
+        @media screen and (min-width: 768px) {
+            background-color: $main_color2;
+
+            
+          }
     }
     background-color: $bgc-colour;
     &.clicked{
-        background-color: $main-color2;
+        background-color: $main-btn;
+        color: $main-color
+
     }
 
 }
@@ -1114,8 +1119,14 @@ max-width: 420px;}
         background-color: $dark-colour;
         border-radius: $border;
         width: 100%;
+        padding-bottom: 20px;
+        @media screen and (min-width: 768px) {
+            background-color: $main_color2;
+
+            
+          }
     }   &.clicked{
-        background-color: $main-color2;
+        background-color: $main-btn;
         align-items:center ;
     }
     &.clicked~span{
@@ -1406,7 +1417,7 @@ input {
   height: 50px;
   position: absolute;
   top: -35px;
-  fill: #000000;
+  fill: $main-btn;
   border-radius: $border;
   cursor: pointer; 
   padding: 10px;
