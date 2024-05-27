@@ -10,7 +10,7 @@ import CourseLoading from './courseLoading';
 const Course = async(props) => {
 const getInstructorInfoForCard = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`, { cache: 'force-cache' });
         const info = response.data;
         return info.name
       } catch (error) {

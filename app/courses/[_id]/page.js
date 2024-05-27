@@ -49,7 +49,7 @@ const CourseDuration = ({ duration }) => {
     try {
         // Fetch author data
         if (course.author) {
-          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`);
+          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`, { cache: 'force-cache' });
           const authorData = authorResponse.json();
           return authorData
         }

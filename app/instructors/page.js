@@ -7,7 +7,7 @@ import CourseLoading from '../components/courseLoading'
 const Page = async ({searchParams} ) => {
 
    
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors${searchParams.category ? `/category/${searchParams.category}` : ''}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors${searchParams.category ? `/category/${searchParams.category}` : ''}`, { cache: 'force-cache' });
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

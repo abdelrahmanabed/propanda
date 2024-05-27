@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 
 const NewCourseContainer = async () => {
   
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`, { cache: 'force-cache' });
         const newCourses = await response.json()
      
     return (
