@@ -30,8 +30,8 @@ const Page = async ({params}) => {
   };
 
   return (
-    <div  className="p-3 flex flex-col min-h-96 backdrop-blur-xl gap-7">
-     <div className="coursesrelatedtosomcategories p-3 flex flex-col gap-7">
+    <div  className=" p-3 flex flex-col min-h-96 backdrop-blur-xl gap-7">
+     <div className="coursesrelatedtosomcategories  flex flex-col gap-7">
         
         {/* Filter courses by categories */}
         {Object.entries(categoriesKeywordsMap).map(([category, { title }]) => {
