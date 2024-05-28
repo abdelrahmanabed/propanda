@@ -1034,11 +1034,15 @@ body #thecontainer {
   opacity: 0;
 }
 
+#profilelayout {
+  border-radius: 16px;
+}
 #profilelayout button {
-  background-color: #eeeeee;
+  background-color: #000;
+  color: #00ffae;
 }
 #profilelayout ul {
-  background-color: rgba(226, 226, 226, 0.8352941176);
+  background-color: rgba(255, 255, 255, 0.6784313725);
   border-radius: 16px;
   margin-top: 12px;
 }
@@ -1067,24 +1071,42 @@ body #thecontainer {
   align-items: center;
   padding: 12px;
   border-radius: 16px;
-  background-color: rgba(88, 253, 181, 0.5294117647);
+  background-color: #eeeeee;
   width: 100%;
 }
 #profilelayout ul li a.selected {
-  background-color: #eeeeee;
+  background-color: #00ffae;
   font-size: large;
 }
 
+.layout-container {
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6784313725);
+}
+@media screen and (min-width: 1024px) {
+  .layout-container {
+    width: 800px;
+  }
+}
+
+#infocomp {
+  border-radius: 16px;
+  width: 100%;
+}
+@media screen and (min-width: 1024px) {
+  #infocomp {
+    width: 800px;
+  }
+}
 #infocomp ul {
   border-radius: 16px;
-  background-color: rgba(226, 226, 226, 0.8352941176);
-  min-height: 700px;
+  width: 100%;
 }
 #infocomp ul li {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #eeeeee;
+  background-color: #ffffff;
   padding: 12px;
   border-radius: 16px;
   height: 120px;
@@ -1095,7 +1117,7 @@ body #thecontainer {
   margin-bottom: 12px;
 }
 #infocomp ul li div button {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   border-radius: 16px;
   transition: 0.3s;
   position: absolute;
@@ -1113,19 +1135,18 @@ body #thecontainer {
 #infocomp ul li form input {
   padding: 12px;
   border-radius: 16px;
-  background-color: #e2e2e2;
   transition: 0.3s;
 }
 #infocomp ul li form input.open {
-  background-color: white;
+  background-color: rgba(207, 207, 207, 0.5843137255);
 }
 #infocomp ul li form button {
-  background-color: #ffffff;
+  background-color: #00ffae;
   border-radius: 16px;
   transition: 0.3s;
 }
 #infocomp ul li form button.cancel {
-  background-color: rgba(226, 226, 226, 0.8352941176);
+  background-color: #eeeeee;
 }
 #infocomp ul li form button:hover {
   background-color: transparent;
@@ -1143,17 +1164,24 @@ body #thecontainer {
   border-radius: 16px;
 }
 
-#favscomp, #cartcomp {
+#cartcomp {
   border-radius: 16px;
   background-color: rgba(226, 226, 226, 0.8352941176);
   z-index: 152;
   min-height: 700px;
 }
 
+#favscomp {
+  border-radius: 16px;
+  z-index: 152;
+  transition: 0.4s;
+}
+
 #cartcompdiv {
   border-radius: 16px;
   background-color: #eeeeee;
   z-index: 152;
+  min-height: 384px;
 }
 
 #lordcbdiv {

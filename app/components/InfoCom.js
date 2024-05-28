@@ -134,7 +134,7 @@ Cookies.set(`encrypted${field === 'phone' ? 'PN' : field.charAt(0).toUpperCase()
         <div id='infocomp' className='infocomp w-full backdrop-blur-xl'>
           
           
-            <ul className='p-3 gap-3 flex flex-col h-fit '>
+            <ul className='p-3 gap-3 flex flex-col h-fit w-full '>
                 <span className=' p-5'>المعلومات الشخصية</span>
                 <li className='w-full '>
                     <div className='flex justify-between'>
@@ -185,7 +185,7 @@ Cookies.set(`encrypted${field === 'phone' ? 'PN' : field.charAt(0).toUpperCase()
 />
                         </div>
                         {errors.phone && <p className="text-red-500">{errors.phone}</p>}
-                        <button type="submit" disabled={!editable} className={editable ? 'max-h-20 p-3' : ' max-h-0 overflow-hidden'}>حفظ</button>
+                        <button type="submit" disabled={!editable} className={editable ? 'max-h-20 p-3 save' : ' max-h-0 overflow-hidden '}>حفظ</button>
                         <button type="button" disabled={!editable} onClick={handleCancel} className={`${editable ? 'max-h-20 p-3' :  ' max-h-0 overflow-hidden'} cancel`}>الغاء</button>
                     </form>
                 </li>

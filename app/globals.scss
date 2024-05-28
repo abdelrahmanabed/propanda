@@ -1147,12 +1147,14 @@ max-width: 420px;}
     }
 }
 #profilelayout{
+    border-radius: $border;
     button{
-        background-color: $sub_color;
+        background-color:$main_color;
+        color: $main-btn;
 
     }
     ul {
-        background-color: $dark-colour;
+        background-color: $bgc-colour;
         border-radius: $border;
         margin-top: 12px;
         @media screen and (min-width: 768px) {
@@ -1180,11 +1182,11 @@ max-width: 420px;}
                 align-items: center;
                 padding: 12px;
                 border-radius: $border;
-                background-color: $bg-colour ;
+                background-color: $sub-color ;
                   width: 100%;
              
                 &.selected{
-                    background-color: $sub_color;
+                    background-color: $main-btn;
                     font-size:large;     
                    
                   
@@ -1193,18 +1195,29 @@ max-width: 420px;}
         }
     }
 }
-
-#infocomp{
+.layout-container{
+    border-radius: $border;
+    background-color: $bgc-colour;
+    @media screen and (min-width: 1024px) {
        
+       width: 800px;
+    }
+}
+#infocomp{
+    border-radius: $border;
+       width: 100%;
+       @media screen and (min-width: 1024px) {
+       
+        width: 800px;
+     }
     ul{
         border-radius: $border;
-        background-color: $dark-colour;
-        min-height: 700px;
+        width: 100%;
         li{
             display: flex;
             flex-direction: column;
             gap: 20px;
-            background-color: $sub_color;
+            background-color: $main-color2;
             padding: 12px;
             border-radius: $border;
             height: 120px;
@@ -1215,7 +1228,7 @@ max-width: 420px;}
                 }
             div{
                 button{
-                    background-color: $main_color2;
+                    background-color: $sub_color;
                     border-radius: $border;
                     transition: 0.3s;
                     position: absolute;
@@ -1235,17 +1248,17 @@ max-width: 420px;}
                     input{
                         padding: 12px;
                         border-radius: $border;
-                        background-color: #e2e2e2;
-                        &.open{ background-color: white;}
+                        &.open{ background-color: $input;}
                         transition: 0.3s;
 
                     }
                     button{
-                        background-color: $main_color2 ;
+                        background-color: $main-btn ;
                         border-radius: $border;
                         transition: 0.3s;
+
                         &.cancel{
-                            background-color: $dark-colour;
+                            background-color: $sub-color;
                         }
                         &:hover{
                             background-color: transparent;
@@ -1268,18 +1281,24 @@ max-width: 420px;}
     border-radius: $border;
 }
 
-#favscomp,#cartcomp {
+#cartcomp {
     border-radius: $border;
     background-color: $dark-colour;
     z-index: 152;
     min-height: 700px;
 
 }
+#favscomp {
+    border-radius: $border;
+    z-index: 152;
+    transition: 0.4s;
+
+}
 #cartcompdiv {
     border-radius: $border;
     background-color: $sub-color;
     z-index: 152;
-    
+    min-height: 384px;
 
 }
 #lordcbdiv{

@@ -1,8 +1,8 @@
 import "keen-slider/keen-slider.min.css"
-
+import dynamic from 'next/dynamic';
 const Course = dynamic(() => import("./course"), { ssr: false });
 const Keenslider = dynamic(() => import("./Keenslider"), { ssr: false });
-import dynamic from 'next/dynamic';
+
 
 
 const NewCourseContainer = async () => {
@@ -12,7 +12,7 @@ const NewCourseContainer = async () => {
      
     return (
         <div className=" mx-3  mb-3 flex flex-col gap-3  overflow-hidden ">
-          <span className=" text-lg">احدث الدورات التعليمية</span>
+          <span className=" text-lg ">احدث الدورات التعليمية</span>
           { newCourses&& newCourses.length > 0 &&  
        <Keenslider>
         { newCourses.map((course) => (
