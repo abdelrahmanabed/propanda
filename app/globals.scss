@@ -1704,3 +1704,34 @@ margin: 12px;}
     color: $main-btn;
     border-radius: $border;
   }
+
+  .payform{
+    padding: 24px;
+    background-color: $bgc-colour;
+    margin: 12px;
+    border-radius: $border;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .paysubmit{
+    background-color: $main-btn;
+    border-radius: $border;
+    width: 100%;
+    padding: 12px;
+    align-self: center;
+    
+
+}
+
+.totalpay{
+    background: $main_color;
+    color: $main-btn;
+    padding: 12px;
+    border-radius: $border;
+    display: flex;
+    justify-content: space-between;
+}
