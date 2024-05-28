@@ -3,15 +3,33 @@ import CourseForCart from "../../components/CourseforCart";
 import { fetchCourses } from "../../helpers/api";
 import { useEffect, useState } from "react";
 import { useCart } from "../../components/CartContext";
-
+import Cookies from 'js-cookie';
 import Totalprice from "./totalprice";
 import { useRouter } from "next/navigation";
+import CryptoJS from 'crypto-js';
+import jwt from 'jsonwebtoken';
+
 const Cart = () => {
   const router = useRouter()
-    const [courses , setCourses] = useState([])
-
+  const [courses , setCourses] = useState([])
+  const [decryptedUserId , setdecryptedUserId] = useState()
+  const [jwtUserId , setjwtUserId] = useState()
+  const[ messageShow,  setMessegeShow] = useState(false)
     const{cartItems} = useCart()
+    useEffect(() => {
+      const token = Cookies.get('token');
+      const encryptedUserId = Cookies.get('encryptedUserId');
+  
+    if (encryptedUserId && token){
+      const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+      const decodedToken = jwt.decode(token);
+      const userId = decodedToken.userId;
+      setjwtUserId(userId)
+      setdecryptedUserId(decryptedId)
+    }
     
+     
+    }, []);
 // Fetch courses from the server
  useEffect(()=>{ 
    const  getCart= async()=>{
@@ -33,12 +51,26 @@ const response = await fetchCourses()
 
  const totalPrice = courses.reduce((acc, course) => acc + course.price, 0);
 
+const handlepay = ()=>{
+  const token = Cookies.get('token');
+ if(token && decryptedUserId === jwtUserId ){
+  router.push(`/checkout?amount=${totalPrice}`)
+ } else{
+  
 
+  setMessegeShow(true)
+  router.push(`?logintopay`)
+ }
+
+}
 
     return (
 
       <div id='cartpage' className={` min-h-96 flex relative p-3 flex-col gap-3   pt-0 mt-3 `}> 
-             <span className=" text-xs font-bold">في السلة عدد { cartItems.length} كورس</span>
+      {messageShow ?
+      <div className=" flex justify-center w-full h-96 items-center paylogin ">سجل الدخول لاكمال عملية الشراء</div>
+      :
+      <>  <span className=" text-xs font-bold">في السلة عدد { cartItems.length} كورس</span>
  <div id={"cartContainer"} className={` ${ courses.length < 1 ?" justify-center items-center":"flex-col md:grid md:grid-cols-2 lg:grid-cols-3 flex-wrap  "} flex flex-1  gap-3 `}>
 
       { courses.length>0? courses.map((course) => (
@@ -74,9 +106,10 @@ const response = await fetchCourses()
       </div>{ courses.length>0 &&<div className=" flex flex-col p-3 items-center justify-center gap-3 cartNavPricep bottom-0  left-0 w-full  rounded-2xl font-bold min-h-32 "> 
 <span className=" font-normal text-sm">السعر الكلي </span> 
 <Totalprice courses={courses}/>
-<button onClick={()=>router.push(`/checkout?amount=${totalPrice}`)} id="paybutton" className=" p-3 rounded-2xl w-full md:w-32" >شراء</button>
+<button onClick={handlepay} id="paybutton" className=" p-3 rounded-2xl w-full md:w-32" >شراء</button>
 
-</div>}
+</div>}</> }
+           
   </div>
   )}
 export default Cart

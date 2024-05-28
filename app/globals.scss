@@ -753,6 +753,7 @@ body{
     border-radius: $border;
 }
 #coursecomdiv{
+    
     background-color: $bgc-colour;
     border-radius: $border;
     overflow: hidden;
@@ -1298,7 +1299,6 @@ max-width: 420px;}
     border-radius: $border;
     background-color: $sub-color;
     z-index: 152;
-    min-height: 384px;
 
 }
 #lordcbdiv{
@@ -1753,4 +1753,13 @@ margin: 12px;}
     border-radius: $border;
     display: flex;
     justify-content: space-between;
+}
+
+.paylogin{
+    background: $main-btn;
+padding: 15px;
+    width: 100%;
+    font-weight: 900;
+     font-size: large;
+border-radius: $border;
 }

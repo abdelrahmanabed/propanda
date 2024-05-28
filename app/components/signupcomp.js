@@ -8,9 +8,13 @@ import PhoneInput from 'react-phone-input-2';
 import jwt from 'jsonwebtoken';
 import  CryptoJS from 'crypto-js';
 import 'react-phone-input-2/lib/style.css'
-
+import { useSearchParams } from 'next/navigation';
+import { useCart } from './CartContext';
 export default function SignDiv(props) {
-
+  const {cartItems} = useCart()
+  const searchParams = useSearchParams()
+  const parGet = searchParams.toString()
+  console.log( 'sPar', parGet)
   const [lformData, setLformData] = useState({
     email: '',
     password: '',
@@ -75,8 +79,12 @@ export default function SignDiv(props) {
 
         localStorage.setItem('favcourses', JSON.stringify(favCourses || []));
 
-   
-        window.location.href = '/'; 
+        if(parGet==="logintopay="){
+          window.location.href = '/cart'; 
+
+        } else{        window.location.href = '/'; 
+}
+        
       } else {
         console.error('Error logging in: Unexpected response format');
       }
@@ -189,8 +197,13 @@ export default function SignDiv(props) {
         phoneNumber: '',
       });
       
-      window.location.href = '/'; 
-    } catch (error) {
+      if(parGet==="logintopay="){
+        window.location.href = '/cart'; 
+
+      } else{        window.location.href = '/'; 
+}
+
+} catch (error) {
       console.error('Error registering user:', error);
       if (error.response) {
         const { data } = error.response;

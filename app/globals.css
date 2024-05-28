@@ -1181,7 +1181,6 @@ body #thecontainer {
   border-radius: 16px;
   background-color: #eeeeee;
   z-index: 152;
-  min-height: 384px;
 }
 
 #lordcbdiv {
@@ -1611,4 +1610,13 @@ input {
   border-radius: 16px;
   display: flex;
   justify-content: space-between;
+}
+
+.paylogin {
+  background: #00ffae;
+  padding: 15px;
+  width: 100%;
+  font-weight: 900;
+  font-size: large;
+  border-radius: 16px;
 }/*# sourceMappingURL=globals.css.map */
