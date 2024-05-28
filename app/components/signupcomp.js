@@ -58,7 +58,7 @@ export default function SignDiv(props) {
   const handlelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/login`, lformData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/login`, { ...lformData, cartItems });
 
       if (response && response.data) {
         console.log('Login successful');
@@ -174,7 +174,7 @@ export default function SignDiv(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/register`, formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/register`, { ...formData, cartItems });
       console.log('User registered successfully');
   
       const { token, encryptedUserId, encryptedName,encryptedEmail,encryptedPN  } = response.data;
