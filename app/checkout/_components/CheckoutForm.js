@@ -39,7 +39,7 @@ function CheckoutForm({amount}) {
         elements,
         clientSecret,
         confirmParams: {
-          return_url: process.env.NEXT_PUBLIC_PORT+"/payment-confirmed",
+          return_url: process.env.NEXT_PUBLIC_PPORT+"/payment-confirmed",
         },
       });
   
