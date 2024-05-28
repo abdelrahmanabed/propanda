@@ -1628,6 +1628,8 @@ margin: 12px;}
 
 #paybutton{
     background-color: $main-btn;
+    justify-content: center;
+    display: flex;
 }
 
 .deletecn {
@@ -1675,4 +1677,30 @@ margin: 12px;}
 
   #mobnav{
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  }
+
+  .Donepay{
+    background-color: $main-btn;
+
+    display: flex;
+    font-size: 70px;
+    padding: 10px;
+    border-radius: $border;
+
+  }
+  .coursatypay{
+    align-items: center;
+    a{
+        background-color: $main_color;
+        padding:15px;
+        color: $main-btn;
+        border-radius: $border;
+    }
+  }
+
+  .homepay{
+    background-color: $main_color;
+    padding:15px;
+    color: $main-btn;
+    border-radius: $border;
   }

@@ -3,8 +3,11 @@ import CourseForCart from "../../components/CourseforCart";
 import { fetchCourses } from "../../helpers/api";
 import { useEffect, useState } from "react";
 import { useCart } from "../../components/CartContext";
+
 import Totalprice from "./totalprice";
+import { useRouter } from "next/navigation";
 const Cart = () => {
+  const router = useRouter()
     const [courses , setCourses] = useState([])
 
     const{cartItems} = useCart()
@@ -28,6 +31,7 @@ const response = await fetchCourses()
  
  },[cartItems])
 
+ const totalPrice = courses.reduce((acc, course) => acc + course.price, 0);
 
 
 
@@ -70,7 +74,7 @@ const response = await fetchCourses()
       </div>{ courses.length>0 &&<div className=" flex flex-col p-3 items-center justify-center gap-3 cartNavPricep bottom-0  left-0 w-full  rounded-2xl font-bold min-h-32 "> 
 <span className=" font-normal text-sm">السعر الكلي </span> 
 <Totalprice courses={courses}/>
-<button id="paybutton" className=" p-3 rounded-2xl w-full md:w-32" >شراء</button>
+<button onClick={()=>router.push(`/checkout?amount=${totalPrice}`)} id="paybutton" className=" p-3 rounded-2xl w-full md:w-32" >شراء</button>
 
 </div>}
   </div>

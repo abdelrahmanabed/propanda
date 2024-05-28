@@ -1486,6 +1486,8 @@ input {
 
 #paybutton {
   background-color: #00ffae;
+  justify-content: center;
+  display: flex;
 }
 
 .deletecn:hover {
@@ -1527,4 +1529,29 @@ input {
 
 #mobnav {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.Donepay {
+  background-color: #00ffae;
+  display: flex;
+  font-size: 70px;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.coursatypay {
+  align-items: center;
+}
+.coursatypay a {
+  background-color: #000;
+  padding: 15px;
+  color: #00ffae;
+  border-radius: 16px;
+}
+
+.homepay {
+  background-color: #000;
+  padding: 15px;
+  color: #00ffae;
+  border-radius: 16px;
 }/*# sourceMappingURL=globals.css.map */
