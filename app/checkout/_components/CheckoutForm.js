@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import Loading from '../../components/loading';
 import Image from 'next/image';
@@ -12,7 +12,7 @@ function CheckoutForm({amount}) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+  setLoading(true)
     if (!stripe || !elements) {
       return;
     }
@@ -58,7 +58,7 @@ function CheckoutForm({amount}) {
   };
   return (
     <div className=' flex justify-center'>
-      
+   
     <form className='p-3 payform' onSubmit={handleSubmit}>
          <div className='totalpay'><span>اجمالي المبلغ</span>
      <span>{amount}  <span className=' text-xs'>جنيه مصري</span></span>
@@ -66,7 +66,9 @@ function CheckoutForm({amount}) {
      </div>
      <Image src="/imgs/prologo1.svg" className='h-7 self-center m-5' alt="Logo" width={90} height={100} />
 
-     <div className='  ' ><PaymentElement /></div> 
+     <div className='  ' >
+      <Suspense fallback={<div className=' h-56 flex items-center justify-center'><Loading/></div>} >
+      <PaymentElement /> </Suspense>  </div> 
       {errormessage && <div>{errormessage}</div>}
       <button className='paysubmit font-extrabold text-2xl mt-7' type="submit" disabled={!stripe || loading}>
         {loading ? <Loading/> : 'ادفع'}
