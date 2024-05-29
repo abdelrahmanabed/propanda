@@ -11,7 +11,7 @@ import 'react-phone-input-2/lib/style.css'
 import { useSearchParams } from 'next/navigation';
 import { useCart } from './CartContext';
 export default function SignDiv(props) {
-  const {cartItems} = useCart()
+  const {cartItems, setCartItems} = useCart()
   const searchParams = useSearchParams()
   const parGet = searchParams.toString()
   console.log( 'sPar', parGet)
@@ -63,7 +63,7 @@ export default function SignDiv(props) {
       if (response && response.data) {
         console.log('Login successful');
 
-        const { token, encryptedUserId, encryptedName, encryptedEmail,encryptedPN, favCourses } = response.data;
+        const { token, encryptedUserId, encryptedName, encryptedEmail,encryptedPN, favCourses, cart } = response.data;
 
         setCookie('token', token, { path: '/' });
         setCookie('encryptedUserId', encryptedUserId, { path: '/' });
@@ -75,7 +75,7 @@ export default function SignDiv(props) {
 
         const decodedToken = jwt.decode(token);
         const userId = decodedToken.userId;
-       
+        localStorage.setItem('cartItems', JSON.stringify(cart || []));
 
         localStorage.setItem('favcourses', JSON.stringify(favCourses || []));
 
