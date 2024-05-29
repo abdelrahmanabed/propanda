@@ -25,6 +25,7 @@ function CheckoutForm({amount}) {
   }
 
   }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
   setLoading(true)
@@ -64,17 +65,26 @@ function CheckoutForm({amount}) {
       if (result.error) {
         setErrorMessage(result.error.message);
       } else {
-        await axios.post(`/api/users/${decryptedUserId}/courses`, {cartItems});
+        await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/checkout`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            cartItems,
+          }),
+        });
 
         // Clear cartItems in the context
-        clearCart()
+        setCartItems([]);
+
         // Redirect to a success page or show a success message
-        router.push('/payment-confirmed');
-      }
+        router.push('/payment-confirmed');      }
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
       setLoading(false);
+     
     }
   };
   return (
