@@ -65,7 +65,12 @@ function CheckoutForm({amount}) {
       if (result.error) {
         setErrorMessage(result.error.message);
       } else {
-        await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/checkout`, {
+           }
+    } catch (error) {
+      setErrorMessage(error.message);
+    } finally {
+      setLoading(false);
+      const updateRes =await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/checkout`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -74,17 +79,16 @@ function CheckoutForm({amount}) {
             cartItems,
           }),
         });
+        if (!updateRes.ok) {
+          throw new Error('Failed to update user courses');
+        }else {clearCart()
 
+                  router.push('/payment-confirmed');  
+
+        }
         // Clear cartItems in the context
-        setCartItems([]);
 
         // Redirect to a success page or show a success message
-        router.push('/payment-confirmed');      }
-    } catch (error) {
-      setErrorMessage(error.message);
-    } finally {
-      setLoading(false);
-     
     }
   };
   return (
