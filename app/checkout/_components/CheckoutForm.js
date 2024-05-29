@@ -1,15 +1,30 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import Loading from '../../components/loading';
 import Image from 'next/image';
+import { useCart } from '../../components/CartContext';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import CryptoJS from 'crypto-js';
 
 function CheckoutForm({amount}) {
   const stripe = useStripe();
   const elements = useElements();
-
+  const { cartItems, setCartItems, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
 	const [errormessage, setErrorMessage] = useState()
+	const [decryptedUserId, setdecryptedUserId] = useState()
+  const router = useRouter();
+  useEffect(() => {
+    const encryptedUserId = Cookies.get('encryptedUserId');
 
+  if (encryptedUserId ){
+    const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+    setdecryptedUserId(decryptedId)
+  }
+
+  }, []);
   const handleSubmit = async (event) => {
     event.preventDefault();
   setLoading(true)
@@ -44,11 +59,17 @@ function CheckoutForm({amount}) {
           return_url: process.env.NEXT_PUBLIC_PPORT+"/payment-confirmed",
         },
       });
-  
+
+
       if (result.error) {
         setErrorMessage(result.error.message);
       } else {
-        // Redirect will happen automatically
+        await axios.post(`/api/users/${decryptedUserId}/courses`, {cartItems});
+
+        // Clear cartItems in the context
+        clearCart()
+        // Redirect to a success page or show a success message
+        router.push('/payment-confirmed');
       }
     } catch (error) {
       setErrorMessage(error.message);

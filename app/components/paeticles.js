@@ -32,7 +32,7 @@ class Particlesjs extends React.Component {
               value: "00ffae",
             },
           },
-          fpsLimit: 90,
+          fpsLimit: 60,
           interactivity: {
             events: {
               onClick: {
@@ -79,7 +79,7 @@ class Particlesjs extends React.Component {
               density: {
                 enable: true,
               },
-              value: 150,
+              value: 100,
             },
             opacity: {
               value: 1,
@@ -89,7 +89,7 @@ class Particlesjs extends React.Component {
                 
               },
             size: {
-              value: { min: 5, max: 10},
+              value: { min: 5, max: 30},
             },
           },
           detectRetina: true,
