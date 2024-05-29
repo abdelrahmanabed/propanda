@@ -63,8 +63,8 @@ function CheckoutForm({amount}) {
       if (result.error) {
         setErrorMessage(result.error.message);
       } else {
-        await axios.put(`/api/users/${decryptedUserId}/courses`, { cartItems });
-        await axios.delete(`/api/users/${decryptedUserId}/cart`);
+        await axios.put(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/courses`, { cartItems });
+        await axios.delete(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/cart`);
 
         // Clear the cartItems in local state and localStorage
         clearCart();
