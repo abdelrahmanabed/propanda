@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import SignDiv from './signupcomp';
 import { FiUser } from "react-icons/fi";
 import { FiUserPlus } from "react-icons/fi";
@@ -216,8 +216,9 @@ const Header = () => {
     </button>
   )}
         </div>
+        <Suspense fallback={<div className=' h-10 bg-white w-16'></div>}>
         <SignDiv className={`${  showSignDiv ? " p-0 md:p-3 w-full open z-30 opacity-100 md:w-full ":" w-full md:w-auto h-0 " } ${ isHeaderFixed ? "mt-3 md:mt-0  ":""}`} />
-        <Usernav ref={unavRef} className={ `${showUserNav?"max-h-96  p-3 opacity-100 " :" max-h-0 p-0 opacity-0  "} ${ isHeaderFixed ? "mt-3":""}`}/>
+        <Usernav ref={unavRef} className={ `${showUserNav?"max-h-96  p-3 opacity-100 " :" max-h-0 p-0 opacity-0  "} ${ isHeaderFixed ? "mt-3":""}`}/></Suspense>
     </header>
 
     </div>
