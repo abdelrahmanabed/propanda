@@ -58,21 +58,26 @@ function CheckoutForm({amount}) {
           return_url: process.env.NEXT_PUBLIC_PPORT+"/payment-confirmed",
         },
       });
-
-
-      if (result.error) {
-        setErrorMessage(result.error.message);
-      } else {
+      
+      if (res){
         await axios.put(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/courses`, { cartItems });
         await axios.delete(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/cart`);
-
+  
         // Clear the cartItems in local state and localStorage
         clearCart();
+      }
+      if (result.error) {
+        setErrorMessage(result.error.message);
+      
+      } else {
+       
       }
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
+     
       setLoading(false);
+
     }
   };
   return (
