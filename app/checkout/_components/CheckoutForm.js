@@ -3,7 +3,6 @@ import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import Loading from '../../components/loading';
 import Image from 'next/image';
 import { useCart } from '../../components/CartContext';
-import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js';
@@ -15,7 +14,7 @@ function CheckoutForm({amount}) {
   const [loading, setLoading] = useState(false);
 	const [errormessage, setErrorMessage] = useState()
 	const [decryptedUserId, setdecryptedUserId] = useState()
-  const router = useRouter();
+
   useEffect(() => {
     const encryptedUserId = Cookies.get('encryptedUserId');
 
@@ -25,7 +24,6 @@ function CheckoutForm({amount}) {
   }
 
   }, []);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
   setLoading(true)
@@ -65,30 +63,16 @@ function CheckoutForm({amount}) {
       if (result.error) {
         setErrorMessage(result.error.message);
       } else {
-           }
+        await axios.put(`/api/users/${decryptedUserId}/courses`, { cartItems });
+        await axios.delete(`/api/users/${decryptedUserId}/cart`);
+
+        // Clear the cartItems in local state and localStorage
+        clearCart();
+      }
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
       setLoading(false);
-      const updateRes =await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/checkout`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            cartItems,
-          }),
-        });
-        if (!updateRes.ok) {
-          throw new Error('Failed to update user courses');
-        }else {clearCart()
-
-                  router.push('/payment-confirmed');  
-
-        }
-        // Clear cartItems in the context
-
-        // Redirect to a success page or show a success message
     }
   };
   return (
