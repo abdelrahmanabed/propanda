@@ -251,7 +251,7 @@ export default function SignDiv(props) {
             </div>
             <div className=' bg  flex-col flex justify-between gap-3 '>
              <Link href='' ><span className=' text-xs' >لا تتذكر كلمة المرور ؟</span></Link>
-             <button  type="submit" className="  submit-btn    rounded-2xl w-full p-5">  {loading ? <Loading/> :"تسجيل الدخول"}</button>
+             <button  type="submit" className={`  submit-btn   duration-300  rounded-2xl w-full `}>  {loading ?<Loading/>  :"تسجيل الدخول"}</button>
             </div>
           </form></div>
 
@@ -304,7 +304,7 @@ export default function SignDiv(props) {
                 <span className="text-red-500 text-sm">{errorMessages.password}</span>
               </div>
 
-              <button type="submit" className="  submit-btn  py-5 w-full  rounded-2xl mb-4 "> {loading ? <Loading/> :"انشاءالحساب "}</button>
+              <button type="submit" className="  submit-btn  w-full  rounded-2xl mb-4 "> {loading ? <Loading/> :"انشاءالحساب "}</button>
             </form>
           </div>
       </div>

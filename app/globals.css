@@ -75,7 +75,7 @@ body #thecontainer {
   transform: translateX(-50%);
 }
 #header.bt {
-  background-color: rgba(226, 226, 226, 0.8352941176);
+  background-color: rgba(255, 255, 255, 0.6784313725);
   width: calc(100% - 24px);
   max-width: 2000px;
   border-radius: 16px;
@@ -265,13 +265,12 @@ body #thecontainer {
 #mainsigndiv .submit-btn {
   background-color: #00ffae;
   color: rgba(0, 0, 0, 0.7568627451);
-  padding: 18px;
   font-weight: 600;
+  height: 55px;
 }
 #mainsigndiv #signindiv .submit-btn {
   background-color: #00ffae;
   color: rgba(0, 0, 0, 0.7568627451);
-  padding: 18px;
   font-weight: 600;
 }
 @media screen and (min-width: 768px) {
@@ -675,9 +674,17 @@ body #thecontainer {
   border-radius: 16px;
   overflow: hidden;
 }
-#coursecomdiv img {
+#coursecomdiv .imgdiv {
   height: 230px;
+  overflow: hidden;
   border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#coursecomdiv img {
+  border-radius: 16px;
+  min-height: 230px;
   width: 100%;
 }
 #coursecomdiv #coursecdp {
@@ -807,6 +814,26 @@ body #thecontainer {
     height: -moz-fit-content;
     height: fit-content;
     top: 220px;
+  }
+}
+
+.ccontainerskeleton {
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6784313725);
+}
+@media screen and (min-width: 768px) {
+  .ccontainerskeleton {
+    width: calc(100% - 353px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .ccontainerskeleton {
+    width: calc(100% - 353px);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .ccontainerskeleton {
+    width: calc(100% - 450px);
   }
 }
 
@@ -1171,9 +1198,8 @@ body #thecontainer {
   min-height: 700px;
 }
 
-#favscomp {
+#favscomp, #mycoursescomp {
   border-radius: 16px;
-  z-index: 152;
   transition: 0.4s;
 }
 

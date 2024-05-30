@@ -324,14 +324,16 @@ body{
     .submit-btn{
         background-color: $main-btn;
         color: $harddark;
-        padding: 18px;
+       
         font-weight: 600;
+     height: 55px;
     }
     #signindiv{.submit-btn{
         background-color: $sub-btn;
         color: $harddark;
-        padding: 18px;
         font-weight: 600;
+
+        
     }}
     
     top: 72px;  
@@ -757,11 +759,19 @@ body{
     background-color: $bgc-colour;
     border-radius: $border;
     overflow: hidden;
-    img{
-        height: 230px;
+    .imgdiv{
+                height: 230px;
+        overflow: hidden;
         border-radius: $border;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img{
+        border-radius: $border;
+        min-height: 230px;
+        width: 100%;
         
-        width: calc(100%);
     }
     #coursecdp{
         background-color: $main-color;
@@ -911,6 +921,21 @@ top: 220px;
     }
     
     
+}
+.ccontainerskeleton{
+    border-radius: $border;
+    background-color: $bgc-colour;
+    @media screen and (min-width: 768px) {
+        width: calc(100% - 353px);
+    }
+    @media screen and (min-width: 1024px) {
+        width: calc(100% - 353px);
+
+    }
+    @media screen and (min-width: 1280px) {
+        width: calc(100% - 450px);
+
+    }
 }
 #ccontainer{
     border-radius: $border;

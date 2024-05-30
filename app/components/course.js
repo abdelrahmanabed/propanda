@@ -27,7 +27,10 @@ const getInstructorInfoForCard = async () => {
     <Suspense fallback={<CourseLoading/>}>
     <div className='relative group w-fit flex flex-col gap-2'>
     <Link id='coursecomdiv' href={props.href} className='  flex-col h-96 w-72 flex  items-center backdrop-blur-md    ' >
-        <Image src={`${process.env.NEXT_PUBLIC_PORT}/${props.photo.replace(/\\/g, '/')}`} width={1024} height={1024} className=' rounded-2xl    w-full'/>    
+      <div className='imgdiv' >
+      <Image src={`${process.env.NEXT_PUBLIC_PORT}/${props.photo.replace(/\\/g, '/')}`} width={500} height={500} className=' rounded-2xl    '/>    
+
+      </div>
         
         
         

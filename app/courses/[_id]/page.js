@@ -6,6 +6,8 @@ import Bookmarkicon from '../../components/bookmarkicon';
 import CartIcon from '../../components/carticon';
 import PriceDiv from '../components/PriceDiv';
 import Ccontainer from '../components/Ccontainer';
+import Skeleton from '../components/Skeleton';
+
 import Buttonmobvid from '../components/BgVideo';
 import { Suspense } from "react";
 
@@ -155,7 +157,7 @@ const CourseDuration = ({ duration }) => {
         
       </div>
 </div>
-<Suspense fallback={<div>...load</div>}>
+<Suspense fallback={<Skeleton/>}>
 
 <Ccontainer/></Suspense>
 

@@ -80,10 +80,10 @@ const PriceDiv = (props) => {
 ref={priceDivRef}
  className=' md:fixed md:left-10 flex flex-col md:flex-col md:p-3 md:top-32 md:items-center  md:w-72 xl:w-96 left-10 justify-between md:backdrop-blur-xl gap-3'>
          <button className='   w-full h-44 hidden md:block right-1/2 overflow-hidden rounded-2xl ' onClick={togglePreview}>
-           <div className='w-full h-full relative  '>
+           <div className='w-full h-full relative  flex justify-center items-center '>
             <FaPlay className=' faplay absolute top-1/2  left-1/2 -translate-y-1/2 -translate-x-1/2 z-20  rounded-2xl'/> 
-        <Image className='h-full'  width={720} height={500} src={props.coursephoto}/>
-                  <span className='  z-50 '> الفيديو العام </span>
+        <Image className='w-full '  width={500} height={500} src={props.coursephoto}/>
+                  <span className='  z-50 md:hidden'> الفيديو العام </span>
 
 </div></button>     
       {children}

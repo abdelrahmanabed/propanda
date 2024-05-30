@@ -1,10 +1,12 @@
 'use client'
 import axios from 'axios';
 import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import {  FaAngleDown, FaTimes,    } from 'react-icons/fa';
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
+import Loading from '../../components/loading';
+import Skeleton from './Skeleton';
 
 const Ccontainer = () => {
     const [course, setCourse] = useState({});
@@ -13,7 +15,8 @@ const Ccontainer = () => {
       const [author, setAuthor] = useState();
       const [currentVideo, setCurrentVideo] = useState(null);
       const [currentPart, setCurrentPart] = useState({});
-    
+      const [loading, setLoading] = useState(false)
+
       const [viewcontent, setViewContent] = useState(false)
       const [expandedSectionIndex, setExpandedSectionIndex] = useState(-1);
     
@@ -71,6 +74,7 @@ const Ccontainer = () => {
                 setAuthorName(authorData.name);
                 setAuthorImage(authorData.photo);
               }
+
             }
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -89,7 +93,7 @@ const Ccontainer = () => {
       
   return (<> <div id='ccontainer' className='   flex-col flex gap-3 m-3 p-3'>
   <span className='m-3'>محتويات الدورة التعليمية</span>
-  {course.parts && course.parts.map((part, index) => (
+  <Suspense fallback={<Skeleton/>}>{course.parts && course.parts.map((part, index) => (
 
     <div key={index} id='pcontainer' className='flex flex-col gap-1'>
 
@@ -116,7 +120,7 @@ const Ccontainer = () => {
       </ul>
 
     </div>
-  ))}
+  ))}</Suspense>
 
     </div>  
      {currentVideo && (
