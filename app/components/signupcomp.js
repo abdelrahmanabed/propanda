@@ -218,7 +218,7 @@ export default function SignDiv(props) {
   
   return (
     <div id='mainsigndiv' className={`' ${props.className} absolute   left-1/2 -translate-x-1/2    overflow-hidden  duration-500 opacity-0 `}>
-    <div id='signdiv' className={`${props.sclassName}  relative  p-4  pt-8 h-full  overflow-hidden  md:rounded-3xl`}>
+    <div id='signdiv' className={`${props.sclassName}  relative  p-4  pt-4 h-full  overflow-hidden  md:rounded-3xl`}>
       <div className='  flex justify-around  p-4   w-full  items-center '>
       <button id='signinbtnlg'  className={`p-4 hidden lg:flex text-xl  `}>تسجيل الدخول</button>
         <button id='signupbtnlg'  className={` hidden text-xl  p-4 lg:flex`}>انشاء حساب جديد</button>
@@ -232,18 +232,18 @@ export default function SignDiv(props) {
           <form onSubmit={handlelSubmit} className="max-w-md mx-auto mt-4">
             <div className="mb-6">
               <input type="email" id="email" name="email" value={lformData.email} onChange={handlelChange} className={`${!linputValidity.email ? 'invalid' : ''}`} required />
-              <label htmlFor="email" className={`${!linputValidity.email ? 'error' : ''}`}>Email</label>
-              <span  className="text-red-500">{lerrorMessages.email}</span>
+              <label htmlFor="email" className={`${!linputValidity.email ? 'error' : ''}`}>البريد الالكتروني</label>
+              <span  className="text-red-500 text-sm">{lerrorMessages.email}</span>
             </div>
 
             <div className="mb-6">
               <input type="password" id="password" name="password" value={lformData.password} onChange={handlelChange} className={`${!linputValidity.password ? 'invalid' : ''}`} required />
-              <label htmlFor="password" >Password</label>
-              <span  className="text-red-500">{lerrorMessages.password}</span>
+              <label htmlFor="password" >كلمة المرور</label>
+              <span  className="text-red-500 text-sm">{lerrorMessages.password}</span>
             </div>
             <div className=' bg  flex-col flex justify-between gap-3 '>
-             <Link href='' ><span className=' text-xs' >لا تتذكر كلمة السر ؟</span></Link>
-             <button  type="submit" className="  submit-btn    rounded-2xl w-full p-5">تسجبل دخول</button>
+             <Link href='' ><span className=' text-xs' >لا تتذكر كلمة المرور ؟</span></Link>
+             <button  type="submit" className="  submit-btn    rounded-2xl w-full p-5">تسجيل الدخول</button>
             </div>
           </form></div>
 
@@ -254,16 +254,16 @@ export default function SignDiv(props) {
                 <input 
                  onBlur={handleBlur}
                 type="text" id="name" name="name" value={formData.name} onChange={handleChange} className={`${!inputValidity.name ? 'invalid' : ''}`} required />
-                <label htmlFor="name" className={`${!inputValidity.name || errorMessages.name ? 'error' : ''}`}>Name</label>
-                <span className="text-red-500">{errorMessages.name}</span>
+                <label htmlFor="name" className={`${!inputValidity.name || errorMessages.name ? 'error' : ''}`}>الاسم</label>
+                <span className="text-red-500 text-sm">{errorMessages.name}</span>
               </div>
 
               <div className="mb-6">
                 <input
               onBlur={handleBlur}
                 type="email" id="email" name="email" value={formData.email} onChange={handleChange} className={`${!inputValidity.email ? 'invalid' : ''}`} required />
-                <label htmlFor="email" className={`${!inputValidity.email || errorMessages.email ? 'error' : ''} relative`}>Email</label>
-                <span className="text-red-500">{errorMessages.email}</span>
+                <label htmlFor="email" className={`${!inputValidity.email || errorMessages.email ? 'error' : ''} relative`}>البريد الالكتروني</label>
+                <span className="text-red-500 text-sm">{errorMessages.email}</span>
               </div>
 
               <div className="mb-6">
@@ -284,16 +284,16 @@ export default function SignDiv(props) {
                   dropdownStyle={{ minWidth : "300px", borderRadius:"18px", top:"100%"}}
                  
                 />
-                <label id='phonelabel' htmlFor="phoneNumber" className={`${!inputValidity.phoneNumber || errorMessages.phoneNumber ? 'error' : ''}  `}>Phone Number</label>
-                <span className="text-red-500">{errorMessages.phoneNumber}</span>
+                <label id='phonelabel' htmlFor="phoneNumber" className={`${!inputValidity.phoneNumber || errorMessages.phoneNumber ? 'error' : ''}  `}>رقم الموبايل</label>
+                <span className="text-red-500 text-sm">{errorMessages.phoneNumber}</span>
               </div>
 
               <div className="mb-6">
                 <input 
                  onBlur={handleBlur}
                 type="password" id="password" name="password" value={formData.password} onChange={handleChange} className={`${!inputValidity.password ? 'invalid' : ''}`} required />
-                <label htmlFor="password" className={`${!inputValidity.password || errorMessages.password  ? 'error' : ''}`}>Password</label>
-                <span className="text-red-500">{errorMessages.password}</span>
+                <label htmlFor="password" className={`${!inputValidity.password || errorMessages.password  ? 'error' : ''}`}>كلمة المرور</label>
+                <span className="text-red-500 text-sm">{errorMessages.password}</span>
               </div>
 
               <button type="submit" className="  submit-btn  py-5 w-full  rounded-2xl mb-4 ">انشاء الحساب</button>

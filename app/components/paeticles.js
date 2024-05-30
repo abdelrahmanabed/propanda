@@ -89,7 +89,7 @@ class Particlesjs extends React.Component {
                 
               },
             size: {
-              value: { min: 5, max: 30},
+              value: { min: 5, max: 50},
             },
           },
           detectRetina: true,

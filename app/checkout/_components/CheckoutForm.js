@@ -35,7 +35,7 @@ function CheckoutForm({amount}) {
 			setLoading(false)
 			setErrorMessage(error.message)
 		}
-
+  
     const { error: submitError } = await elements.submit();
  if (submitError) {
 			handleError(submitError);
@@ -49,8 +49,10 @@ function CheckoutForm({amount}) {
           amount: amount
         })
       })
+
       const clientSecret = await res.json()
-  
+      afterPay()
+
       const result = await stripe.confirmPayment({
         elements,
         clientSecret,
@@ -60,18 +62,15 @@ function CheckoutForm({amount}) {
       });
       
       if (res){
-        await axios.put(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/courses`, { cartItems });
-        await axios.delete(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/cart`);
-  
-        // Clear the cartItems in local state and localStorage
-        clearCart();
+      
       }
       if (result.error) {
         setErrorMessage(result.error.message);
       
       } else {
-       
+
       }
+
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
@@ -80,6 +79,26 @@ function CheckoutForm({amount}) {
 
     }
   };
+  const afterPay = async()=>{
+    // let productIds = [];
+		// cartItems.forEach(el => {
+		// 	productIds.push(el)
+		// })
+		// const data = {
+		// 	data: {
+		// 		email: user.primaryEmailAddress.emailAddress,
+		// 		username: user.fullName,
+		// 		amount,
+		// 		products: productIds
+		// 	}
+		// }
+    await axios.put(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/courses`, { cartItems });
+    await axios.delete(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/cart`);
+
+    // Clear the cartItems in local state and localStorage
+    clearCart();
+  }
+
   return (
     <div className=' flex justify-center'>
    
