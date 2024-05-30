@@ -9,7 +9,6 @@ const MobileSearch = (props) => {
     const [searchValue, setSearchValue] = useState('');
     const [seeIt, setSeeIt] = useState( true);
     const searchRef = useRef(null); // Ref for the search container
-
     const [searchResults, setSearchResults] = useState([]);
     const inputRef = useRef(null);
     const router = useRouter();

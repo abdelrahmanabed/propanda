@@ -10,6 +10,7 @@ import  CryptoJS from 'crypto-js';
 import 'react-phone-input-2/lib/style.css'
 import { useSearchParams } from 'next/navigation';
 import { useCart } from './CartContext';
+import Loading from './loading';
 export default function SignDiv(props) {
   const {cartItems, setCartItems} = useCart()
   const searchParams = useSearchParams()
@@ -23,7 +24,7 @@ export default function SignDiv(props) {
   const [supvis, setSupvis] = useState(false);
   const [showSignDiv, setShowSignDiv] = useState(true);
   const [cookies, setCookie] = useCookies(['token', 'encryptedUserId', 'encryptedName']);
-
+  const [loading, setLoading] = useState(false)
   const [linputValidity, setLinputValidity] = useState({
     email: true,
     password: true,
@@ -56,6 +57,7 @@ export default function SignDiv(props) {
     }));
   };
   const handlelSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/login`, { ...lformData, cartItems });
@@ -78,6 +80,7 @@ export default function SignDiv(props) {
         localStorage.setItem('cartItems', JSON.stringify(cart || []));
 
         localStorage.setItem('favcourses', JSON.stringify(favCourses || []));
+        setLoading(false)
 
         if(parGet==="logintopay="){
           window.location.href = '/cart'; 
@@ -94,6 +97,7 @@ export default function SignDiv(props) {
         const { data } = error.response;
          if (data.message ) {
           setlErrorMessages(prevErrors => ({ ...prevErrors, password: data.message }));
+          setLoading(false)
         }
       }
     }
@@ -172,6 +176,7 @@ export default function SignDiv(props) {
     }
   };
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/register`, { ...formData, cartItems });
@@ -196,7 +201,7 @@ export default function SignDiv(props) {
         password: '',
         phoneNumber: '',
       });
-      
+       setLoading(false)
       if(parGet==="logintopay="){
         window.location.href = '/cart'; 
 
@@ -209,8 +214,11 @@ export default function SignDiv(props) {
         const { data } = error.response;
         if (data.message && data.message.includes('بريد')) {
           setErrorMessages(prevErrors => ({ ...prevErrors, email: data.message }));
+          setLoading(false)
         } else if (data.message && data.message.includes('الرقم') ) {
           setErrorMessages(prevErrors => ({ ...prevErrors, phoneNumber: data.message }));
+          setLoading(false)
+
         }
       }
     }
@@ -243,7 +251,7 @@ export default function SignDiv(props) {
             </div>
             <div className=' bg  flex-col flex justify-between gap-3 '>
              <Link href='' ><span className=' text-xs' >لا تتذكر كلمة المرور ؟</span></Link>
-             <button  type="submit" className="  submit-btn    rounded-2xl w-full p-5">تسجيل الدخول</button>
+             <button  type="submit" className="  submit-btn    rounded-2xl w-full p-5">  {loading ? <Loading/> :"تسجيل الدخول"}</button>
             </div>
           </form></div>
 
@@ -296,7 +304,7 @@ export default function SignDiv(props) {
                 <span className="text-red-500 text-sm">{errorMessages.password}</span>
               </div>
 
-              <button type="submit" className="  submit-btn  py-5 w-full  rounded-2xl mb-4 ">انشاء الحساب</button>
+              <button type="submit" className="  submit-btn  py-5 w-full  rounded-2xl mb-4 "> {loading ? <Loading/> :"انشاءالحساب "}</button>
             </form>
           </div>
       </div>

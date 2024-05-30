@@ -4,6 +4,7 @@ import axios from 'axios'; // Import Axios
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Loading from './loading';
 
 const SearchInput = (props) => {
     const [isSearchVisible, setIsSearchVisible] = useState(false);
@@ -67,7 +68,8 @@ const SearchInput = (props) => {
     };
     const handleShowResults = () => {
         setIsSearchVisible(false);
-                router.push(`/search/data?q=${searchValue}`);
+                router.push(`/search/data?q=${searchValue}`)
+
     };
 
     return (
@@ -106,7 +108,7 @@ const SearchInput = (props) => {
                         <p>{searchValue}</p>
                     )}
 
-<button onClick={handleShowResults} className='searchRbtn  p-3 rounded-2xl'>عرض النتائج</button>                </div>
+<button onClick={handleShowResults} className='searchRbtn  p-3 rounded-2xl'> عرض النتائج </button>                </div>
             )}
         </>
     );

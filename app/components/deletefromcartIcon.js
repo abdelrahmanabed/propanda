@@ -5,8 +5,10 @@ import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useCart } from './CartContext';
+import Loading from './loading';
 const DeletefromcartIcon = (props) => {
     const [showDMessage, setShowDMessage] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 const {removeFromCart} = useCart()
 
@@ -15,6 +17,7 @@ const {removeFromCart} = useCart()
 
       
     const handleCartClick = async () => {
+        setLoading(true)
         try {
             const token = Cookies.get('token');
             if (token) {
@@ -42,6 +45,7 @@ const {removeFromCart} = useCart()
                             setShowDMessage(false);
                         }, 1000);
                         removeFromCart(props.courseId) // Callback to parent component
+                        setLoading(false)
 
             } 
                 }
@@ -51,6 +55,7 @@ const {removeFromCart} = useCart()
                     setShowDMessage(false);
                 }, 1000);
                 removeFromCart(props.courseId) // Callback to parent component
+                setLoading(false)
 
             }
         } catch (error) {
@@ -65,10 +70,10 @@ const {removeFromCart} = useCart()
             className={`
  rounded-2xl clicked duration-300 flex justify-center w-8 h-8 items-center  ${ props.className}   `}
         >
-            <RiDeleteBin6Line
+          { loading? <Loading/> :  <RiDeleteBin6Line
                
                 currentState={props.currentState}
-            />
+            />}
 
         </div>
         {showDMessage &&  <div className="messageyes flex flex-col justify-center items-center duration-500 fixed p-3 text-xl md:text-3xl rounded-2xl "><RiDeleteBin6Line /> <span >تم ازالته من السلة</span></div>}

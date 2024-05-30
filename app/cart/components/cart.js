@@ -8,46 +8,41 @@ import Totalprice from "./totalprice";
 import { useRouter } from "next/navigation";
 import CryptoJS from 'crypto-js';
 import jwt from 'jsonwebtoken';
+import Loading from "../../components/loading";
 
 const Cart = () => {
   const router = useRouter()
   const [courses , setCourses] = useState([])
   const [decryptedUserId , setdecryptedUserId] = useState()
   const [jwtUserId , setjwtUserId] = useState()
+  const [loading , setLoading] = useState(false)
   const[ messageShow,  setMessegeShow] = useState(false)
     const{cartItems} = useCart()
     useEffect(() => {
-      const token = Cookies.get('token');
-      const encryptedUserId = Cookies.get('encryptedUserId');
+      setLoading(true)
+      const fetchData = async () => {
+        const token = Cookies.get('token');
+        const encryptedUserId = Cookies.get('encryptedUserId');
   
-    if (encryptedUserId && token){
-      const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
-      const decodedToken = jwt.decode(token);
-      const userId = decodedToken.userId;
-      setjwtUserId(userId)
-      setdecryptedUserId(decryptedId)
-    }
-    
-     
-    }, []);
-// Fetch courses from the server
- useEffect(()=>{ 
-   const  getCart= async()=>{
-           
-
-const response = await fetchCourses()
- 
-         if (response){ const courses = response.filter(course => cartItems.includes(course._id));
-            setCourses(courses)}
-            
-            
-    }
- 
-    getCart()
-      
-   
- 
- },[cartItems])
+        if (encryptedUserId && token) {
+          const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+          const decodedToken = jwt.decode(token);
+          const userId = decodedToken.userId;
+          setjwtUserId(userId);
+          setdecryptedUserId(decryptedId);
+        }
+  
+        const response = await fetchCourses();
+  
+        if (response) {
+          const courses = response.filter(course => cartItems.includes(course._id));
+          setCourses(courses);
+          setLoading(false)
+        }
+      };
+  
+      fetchData();
+    }, [cartItems]);
 
  const totalPrice = courses.reduce((acc, course) => acc + course.price, 0);
 
@@ -71,7 +66,9 @@ const handlepay = ()=>{
       <div className=" flex justify-center w-full h-96 items-center paylogin ">سجل الدخول لاكمال عملية الشراء</div>
       :
       <>  <span className=" text-xs font-bold">في السلة عدد { cartItems.length} كورس</span>
- <div id={"cartContainer"} className={` ${ courses.length < 1 ?" justify-center items-center":"flex-col md:grid md:grid-cols-2 lg:grid-cols-3 flex-wrap  "} flex flex-1  gap-3 `}>
+{ 
+
+<div id={"cartContainer"} className={` ${ courses.length < 1 ?" justify-center items-center":"flex-col md:grid md:grid-cols-2 lg:grid-cols-3 flex-wrap  "} flex flex-1  gap-3 `}>
 
       { courses.length>0? courses.map((course) => (
           <div key={course._id} 
@@ -100,10 +97,10 @@ const handlepay = ()=>{
               />
               
           </div>
-      )): <span>لا يوجد اي دورات تعليمية في السلة</span> }
+      )): loading? <Loading/> : <span>لا يوجد اي دورات تعليمية في السلة</span> }
 
 
-      </div>{ courses.length>0 &&<div className=" flex flex-col p-3 items-center justify-center gap-3 cartNavPricep bottom-0  left-0 w-full  rounded-2xl font-bold min-h-32 "> 
+      </div>}{ courses.length>0 &&<div className=" flex flex-col p-3 items-center justify-center gap-3 cartNavPricep bottom-0  left-0 w-full  rounded-2xl font-bold min-h-32 "> 
 <span className=" font-normal text-sm">السعر الكلي </span> 
 <Totalprice courses={courses}/>
 <button onClick={handlepay} id="paybutton" className=" p-3 rounded-2xl w-full md:w-32" >شراء</button>
