@@ -120,7 +120,7 @@ body{
 #header {
     left: 50%;transform: translateX(-50%);
     &.bt {
-        background-color: $dark-colour;
+        background-color: $bgc-colour;
         width: calc(100% - 24px);
             max-width: 2000px;
         
@@ -1289,12 +1289,12 @@ max-width: 420px;}
     min-height: 700px;
 
 }
-#favscomp {
+#favscomp,#mycoursescomp {
     border-radius: $border;
-    z-index: 152;
     transition: 0.4s;
 
 }
+
 #cartcompdiv {
     border-radius: $border;
     background-color: $sub-color;

@@ -12,41 +12,26 @@ const FavsCom = () => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-      // Fetch favorite courses from internal storage or API
-    setLoading(true)
-      const fetchFavCourses = async () => {
+        const fetchFavCoursesAndCourses = async () => {
+          setLoading(true);
           try {
-              // Assuming you have stored fav courses IDs in localStorage or fetched from an API
-              const favCourseIds = await JSON.parse(localStorage.getItem('favcourses')) || [];
-              setFavCourses(favCourseIds);
-
-              console.log({"setFavCourses": favCourses})
-          } catch (error) {
-              console.error('Error fetching favorite courses:', error);
-          }
-      };
-      fetchFavCourses();
-  }, []);
-
-  useEffect(() => {
-    setLoading(true)
-
-    // Fetch courses from the server
-    const fetchCourses = async () => {
-        try {
+            // Fetch favorite courses
+            const favCourseIds = JSON.parse(localStorage.getItem('favcourses')) || [];
+            setFavCourses(favCourseIds);
+    
+            // Fetch all courses
             const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
-            
-            const filteredCourses = await response.data.filter(course => favCourses.includes(course._id));
-
+            const filteredCourses = response.data.filter(course => favCourseIds.includes(course._id));
             setCourses(filteredCourses);
-            setLoading(false)
-
-        } catch (error) {
-            console.error('Error fetching courses:', error);
-        }
-    };
-    fetchCourses();
-}, [favCourses]);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchFavCoursesAndCourses();
+      }, []); 
   
 
     return (

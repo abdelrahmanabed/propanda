@@ -2,6 +2,7 @@
 import InfoCom from '../../components/InfoCom'
 import { usePathname, useRouter } from 'next/navigation'
 import FavsCom from '../../components/favsCom'
+import MyCourses from '../../components/MyCoursesCom'
 import { useEffect } from 'react'
 
 const Pslider = () => {
@@ -34,7 +35,7 @@ const Pslider = () => {
       {pathname === '/profile/favourites' &&
        <FavsCom/>
        }
-      {pathname === '/profile/myCourses' && <InfoCom/>}
+      {pathname === '/profile/myCourses' && <MyCourses/>}
       {pathname === '/profile/payment-options' && <InfoCom/>}
     </div>
   )
