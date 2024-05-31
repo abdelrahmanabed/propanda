@@ -25,6 +25,7 @@ export default function SignDiv(props) {
   const [showSignDiv, setShowSignDiv] = useState(true);
   const [cookies, setCookie] = useCookies(['token', 'encryptedUserId', 'encryptedName']);
   const [loading, setLoading] = useState(false)
+  const [lloading, setlLoading] = useState(false)
   const [linputValidity, setLinputValidity] = useState({
     email: true,
     password: true,
@@ -57,7 +58,7 @@ export default function SignDiv(props) {
     }));
   };
   const handlelSubmit = async (e) => {
-    setLoading(true)
+    setlLoading(true)
     e.preventDefault();
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/login`, { ...lformData, cartItems });
@@ -80,7 +81,7 @@ export default function SignDiv(props) {
         localStorage.setItem('cartItems', JSON.stringify(cart || []));
 
         localStorage.setItem('favcourses', JSON.stringify(favCourses || []));
-        setLoading(false)
+        setlLoading(false)
 
         if(parGet==="logintopay="){
           window.location.href = '/cart'; 
@@ -97,7 +98,7 @@ export default function SignDiv(props) {
         const { data } = error.response;
          if (data.message ) {
           setlErrorMessages(prevErrors => ({ ...prevErrors, password: data.message }));
-          setLoading(false)
+          setlLoading(false)
         }
       }
     }
@@ -251,7 +252,7 @@ export default function SignDiv(props) {
             </div>
             <div className=' bg  flex-col flex justify-between gap-3 '>
              <Link href='' ><span className=' text-xs' >لا تتذكر كلمة المرور ؟</span></Link>
-             <button  type="submit" className={`  submit-btn   duration-300  rounded-2xl w-full `}>  {loading ?<Loading/>  :"تسجيل الدخول"}</button>
+             <button  type="submit" className={`  submit-btn   duration-300  rounded-2xl w-full `}>  {lloading ?<Loading/>  :"تسجيل الدخول"}</button>
             </div>
           </form></div>
 
