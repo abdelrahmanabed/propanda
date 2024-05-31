@@ -686,6 +686,7 @@ body #thecontainer {
   border-radius: 16px;
   min-height: 230px;
   width: 100%;
+  min-width: 288px;
 }
 #coursecomdiv #coursecdp {
   background-color: #000;
@@ -863,24 +864,27 @@ body #thecontainer {
 #ccontainer #pcontainer #pt {
   background-color: rgba(0, 255, 145, 0.3176470588);
 }
-#ccontainer #pcontainer #pli .pnumber {
+#ccontainer #pcontainer #pli .pnumber, #ccontainer #pcontainer #plidisabled .pnumber {
   background-color: rgba(0, 0, 0, 0.7568627451);
   color: white;
 }
 @media screen and (min-width: 1024px) {
-  #ccontainer #pcontainer #pli {
+  #ccontainer #pcontainer #pli, #ccontainer #pcontainer #plidisabled {
     width: 100%;
   }
 }
-#ccontainer #pcontainer #pli button {
+#ccontainer #pcontainer #pli button, #ccontainer #pcontainer #plidisabled button {
   background-color: #eeeeee;
   overflow: hidden;
 }
-#ccontainer #pcontainer #pli button span {
+#ccontainer #pcontainer #pli button span, #ccontainer #pcontainer #plidisabled button span {
   max-width: 90%;
   text-wrap: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+#ccontainer #pcontainer #plidisabled button {
+  background-color: rgba(226, 226, 226, 0.8352941176);
 }
 
 #coursevideosdivbg {

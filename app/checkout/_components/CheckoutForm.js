@@ -80,23 +80,21 @@ function CheckoutForm({amount}) {
     }
   };
   const afterPay = async()=>{
-    // let productIds = [];
-		// cartItems.forEach(el => {
-		// 	productIds.push(el)
-		// })
-		// const data = {
-		// 	data: {
-		// 		email: user.primaryEmailAddress.emailAddress,
-		// 		username: user.fullName,
-		// 		amount,
-		// 		products: productIds
-		// 	}
-		// }
-    await axios.put(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/courses`, { cartItems });
-    await axios.delete(`${ process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/cart`);
+    try {
+      const courseUpdatePromises = cartItems.map(item => {
+        return axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${item}/purchasedUsers`, { userId: decryptedUserId });
+      });
+      await courseUpdatePromises;
 
-    // Clear the cartItems in local state and localStorage
-    clearCart();
+      await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/courses`, { cartItems });
+      await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/cart`);
+    clearCart()
+    }  catch (error) {
+      console.error('Error updating purchased courses:', error);
+      setErrorMessage('An error occurred while updating purchased courses. Please try again.');
+      throw error; // Rethrow the error to propagate it up the call stack if needed
+    }
+
   }
 
   return (

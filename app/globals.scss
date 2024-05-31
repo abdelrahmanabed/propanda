@@ -771,7 +771,7 @@ body{
         border-radius: $border;
         min-height: 230px;
         width: 100%;
-        
+        min-width: 288px;
     }
     #coursecdp{
         background-color: $main-color;
@@ -965,7 +965,7 @@ top: 220px;
             
           }
         }
-        #pli{
+        #pli, #plidisabled{
             
             .pnumber{
                 background-color: $harddark;
@@ -988,6 +988,12 @@ top: 220px;
 }              
 
         }
+        #plidisabled{
+            button{
+                background-color: $dark-colour;
+            }
+        }
+
     }
 }
 #coursevideosdivbg{

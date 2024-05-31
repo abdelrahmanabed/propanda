@@ -7,7 +7,8 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import Loading from '../../components/loading';
 import Skeleton from './Skeleton';
-
+import Cookies from 'js-cookie';
+import CryptoJS from 'crypto-js';
 const Ccontainer = () => {
     const [course, setCourse] = useState({});
     const [parts, setParts] = useState([]);
@@ -21,10 +22,20 @@ const Ccontainer = () => {
       const [expandedSectionIndex, setExpandedSectionIndex] = useState(-1);
     
       const  {_id} = useParams()
+      const [hasPurchased, setHasPurchased] = useState(false);
 
     const [authorName, setAuthorName] = useState("")
     const [authorImage, setAuthorImage] = useState(null)
     const [courseImage, setcourseImage] = useState(null)
+    const [decryptedUserId, setDecryptedUserId] = useState(null);
+
+  useEffect(() => {
+    const encryptedUserId = Cookies.get('encryptedUserId');
+    if (encryptedUserId) {
+      const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+      setDecryptedUserId(decryptedId);
+    }
+  }, []);
     const handleButtonClick = (videoId) => {
         const selectedVideo = videos.find((video) => video._id === videoId);
         if (selectedVideo) {
@@ -90,7 +101,25 @@ const Ccontainer = () => {
         slides: { perView: "auto", spacing: 10 },
         
       })
-      
+      useEffect(() => {
+        const fetchPurchaseStatus = async () => {
+          console.log('sdfsd', decryptedUserId)
+        if( decryptedUserId !==null && _id !== null){   try {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/checkPurchaseStatus`, {
+              userId: decryptedUserId,
+              courseId : _id,
+            });
+            setHasPurchased(response.data.hasPurchased);
+            console.log('sdfvdlbdffsd', response.data.hasPurchased)
+
+          } catch (error) {
+            console.error('Error checking purchase status', error);
+          }}
+       
+        };
+            fetchPurchaseStatus();
+
+      }, [_id, decryptedUserId]);
   return (<> <div id='ccontainer' className='   flex-col flex gap-3 m-3 p-3'>
   <span className='m-3'>محتويات الدورة التعليمية</span>
   <Suspense fallback={<Skeleton/>}>{course.parts && course.parts.map((part, index) => (
@@ -100,8 +129,8 @@ const Ccontainer = () => {
       <div onClick={() => handleViewContent(index)} id='pt' className=' p-3 flex items-center gap-3 rounded-2xl justify-between'><div className='flex items-center gap-3'><span className="pnumber h-8 w-8 min-w-8 flex justify-center items-center rounded-full">{index+1}</span>  <h1 className=' text-black'>{part.title}</h1></div>  <FaAngleDown className='faangledown'/></div>
       <ul className={`' ' ${expandedSectionIndex === index ? 'open p-3' : 'max-h-0   overflow-hidden'}   duration-500 flex flex-col lg:grid  lg:grid-cols-2 xl:grid-cols-3 gap-2 rounded-3xl `} id='pul'>
       { part.videos.map((video, videoIndex) => (
-
-      <li key={video._id} id='pli' className=' w-full '>
+       ( video.free || hasPurchased) ?
+    (  <li key={video._id} id='pli' className=' w-full '>
         <button   onClick={(e) =>{ handleButtonClick(video._id)
         setCurrentPart(part)}
         }  className={` ${expandedSectionIndex === index ? "max-h-96 p-3":"max-h-0   overflow-hidden"} flex flex-col gap-3 duration-500 rounded-2xl w-full ' `}id='pbtn'>
@@ -113,7 +142,20 @@ const Ccontainer = () => {
         
          </div>
          <span className=' self-end text-xs'>{formatDuration(video.duration)}</span> </button>
-      </li>
+      </li>) : (
+       <li key={video._id} id='plidisabled' className=' w-full '>
+       <button   
+        className={` ${expandedSectionIndex === index ? "max-h-96 p-3":"max-h-0   overflow-hidden"} flex flex-col gap-3 duration-500 rounded-2xl w-full ' `}id='pbtn'>
+        
+       <div className='flex items-start w-full  gap-3'>
+         <span className="pnumber h-8 w-8 min-w-8 flex justify-center items-center rounded-full">
+           {videoIndex +1}</span>
+        <span>{ video.title}</span>
+       
+        </div>
+        <span className=' self-end text-xs'>{formatDuration(video.duration)}</span> </button>
+     </li>
+      )
   ))}
 
       
