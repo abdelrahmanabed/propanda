@@ -73,8 +73,12 @@ const getInstructorInfoForCard = async () => {
     </Link> 
  
            <div className='absolute w-full cxdiv px-3 flex gap-3'> 
-{ hasPurchased? <MdDone className=' MdDone text-7xl h-16 rounded-full w-20 p-3 drop-shadow-lg bg-black  font-black '/>:       <Bookmarkicon courseId={props.courseId}  className=" cbtn  h-16 w-full p-2 "/>
-}              <CartIcon courseId={props.courseId} className=" cbtn justify-center items-center  bottom-6 left-6 p-2 h-16 w-full "/>
+{ hasPurchased?
+ <MdDone className=' MdDone text-7xl h-16 rounded-full w-20 p-3 drop-shadow-lg bg-black  font-black '/>
+ : <CartIcon courseId={props.courseId} className=" cbtn justify-center items-center  bottom-6 left-6 p-2 h-16 w-full "/>
+   
+}  <Bookmarkicon courseId={props.courseId}  className=" cbtn  h-16 w-full p-2 "/>
+            
 </div>     
   </div></Suspense>
   )
