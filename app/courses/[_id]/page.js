@@ -84,37 +84,8 @@ const CourseDuration = ({ duration }) => {
 )}        <span id='cda' className=' text-lg'> {author.name}</span>
       </div>      
       <Suspense fallback={<div>...loading</div>}>
-    <PriceDiv video={`${process.env.NEXT_PUBLIC_PORT}/${course.parts[0].videos[0].videoPath.replace(/\\/g, '/')}`} coursephoto={`${process.env.NEXT_PUBLIC_PORT}/${course.photo.replace(/\\/g, '/')}`}>
- 
-
-       <div className=' w-full gap-3 flex'>
-        <span id='cdp' className='w-32 flex justify-center font-medium text-2xl'><span className=' text-sm flex items-end font-normal'>EGP</span> {course.price} </span>
-       <Bookmarkicon className="courseDet" courseId={course._id}/>
-       </div> 
-        <button id='cdadd' className='  relative w-full flex overflow-hidden' >
-          
-          <CartIcon className='flex  courseDet bg-opacity-0 justify-center items-start md:p-6 pt-6 h-28  w-full' courseId={course._id}/>
-          <span  className=' absolute right-1/2 translate-x-1/2  bottom-6   ' >اضف الى السلة</span>
-        
-        
-        </button>  
-       
-       
-        <div id='courseContent' className='hidden  md:w-full md:grid md:grid-cols-2 rounded-2xl gap-4'>
-      {course.content && course.content.courseDuration && (
-  <CourseDuration duration={course.content.courseDuration} />
-)}  
-      {course.content && course.content.numberOfArticles && (
-<label className=' flex flex-col items-center justify-center  font-semibold text-sm'><span className=' text-xs font-normal'>عدد المقالات</span> {course.content.numberOfArticles} </label>
-)}  
-     {course.content && course.content.numberOfVideos && (
-<label className='flex flex-col items-center justify-center  font-semibold text-sm'><span className=' text-xs font-normal'>عدد الدروس</span> {course.content.numberOfVideos} </label>
-)}  
-     {course.content && course.content.numberOfParts && (
-<label className='flex flex-col items-center justify-center  font-semibold text-sm'><span className=' text-xs font-normal'>عدد الاقسام</span> {course.content.numberOfParts} </label>
-)}  
-
-    </div></PriceDiv> </Suspense>
+    <PriceDiv video={`${process.env.NEXT_PUBLIC_PORT}/${course.parts[0].videos[0].videoPath.replace(/\\/g, '/')}`} coursephoto={`${process.env.NEXT_PUBLIC_PORT}/${course.photo.replace(/\\/g, '/')}`} course={course}/>
+  </Suspense>
       
 
 

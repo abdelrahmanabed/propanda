@@ -7,9 +7,11 @@ $main_color2: #ffffff;
 $sub_color: #eeeeee;
 $sub_color2: #58fdb570;
 $background: #00ffae7b;
-$bg-colour: #58fdb587;
+$bg-colour: #d2d2d2db;
 $bgc-colour: #ffffffad;
-$dark-colour: #acacacd5;
+$bgc-colour0: #91919171;
+
+$dark-colour: #70707076;
 $main-btn:#00ffae;
 $dark-btn:#008d5e;
 $background-color: #a3d9ff;
@@ -18,7 +20,7 @@ $border:16px;
 $sub_btn:#00ffae;
 $input:#cfcfcf95;
 $wall:#a4fffa;
-$dark_sub:#008d5e;
+$dark_sub:#00875a;
 $gray : #ffffff;
 $semidark:#5a5a5a57;
 $harddark: #000000c1;
@@ -1003,7 +1005,7 @@ top: 220px;
 
     @media screen and (min-width: 1200px) {
        width: 100%;
-            background: $dark-colour;
+            background: $bgc-colour;
             z-index: 199;
 
         }
@@ -1015,7 +1017,7 @@ top: 220px;
     height: 100%;
     z-index: 200;
     background: $bgc-colour;
-    #closecoursevideosdiv{ background-color: $dark-colour;
+    #closecoursevideosdiv{ background-color: $bgc-colour;
         height:  32px;
         width: 32px;
         border-radius: $border;
@@ -1032,8 +1034,8 @@ top: 220px;
     @media screen and (min-width: 1200px) {
         max-width: 1200px;
         backdrop-filter: none;
-        background: transparent;
         left: 50%;
+        background-color: transparent;
         transform: translateX(-50%);
         }
      p.notice{
@@ -1047,7 +1049,7 @@ top: 220px;
     }
 }
 #ovdiv{
- background-color: $dark-colour;
+ background-color: $bgc-colour0;
  border-radius: $border;
  max-height:100%;
   @media screen and (min-width: 1024px) {
@@ -1063,16 +1065,18 @@ max-width: 420px;}
 }
 .pinvideodiv{
     span{
-        color: $harddark;   
+        color: $bgc-colour0;   
 
         }
         .thebtn{
             background-color: $main-btn;
             color: $harddark;
             font-weight: bold;
+            span{
+            }
         }
     .fatimes{
-        background-color: $bg-colour;
+        background-color: $bgc-colour0;
         color: $harddark;
         border-radius: $border;
         padding: 4px;
@@ -1081,12 +1085,12 @@ max-width: 420px;}
     border-radius: $border;
     scrollbar-width:0;
     transition: 0.4s;
-    &.open{    background-color: $dark-colour ;
+    &.open{    background-color: $bgc-colour0 ;
         .thebtn{
             color: white;
             background-color: transparent;
         }
-        span{
+        span{ 
             }
 .pinvideo{
     
@@ -1101,7 +1105,7 @@ max-width: 420px;}
         background-color: $main-btn;
         color: $harddark;
         span{
-            color:  black;
+            color:  rgb(0, 0, 0);
        }
     }
 }

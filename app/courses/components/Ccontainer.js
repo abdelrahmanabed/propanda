@@ -30,7 +30,21 @@ const Ccontainer = () => {
     const [authorImage, setAuthorImage] = useState(null)
     const [courseImage, setcourseImage] = useState(null)
     const [decryptedUserId, setDecryptedUserId] = useState(null);
-
+    const handlePartClick = (part) => {
+      const firstVideo = part.videos[0];
+      let videoToSet = null;
+  
+      if (hasPurchased) {
+        videoToSet = firstVideo;
+      } else {
+        const freeVideo = part.videos.find((video) => video.free);
+        videoToSet = freeVideo || course.parts[0].videos[0] ;
+      }
+  
+      setCurrentVideo(videoToSet);
+      setVideos(part.videos);
+      setCurrentPart(part);
+    };
   useEffect(() => {
     const encryptedUserId = Cookies.get('encryptedUserId');
     if (encryptedUserId) {
@@ -105,14 +119,12 @@ const Ccontainer = () => {
       })
       useEffect(() => {
         const fetchPurchaseStatus = async () => {
-          console.log('sdfsd', decryptedUserId)
         if( decryptedUserId !==null && _id !== null){   try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/checkPurchaseStatus`, {
               userId: decryptedUserId,
               courseId : _id,
             });
             setHasPurchased(response.data.hasPurchased);
-            console.log('sdfvdlbdffsd', response.data.hasPurchased)
 
           } catch (error) {
             console.error('Error checking purchase status', error);
@@ -155,7 +167,7 @@ const Ccontainer = () => {
         <span>{ video.title}</span>
        
         </div>
-        <IoIosLock className=" self-end text-3xl " /> </button>
+        <IoIosLock className=" self-end text-3xl after absolute left-3 bottom-3 " /> </button>
      </li>
       )
   ))}
@@ -190,9 +202,9 @@ const Ccontainer = () => {
        </div>         
    
        <div id='ovdiv' className=' md:mt-12 p-3 md:min-w-72 lg:min-w-96 md:max-w-72 lg:max-w-96 relative  overflow-y-auto flex-1 md:flex-auto flex flex-col gap-3 '>
-    <span >جميع videos هذا الجزء </span>
+    <span className="  text-black " >جميع videos هذا الجزء </span>
        {videos.map((video, index) => (
-     <button id='ovideobutton'
+               ( video.free || hasPurchased) ? (   <button id='ovideobutton'
        key={video._id} 
        onClick={()=>setCurrentVideo(video)} 
        className={`bg-stone-700 relative p-3 rounded-2xl flex lg:flex-col justify-between ${currentVideo && currentVideo._id === video._id ? 'current' : ''}`}
@@ -204,7 +216,21 @@ const Ccontainer = () => {
        
    
        <p className=' lg:self-end self-center '>{formatDuration(video.duration)}</p>
-     </button>
+     </button>):(
+     
+     <button id='ovideobutton'
+       key={video._id} 
+       className={`bg-stone-300 relative p-3 rounded-2xl flex lg:flex-col justify-between ${currentVideo && currentVideo._id === video._id ? 'current' : ''}`}
+     >
+       <div className=' items-center flex gap-3'>
+         <span className=' bg-black flex justify-center items-center text-white rounded-full min-w-8 h-8'>{index+1}</span>
+         
+         <p className=" text-black">{video.title}</p></div>
+       
+         <IoIosLock className=" self-end text-3xl  text-black  " />
+
+     </button>)
+  
    ))}
            
    
@@ -215,15 +241,11 @@ const Ccontainer = () => {
    <span className={`text-white thebtn cursor-pointer rounded-full ${viewcontent?"w-fit hidden ":"p-5 "}`} onClick={ handleViewPs} >قائمة الاجزاء</span>
    {viewcontent && 
     
-    <div ref={sliderRef} className="keen-slider">
+    <div ref={sliderRef} className="keen-slider rounded-xl">
           {course.parts.map((part, partIndex)=>(
           <button key={partIndex}
-          onClick={()=>{
-           const video = part.videos[0]
-         setCurrentVideo(video)
-         setVideos(part.videos)
-         setCurrentPart(part)
-         }} 
+          onClick={()=> handlePartClick(part)} 
+ 
          style={{ maxWidth: "18rem"  }}
          className={`keen-slider__slide   ${currentPart._id === part._id && "current"} gap-2 pinvideo p-3 flex  items-center min-w-fit max-w-72 overflow-hidden  text-wrap  `}>
            <span className=' flex h-8 min-w-8 bg-zinc-500 justify-center items-center text-sm rounded-full '>{partIndex+1}</span>
@@ -241,12 +263,7 @@ const Ccontainer = () => {
            
           {course.parts.map((part, partIndex)=>(
           <button key={partIndex}
-          onClick={()=>{
-           const video = part.videos[0]
-         setCurrentVideo(video)
-         setVideos(part.videos)
-         setCurrentPart(part)
-         }} 
+          onClick={()=> handlePartClick(part)} 
          style={{ maxWidth: "18rem"  }}
          className={`keen-slider__slide   ${currentPart._id === part._id && "current"} gap-2 pinvideo p-3 flex  items-center min-w-fit max-w-72 overflow-hidden  text-wrap  `}>
            <span className=' flex h-8 min-w-8 bg-zinc-500 justify-center items-center text-sm rounded-full '>{partIndex+1}</span>
