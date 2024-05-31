@@ -21,12 +21,6 @@ const PriceDiv = (props) => {
   const coursePromo = useRef(null);  
    const { viewPreview, togglePreview, setViewPreview } = useVideo();
    const [decryptedUserId, setDecryptedUserId] = useState(null);
-
-   const CourseDuration = ({ duration }) => {
-    // Check if duration is available
-    if (duration === undefined) {
-      return null; // or you can return a placeholder, or an error message
-    }
     useEffect(() => {
       const encryptedUserId = Cookies.get('encryptedUserId');
       if (encryptedUserId) {
@@ -51,6 +45,12 @@ const PriceDiv = (props) => {
           fetchPurchaseStatus();
 
     }, []);
+   const CourseDuration = ({ duration }) => {
+    // Check if duration is available
+    if (duration === undefined) {
+      return null; // or you can return a placeholder, or an error message
+    }
+
     // Calculate hours and minutes
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
