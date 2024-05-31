@@ -50,7 +50,7 @@ const PriceDiv = (props) => {
       };
           fetchPurchaseStatus();
 
-    }, [_id, decryptedUserId]);
+    }, []);
     // Calculate hours and minutes
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
