@@ -16,7 +16,7 @@ const MobileNav = (props) => {
 <nav id='navdivmobile' className="flex flex-col gap-2 relative  z-40">
   <div className=' flex gap-2 items-center'><Link href="/courses" className=' navmlink rounded-2xl flex flex-col items-center gap-3 w-1/3 ' ><BiSolidCategoryAlt  className='text-4xl '/><span className=' '>الاقسام</span> </Link>
 <Link href="/instructors" className='navmlink rounded-2xl flex flex-col items-center gap-3 w-1/3  '> <GiTeacher  className=' text-4xl'/> <span className=' '>المحاضرين</span></Link>
-<Link href="/pathways" className='navmlink rounded-2xl flex flex-col items-center gap-3 w-1/3  '> <TbSitemap  className=' text-4xl'/> <span className=' '>مسارات التعلم</span></Link></div>
+</div>
 <div className=' flex gap-2 items-center'>
   <Link href="/category/programming" className=' navmlink2 rounded-3xl flex flex-col items-center gap-3 w-1/3 ' ><BiCodeCurly className=' text-4xl'/><span className=' '>البرمجة</span> </Link>
 <Link href="/category/designing" className='navmlink2 rounded-2xl flex flex-col items-center gap-3 w-1/3  '> <IoIosBrush className=' text-4xl'/> <span className=' '>التصميم</span></Link>
