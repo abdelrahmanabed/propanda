@@ -82,7 +82,7 @@ ref={priceDivRef}
          <button className='   w-full h-44 hidden md:block right-1/2 overflow-hidden rounded-2xl ' onClick={togglePreview}>
            <div className='w-full h-full relative  flex justify-center items-center '>
             <FaPlay className=' faplay absolute top-1/2  left-1/2 -translate-y-1/2 -translate-x-1/2 z-20  rounded-2xl'/> 
-        <Image className='w-full '  width={500} height={500} src={props.coursephoto}/>
+        <Image className='w-full  min-h-full'  width={500} height={500} src={props.coursephoto}/>
                   <span className='  z-50 md:hidden'> الفيديو العام </span>
 
 </div></button>     

@@ -1,4 +1,6 @@
 'use client'
+import { IoIosLock } from "react-icons/io";
+
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import React, { Suspense, useEffect, useState } from 'react'
@@ -143,17 +145,17 @@ const Ccontainer = () => {
          </div>
          <span className=' self-end text-xs'>{formatDuration(video.duration)}</span> </button>
       </li>) : (
-       <li key={video._id} id='plidisabled' className=' w-full '>
+       <li key={video._id} id='plidisabled' className=' w-full  '>
        <button   
-        className={` ${expandedSectionIndex === index ? "max-h-96 p-3":"max-h-0   overflow-hidden"} flex flex-col gap-3 duration-500 rounded-2xl w-full ' `}id='pbtn'>
+        className={` ${expandedSectionIndex === index ? "max-h-96  p-3":"max-h-0   overflow-hidden"} relative  flex flex-row justify-between gap-3 duration-500 rounded-2xl w-full ' `}id='pbtn'>
         
-       <div className='flex items-start w-full  gap-3'>
+       <div className='flex items-start  gap-3'>
          <span className="pnumber h-8 w-8 min-w-8 flex justify-center items-center rounded-full">
            {videoIndex +1}</span>
         <span>{ video.title}</span>
        
         </div>
-        <span className=' self-end text-xs'>{formatDuration(video.duration)}</span> </button>
+        <IoIosLock className=" self-end text-3xl " /> </button>
      </li>
       )
   ))}

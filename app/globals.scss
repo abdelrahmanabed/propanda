@@ -9,7 +9,7 @@ $sub_color2: #58fdb570;
 $background: #00ffae7b;
 $bg-colour: #58fdb587;
 $bgc-colour: #ffffffad;
-$dark-colour: #e2e2e2d5;
+$dark-colour: #acacacd5;
 $main-btn:#00ffae;
 $dark-btn:#008d5e;
 $background-color: #a3d9ff;
@@ -990,8 +990,10 @@ top: 220px;
         }
         #plidisabled{
             button{
+                height: 84px;
                 background-color: $dark-colour;
             }
+
         }
 
     }
