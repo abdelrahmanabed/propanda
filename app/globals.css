@@ -549,6 +549,7 @@ body #thecontainer {
   height: 120px;
   justify-content: center;
   color: #000;
+  width: 100%;
 }
 
 .navmlink2 {
