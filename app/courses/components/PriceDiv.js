@@ -44,7 +44,7 @@ const PriceDiv = (props) => {
       };
           fetchPurchaseStatus();
 
-    }, []);
+    }, [_id, decryptedUserId]);
    const CourseDuration = ({ duration }) => {
     // Check if duration is available
     if (duration === undefined) {
