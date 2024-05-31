@@ -32,7 +32,7 @@ const Usernav = (props) => {
 
            <span className='text-xs'>الملف الشخصي</span> 
         </Link>
-        <Link href={"/profile/info"} className=' usernavlink flex flex-col w-full h-32 md:w-28 md:h-28 justify-center items-center gap-3 p-3'>
+        <Link href={"/profile/myCourses"} className=' usernavlink flex flex-col w-full h-32 md:w-28 md:h-28 justify-center items-center gap-3 p-3'>
         <BsFillCollectionPlayFill   className='text-3xl'/>
 
            <span className='text-xs'>كورساتي</span> 

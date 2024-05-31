@@ -2,8 +2,7 @@
 import { IoMdCheckmark } from "react-icons/io";
 import { FaCircle } from "react-icons/fa6";
 import Image from 'next/image';
-import Bookmarkicon from '../../components/bookmarkicon';
-import CartIcon from '../../components/carticon';
+
 import PriceDiv from '../components/PriceDiv';
 import Ccontainer from '../components/Ccontainer';
 import Skeleton from '../components/Skeleton';
@@ -51,7 +50,7 @@ const CourseDuration = ({ duration }) => {
     try {
         // Fetch author data
         if (course.author) {
-          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`, { cache: 'force-cache' });
+          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`);
           const authorData = authorResponse.json();
           return authorData
         }

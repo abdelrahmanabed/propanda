@@ -41,7 +41,7 @@ const Page = async ({searchParams}) => {
     };
     const fetchFCourses = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`, { cache: 'force-cache' });
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`);
 
        const fCourses = response.json()
        
