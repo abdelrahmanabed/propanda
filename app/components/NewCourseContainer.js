@@ -1,6 +1,8 @@
 import "keen-slider/keen-slider.min.css"
-import Course from "./course";
-import Keenslider from "./Keenslider";
+import dynamic from 'next/dynamic';
+const Course = dynamic(() => import("./course"), { ssr: false });
+const Keenslider = dynamic(() => import("./Keenslider"), { ssr: false });
+
 
 
 const NewCourseContainer = async () => {
