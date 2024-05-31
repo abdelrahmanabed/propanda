@@ -4,10 +4,38 @@ import Bookmarkicon from './bookmarkicon';
 import CartIcon from './carticon';
 import { Suspense } from 'react';
 import CourseLoading from './courseLoading';
-
-    
+import Cookies from 'js-cookie';
+import CryptoJS from 'crypto-js';
+import { MdDone } from "react-icons/md";
+import axios from 'axios';
+ 
     
 const Course = async(props) => {
+
+ const fetchUserId = async () =>{
+     const encryptedUserId = await Cookies.get('encryptedUserId');
+    if (encryptedUserId) {
+      const decryptedId = await CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+      return decryptedId
+    }
+ }
+ const decryptedId = await fetchUserId()
+
+    const fetchPurchaseStatus = async () => {
+    if( decryptedId !==null && props.courseId !== null){   try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/checkPurchaseStatus`, {
+          userId: decryptedId,
+          courseId : props.courseId,
+        });
+       const hasPurchased =  response.data.hasPurchased
+        return hasPurchased
+      } catch (error) {
+        console.error('Error checking purchase status', error);
+      }}
+   
+    };
+      const hasPurchased = await  fetchPurchaseStatus();
+
 const getInstructorInfoForCard = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`, { cache: 'force-cache' });
@@ -45,8 +73,8 @@ const getInstructorInfoForCard = async () => {
     </Link> 
  
            <div className='absolute w-full cxdiv px-3 flex gap-3'> 
-       <Bookmarkicon courseId={props.courseId}  className=" cbtn  h-16 w-full p-2 "/>
-              <CartIcon courseId={props.courseId} className=" cbtn justify-center items-center  bottom-6 left-6 p-2 h-16 w-full "/>
+{ hasPurchased? <MdDone className=' MdDone text-7xl h-16 rounded-full w-20 p-3 drop-shadow-lg bg-black  font-black '/>:       <Bookmarkicon courseId={props.courseId}  className=" cbtn  h-16 w-full p-2 "/>
+}              <CartIcon courseId={props.courseId} className=" cbtn justify-center items-center  bottom-6 left-6 p-2 h-16 w-full "/>
 </div>     
   </div></Suspense>
   )

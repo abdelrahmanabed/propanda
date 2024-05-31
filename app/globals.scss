@@ -807,7 +807,10 @@ height: 64px;
 .cxdiv{
     top: 153px;
 }
-
+.MdDone{
+    color: $main-btn;
+    background-color: $main_color;
+}
 #coursePage{
     #vdiv{
       border-radius: $border;

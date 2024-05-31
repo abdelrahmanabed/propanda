@@ -259,13 +259,13 @@ const Ccontainer = () => {
           <div className={` open max-h-72 hidden p-3  flex-col gap-5 md:flex  justify-center pinvideodiv      bottom-9 right-3 `}>
      <div className=' flex flex-col gap-3'> 
    <span className={`text-white thebtn rounded-full w-fit `}  >قائمة الاجزاء</span>
-   <div ref={sliderRef} className="keen-slider">
+   <div ref={sliderRef} className="keen-slider rounded-xl">
            
           {course.parts.map((part, partIndex)=>(
           <button key={partIndex}
           onClick={()=> handlePartClick(part)} 
          style={{ maxWidth: "18rem"  }}
-         className={`keen-slider__slide   ${currentPart._id === part._id && "current"} gap-2 pinvideo p-3 flex  items-center min-w-fit max-w-72 overflow-hidden  text-wrap  `}>
+         className={`keen-slider__slide   ${currentPart._id === part._id && "current"} gap-2 pinvideo p-3 flex  items-center min-w-fit max-w-72 overflow-hidden  rounded-xl text-wrap  `}>
            <span className=' flex h-8 min-w-8 bg-zinc-500 justify-center items-center text-sm rounded-full '>{partIndex+1}</span>
            <span className='text-sm   max-w-72 '>{part.title}</span>
    

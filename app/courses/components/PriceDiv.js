@@ -150,7 +150,7 @@ ref={priceDivRef}
  
 
 <div className=' w-full gap-3 flex'>
-{    hasPurchased? <MdDone className=' text-7xl' />
+{    hasPurchased? <MdDone className='MdDone p-3 w-20 md:w-24 rounded-full xl:w-32 xl:h-24  text-7xl' />
 :   <span id='cdp' className='w-32 flex justify-center font-medium text-2xl'><span className=' text-sm flex items-end font-normal'>EGP</span> {props.course.price} </span>
 }       <Bookmarkicon className="courseDet" courseId={props.course._id}/>
        </div> 
