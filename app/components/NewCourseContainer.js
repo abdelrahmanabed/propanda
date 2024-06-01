@@ -1,5 +1,7 @@
 import "keen-slider/keen-slider.min.css"
 import dynamic from 'next/dynamic';
+import { Suspense } from "react";
+import Loading from "./loading";
 const Course = dynamic(() => import("./course"), { ssr: false });
 const Keenslider = dynamic(() => import("./Keenslider"), { ssr: false });
 
@@ -11,7 +13,8 @@ const NewCourseContainer = async () => {
         const newCourses = await response.json()
      
     return (
-        <div className=" mx-3  mb-3 flex flex-col gap-3  overflow-hidden ">
+      <Suspense fallback={<div className=" h-96 bg-white"><Loading/></div>}>
+        <div className=" mt-10 mx-3 min-h-96  mb-3 flex flex-col gap-3  overflow-hidden ">
           <span className=" text-lg ">احدث الدورات التعليمية</span>
           { newCourses&& newCourses.length > 0 &&  
        <Keenslider>
@@ -31,7 +34,7 @@ const NewCourseContainer = async () => {
      </Keenslider> }
        
 
-      </div>
+      </div></Suspense>
     );
 };
 

@@ -2,6 +2,7 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { Suspense, useState } from "react"
+import Loading from "./loading"
 
 function Arrow(props) {
   const disabled = props.disabled ? " arrow--disabled" : ""
@@ -32,7 +33,7 @@ const Keenslider = ({ children }) => {
 
   const [sliderRef, instanceRef] = useKeenSlider({
     
-    
+    renderMode:'performance',
     loop: false,
     
     mode: "free-snap",
@@ -48,10 +49,10 @@ const Keenslider = ({ children }) => {
     },
   })
   console.log("cs", currentSlide)
-  return ( <Suspense fallback={<div className=" flex gap-3"></div>}>
-    <div className=" relative py-9 md:p-9  md:px-16">
+  return (
+    <div className=" relative py-9 md:p-9 min-h-96  md:px-16">
     {loaded && instanceRef.current && (
-          <>
+       <Suspense fallback={<div className=" flex gap-3"><Loading/></div>}>    <>
             <Arrow
               left
               onClick={(e) =>
@@ -79,14 +80,14 @@ const Keenslider = ({ children }) => {
               }
               className={`${instanceRef.current.track.details.slides.length <= 1 && 'hidden'}`}
             />
-          </>
+          </> </Suspense> 
         )}
 <div ref={sliderRef} className="keen-slider rounded-2xl" style={{ maxWidth: "100%" }}>
 
      { children }
      </div>  
      </div>
-     </Suspense> )
+    )
 }
 
 export default Keenslider

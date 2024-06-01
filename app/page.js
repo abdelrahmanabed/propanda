@@ -7,7 +7,7 @@ export default function Home() {
     <main className="">
       <div className="">
       <Hero/>
-      <Suspense fallback={<Loading/>}> <NewCourseContainer/></Suspense>
+      <Suspense fallback={<div className=" h-96 w-full bg-white"><Loading/></div>}> <NewCourseContainer/></Suspense>
 
       </div>
     </main>
