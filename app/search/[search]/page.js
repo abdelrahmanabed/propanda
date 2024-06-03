@@ -9,7 +9,7 @@ const Page = async ({searchParams}) => {
   const fetchI =async() =>{
     try {
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors`,{ next: { revalidate: 1 } });
+      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors`,{ next: { revalidate: 21600 } });
       const I = await response.json();
       const filteredIs = I.filter(i => {
         return (
@@ -24,7 +24,7 @@ const Page = async ({searchParams}) => {
  const I = await fetchI()
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 1 } });
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 21600 } });
 
         const coursesData = await response.json();
         const filteredCourses = coursesData.filter(course => {
@@ -41,7 +41,7 @@ const Page = async ({searchParams}) => {
     };
     const fetchFCourses = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 1 } });
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate:21600  } });
 
        const fCourses = response.json()
        

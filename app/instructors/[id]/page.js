@@ -7,7 +7,7 @@ import Course from '../../components/course';
 
 const Page = async ({params}) => {
 
-        const iResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${params.id}`,{ next: { revalidate: 1 } });
+        const iResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${params.id}`,{ next: { revalidate: 21600 } });
         if (!iResponse.ok) {
           throw new Error('Network response was not ok');
         }
@@ -16,7 +16,7 @@ const Page = async ({params}) => {
       
    const fetchIC = async ()=> {
     if (I) {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 1 } });
+      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 21600 } });
       const coursesData =await response.json();
              
 

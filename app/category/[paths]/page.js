@@ -6,12 +6,12 @@ import Keenslider from '../../components/Keenslider';
 const Page = async ({params}) => {
 
  
-      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${params.paths}`,{ next: { revalidate: 1 } });
+      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${params.paths}`,{ next: { revalidate: 21600 } });
       const I = await response.json();
    
 
 
-      const cresponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}`,{ next: { revalidate: 1 } });
+      const cresponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}`,{ next: { revalidate: 21600} });
       const courses = await cresponse.json();
     
 

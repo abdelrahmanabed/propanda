@@ -82,10 +82,10 @@ const Keenslider = ({ children }) => {
             />
           </> </Suspense> 
         )}
-<div ref={sliderRef} className="keen-slider rounded-2xl" style={{ maxWidth: "100%" }}>
+{<div ref={sliderRef} className="keen-slider rounded-2xl" style={{ maxWidth: "100%" }}>
 
      { children }
-     </div>  
+     </div>  }
      </div>
     )
 }

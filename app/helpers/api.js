@@ -2,7 +2,7 @@
     // Fetch courses from the server when the component mounts
   export const fetchNewCourses = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 1 } });
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 21600 } });
         const newCourses = response.json()
         return newCourses
       } catch (error) {
@@ -13,7 +13,7 @@
 
     export const fetchCourses = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 1 } });
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses`,{ next: { revalidate: 21600 } });
         const courses = response.json()
         return courses
       } catch (error) {
@@ -25,7 +25,7 @@
       try {
         if (id) {
           // Fetch course data
-          const courseResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${id}`,{ next: { revalidate: 1 } });
+          const courseResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${id}`,{ next: { revalidate: 21600 } });
           const courseData = courseResponse.json();
         return courseData
           // Fetch author data
@@ -40,7 +40,7 @@
       try {
         if (id) {
           // Fetch course data
-          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${authorId}`,{ next: { revalidate: 1 } });
+          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${authorId}`,{ next: { revalidate: 21600 } });
           const authorData = authorResponse.json();
         return authorData
           // Fetch author data

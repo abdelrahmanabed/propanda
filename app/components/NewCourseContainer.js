@@ -39,6 +39,3 @@ const NewCourseContainer = async () => {
 };
 
 export default NewCourseContainer;
-
-
-

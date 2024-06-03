@@ -38,7 +38,7 @@ const Course = async(props) => {
 
 const getInstructorInfoForCard = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`,{ next: { revalidate: 1 } });
+        const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`,{ next: { revalidate: 21600 } });
         const info = response.data;
         return info.name
       } catch (error) {
