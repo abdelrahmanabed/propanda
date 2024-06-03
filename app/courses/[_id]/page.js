@@ -42,7 +42,7 @@ const CourseDuration = ({ duration }) => {
 
 
 
-        const courseResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${params._id}`);
+        const courseResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${params._id}`,{ next: { revalidate: 1 } });
         const course = await courseResponse.json();
     
 
@@ -50,7 +50,7 @@ const CourseDuration = ({ duration }) => {
     try {
         // Fetch author data
         if (course.author) {
-          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`);
+          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`,{ next: { revalidate: 1 } });
           const authorData = authorResponse.json();
           return authorData
         }
