@@ -58,7 +58,7 @@ const BigNav = () => {
             <li><Link className='backdrop-blur-xl' href="/category/designing">التصميم</Link></li>
             <li><Link className='backdrop-blur-xl' href="/category/learning">التعليم</Link></li>
             <li><Link className='backdrop-blur-xl' href="/category/skills">المهارات المكتبية</Link></li>
-            <li><Link className='backdrop-blur-xl' href="/category/hse">الصحة و السلامة المهنية</Link></li>
+            <li><Link className='backdrop-blur-xl' href="/category/healthandsafety">الصحة و السلامة المهنية</Link></li>
             <li><Link className='backdrop-blur-xl' href="/category/marketing">التسويق</Link></li>
 
           </ul>

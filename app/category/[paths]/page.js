@@ -25,7 +25,7 @@ const Page = async ({params}) => {
     designing: { title: 'التصميم', keywords: ['code', 'js', 'software', 'لغة'] },
     learning: { title: 'التعلم', keywords: ['french', 'english', 'lang', 'لغة'] }, 
     skills: { title: 'المهارات', keywords: ['code', 'js', 'software', 'لغة'] },
-    hse: { title: 'السلامة والصحة المهنية', keywords: ['french', 'english', 'lang', 'لغة'] },
+    healthandsafety: { title: 'السلامة والصحة المهنية', keywords: ['french', 'english', 'lang', 'لغة'] },
     marketing: { title: 'التسويق', keywords: ['french', 'english', 'lang', 'لغة'] },
   };
 
