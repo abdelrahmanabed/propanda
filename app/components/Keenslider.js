@@ -1,7 +1,7 @@
 "use client"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import { Suspense, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import Loading from "./loading"
 
 function Arrow(props) {
@@ -27,7 +27,7 @@ function Arrow(props) {
 
 
 
-const Keenslider = ({ children }) => {
+const Keenslider = ({ children, elements }) => {
   const [loaded, setLoaded] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
 
@@ -48,7 +48,11 @@ const Keenslider = ({ children }) => {
       setLoaded(true)
     },
   })
-  console.log("cs", currentSlide)
+  useEffect(() => {
+    if (instanceRef.current) {
+      instanceRef.current.update();
+    }
+  }, [children]);
   return (
     <div className=" relative py-9 md:p-9 min-h-96  md:px-16">
     {loaded && instanceRef.current && (
@@ -82,7 +86,7 @@ const Keenslider = ({ children }) => {
             />
           </> </Suspense> 
         )}
-{<div ref={sliderRef} className="keen-slider rounded-2xl" style={{ maxWidth: "100%" }}>
+{elements && elements.length > 0 &&<div ref={sliderRef} className="keen-slider rounded-2xl" style={{ maxWidth: "100%" }}>
 
      { children }
      </div>  }
