@@ -65,7 +65,7 @@ const getInstructorInfoForCard = async () => {
         <div id='cct' className={` h-36  absolute  bottom-0 text-white  right-0  flex p-3  rounded-2xl flex-col justify-between`}>
           <h1 className='  w-fit text-base  '>{props.title}</h1>
           <div id='cctt' className={` justify-between flex items-center text-md`}>
-            <span className='  rounded-2xl  '>{authorName}</span>              <span id='coursecdp' className='p-3  flex justify-center items-center text-center text-lg  rounded-2xl '> <span className=' text-xs self-end font-bold'>EGP</span> {props.price}</span>            
+            <span className='  rounded-2xl  '>{authorName}</span>              <span id='coursecdp' className='p-3  flex justify-center items-center text-center text-lg  rounded-2xl '> <span className=' text-xs self-end font-bold'>EGP</span> {props.price - 1}</span>            
             
             </div> 
       
