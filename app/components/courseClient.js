@@ -1,8 +1,9 @@
+'use client'
 import Image from 'next/image';
 import Link from 'next/link';
 import Bookmarkicon from './bookmarkicon';
 import CartIcon from './carticon';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import CourseLoading from './courseLoading';
 import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js';
@@ -10,76 +11,71 @@ import { MdDone } from "react-icons/md";
 import axios from 'axios';
  
     
-const Course = async(props) => {
+const CourseClient = (props) => {
+    const [hasPurchased, setHasPurchased] = useState( false)
+    const [ decryptedId, setDecryptedID] = useState()
+    const [ authorName , setAuthorName] = useState()
+    useEffect(()=>{
 
- const fetchUserId = async () =>{
-     const encryptedUserId = await Cookies.get('encryptedUserId');
+
+
+ const fetchUserId = () =>{
+     const encryptedUserId =  Cookies.get('encryptedUserId');
     if (encryptedUserId) {
-      const decryptedId = await CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
-      return decryptedId
+      const decryptedId =  CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+    setDecryptedID(decryptedId)
     }
  }
- const decryptedId = await fetchUserId()
+fetchUserId()
 
- const fetchPurchaseStatus = async () => {
-  if (decryptedId !== null && props.courseId !== null) {
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/checkPurchaseStatus`,{ next: { revalidate: 21600 } }, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+    const fetchPurchaseStatus = async () => {
+    if( decryptedId !==null && props.courseId !== null){   try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/checkPurchaseStatus`, {
           userId: decryptedId,
-          courseId: props.courseId,
-        }),
-      });
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      const data = await response.json();
-      const hasPurchased = data.hasPurchased;
-      return hasPurchased;
-    } catch (error) {
-      console.error('Error checking purchase status', error);
-    }
-  }
-};
-
-      const hasPurchased = await  fetchPurchaseStatus();
+          courseId : props.courseId,
+        });
+       const hasPurchased =  response.data.hasPurchased
+      setHasPurchased(hasPurchased)
+      } catch (error) {
+        console.error('Error checking purchase status', error);
+      }}
+   
+    };
+   fetchPurchaseStatus();
 
 const getInstructorInfoForCard = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${props.instructor}`,{ next: { revalidate: 21600 } });
         const info = response.json();
-        return info.name
+        const authorName = info.name
+        setAuthorName(authorName)
       } catch (error) {
         console.error('Error fetching courses:', error);
         // Handle error here
       }
     };
 
-  const authorName = await getInstructorInfoForCard() 
+getInstructorInfoForCard() 
 
-  
+      },[])
 
   return (
     <Suspense fallback={<CourseLoading/>}>
     <div className='relative group w-fit flex flex-col gap-2'>
     <Link id='coursecomdiv' href={props.href} className='  flex-col h-96 w-72 flex  items-center backdrop-blur-md    ' >
       <div className='imgdiv' >
-      <Image src={`${process.env.NEXT_PUBLIC_PORT}/${props.photo.replace(/\\/g, '/')}`} width={500} height={500} className=' rounded-2xl    '/>    
+     { props.photo && <Image src={`${process.env.NEXT_PUBLIC_PORT}/${props.photo.replace(/\\/g, '/')}`} width={500} height={500} className=' rounded-2xl    '/> }   
 
       </div>
         
         
         
         <div id='cct' className={` h-36  absolute  bottom-0 text-white  right-0  flex p-3  rounded-2xl flex-col justify-between`}>
-          <h1 className='  w-fit text-base  '>{props.title}</h1>
+          {props.photo && <h1 className='  w-fit text-base  '>{props.title}</h1>}
           <div id='cctt' className={` justify-between flex items-center text-md`}>
-            <span className='  rounded-2xl  '>{authorName}</span>              <span id='coursecdp' className='p-3  flex justify-center items-center text-center text-lg  rounded-2xl '> <span className=' text-xs self-end font-bold'>EGP</span> {props.price - 1}</span>            
+            { authorName&&<span className='  rounded-2xl  '>{authorName}</span>}    
+            
+            <span id='coursecdp' className='p-3  flex justify-center items-center text-center text-lg  rounded-2xl '> <span className=' text-xs self-end font-bold'>EGP</span> {props.price - 1}</span>            
             
             </div> 
       
@@ -98,4 +94,4 @@ const getInstructorInfoForCard = async () => {
   )
 }
 
-export default Course
+export default CourseClient

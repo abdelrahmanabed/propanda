@@ -2,7 +2,7 @@
 import Course from '../../components/course';
 
 import InstructorCard from '../../components/instructorCard';
-import Keenslider from '../../components/Keenslider';
+import Slider from '../../components/Slider';
 const Page = async ({searchParams}) => {
  
 
@@ -187,7 +187,7 @@ const Page = async ({searchParams}) => {
             نتائج البحث عن <span className='font-extrabold'>{searchParams.q}</span>
           </span>
           <span className='p-3 py-0 text-xs'> عدد النتائج <span className=' font-extrabold'>{I.length}</span> </span>
-<Keenslider>            {I && I.map(i => (
+<Slider>            {I && I.map(i => (
                    <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                    className="keen-slider__slide min-w-fit">
               <InstructorCard
@@ -199,7 +199,7 @@ const Page = async ({searchParams}) => {
               />
               </div>
             ))}
-          </Keenslider>
+          </Slider>
         </>
       }
 
@@ -209,7 +209,7 @@ const Page = async ({searchParams}) => {
             نتائج البحث عن <span className='font-extrabold'>{searchParams.q}</span>
           </span>
           <span className='p-3 py-0 text-xs'> عدد النتائج <span className=' font-extrabold'>{courses.length}</span> </span>
-<Keenslider>            {courses && courses.map(course => (
+<Slider>            {courses && courses.map(course => (
                    <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                    className="keen-slider__slide min-w-fit">
               <Course
@@ -223,7 +223,7 @@ const Page = async ({searchParams}) => {
               />
               </div>
             ))}
-          </Keenslider>
+          </Slider>
         </>
       ) : (
         <div className=' flex justify-center items-center'>
@@ -242,7 +242,7 @@ const Page = async ({searchParams}) => {
                 <h2> هل تبحث عن كورسات في مجال <span className=' text-xs font-extrabold'>{title}</span> </h2>
                 
                 {fCourses&& fCourses.length>0 &&
-<Keenslider>
+<Slider>
                 {fCourses&& fCourses
                   .filter(course => course.category === category)
                   .map(course => (
@@ -259,7 +259,7 @@ const Page = async ({searchParams}) => {
                     />
                     </div>
                   ))}
-                  </Keenslider> }
+                  </Slider> }
               </div>
             );
           }

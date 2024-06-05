@@ -3,6 +3,7 @@ import InstructorCard from '../components/instructorCard'
 import Keenslider from '../components/Keenslider';
 import Buttonforchange from './components/Buttonforchange';
 import CourseLoading from '../components/courseLoading'
+import Slider from '../components/Slider';
 
 const Page = async ({searchParams} ) => {
 
@@ -23,7 +24,7 @@ const Page = async ({searchParams} ) => {
     <div className=' m-3 flex flex-col gap-3'>
       المحاضرين
           {I.length > 0  &&
-<Keenslider>
+<Slider>
               { I.map((i) => (
                 <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
       className="keen-slider__slide min-w-fit">
@@ -34,7 +35,7 @@ const Page = async ({searchParams} ) => {
         href={`/instructors/${i._id}`}
         />    </div>
 
-              ))}  </Keenslider>}
+              ))}  </Slider>}
 
 
     </div>

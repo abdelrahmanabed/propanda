@@ -6,9 +6,8 @@ import Loading from "./loading";
 const Course = dynamic(() => import("./course"), { ssr: false });
 import Keenslider from "./Keenslider";
 import axios from "axios";
-import Slider from "./Slider";
 
-const NewCourseContainer = () => {
+const Test = () => {
   const [popularCourses, setPopularCourses] = useState([]);
   const [displayedCourses, setDisplayedCourses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,7 +17,7 @@ const NewCourseContainer = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_PORT}/api/courses`
+          `${process.env.NEXT_PUBLIC_PORT}/api/popularCourses?limit=14`
         );
         const data = await response.data;
         setPopularCourses(data);
@@ -45,13 +44,10 @@ const NewCourseContainer = () => {
   };
 
   return (
-    <Suspense fallback={<div className="h-96 bg-white"><Loading /></div>}>
       <div className="mt-10 mx-3 min-h-96 mb-3 flex flex-col gap-3 overflow-hidden">
         <span className="text-lg">اكثر الدورات شعبية</span>
-        {loading ? (
-          <Loading />
-        ) : (
-          <Slider>
+       
+          <div >
             {displayedCourses.map((course) => (
               <div
                 key={course._id}
@@ -78,11 +74,10 @@ const NewCourseContainer = () => {
                 </button>
               </div>
             )}
-          </Slider>
-        )}
+          </div>
+        
       </div>
-    </Suspense>
   );
 };
 
-export default NewCourseContainer;
+export default Test;

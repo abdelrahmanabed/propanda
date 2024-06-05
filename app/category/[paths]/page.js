@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
-import Course from '../../components/course';
+import CourseClient from '../../components/courseClient';
 import InstructorCard from '../../components/instructorCard';
-import Keenslider from '../../components/Keenslider';
+import Slider from '../../components/Slider';
 
 const Page = async ({params}) => {
 
@@ -41,11 +41,11 @@ const Page = async ({params}) => {
                 <h2 className='text-xs md:text-base'>  الدورات الاشهر <span className="font-extrabold">{title}</span> </h2>
                {courses.length > 0 && 
                <Suspense fallback={<div></div>}>
-               <Keenslider>
+               <Slider>
                   {courses.map(course => (
                       <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                       className="keen-slider__slide min-w-fit">
-                        <Course
+                        <CourseClient
                           href={`/courses/${course._id}`}
                           photo={course.photo}
                           title={course.title}
@@ -57,16 +57,16 @@ const Page = async ({params}) => {
                       </div>    
 
                     ))}
-                </Keenslider></Suspense>}
+                </Slider></Suspense>}
               </div>
                    <div id='mostrecent' key={category} className="flex flex-col gap-3">
                    <h2 className='text-xs md:text-base' >احدث دورات في <span className="font-extrabold">{title}</span> </h2>
                   {courses.length > 0 && 
-                          <Keenslider>
+                          <Slider>
                         {courses.map(course => (
                          <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                          className="keen-slider__slide min-w-fit">
-                           <Course
+                           <CourseClient
                              href={`/courses/${course._id}`}
                              photo={course.photo}
                              title={course.title}
@@ -77,7 +77,7 @@ const Page = async ({params}) => {
                            />
                          </div>
                        ))}
-                  </Keenslider> }
+                  </Slider> }
                  </div></>
             );
           }
@@ -92,7 +92,7 @@ const Page = async ({params}) => {
 <Suspense fallback={<div>..loading</div>}>
           {I.length > 0  &&
           
-          <Keenslider>
+          <Slider>
               { I.map((i) => (
                 <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
       className="keen-slider__slide min-w-fit">
@@ -104,7 +104,7 @@ const Page = async ({params}) => {
         />    </div>
 
 
-              ))}  </Keenslider>}
+              ))}  </Slider>}
 
 </Suspense>
     </div>
