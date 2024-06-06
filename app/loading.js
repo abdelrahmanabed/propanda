@@ -1,10 +1,10 @@
 
 import React from 'react'
-import Loading from './components/loading'
+import Loader from './components/Loader'
 
 const loading = () => {
   return (
-    <Loading/>
+    <Loader/>
   )
 }
 

@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'react-phone-input-2/lib/style.css'
-import dynamic from 'next/dynamic';
-const Course = dynamic(() => import("./course"), { ssr: false });
 import Loading from './loading';
 import { useUser } from './UserContext';
 import CourseClient from './courseClient';

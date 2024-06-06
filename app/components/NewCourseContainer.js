@@ -19,7 +19,7 @@ const NewCourseContainer = (props) => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_PORT}/api/${props.api}?userId=${userId}&limit=7&page=${page}`
+          `${process.env.NEXT_PUBLIC_PORT}/api/${props.api}?userId=${userId}&limit=7&page=${page}&sortStatue=${props.sort}`
         );
         const data = await response.data;
         if (page === 1) {
@@ -40,8 +40,7 @@ const NewCourseContainer = (props) => {
   const handleSeeMore = () => {
     setPage(prevPage => prevPage + 1); // Increment page number to fetch next set of courses
   };
-  console.log('object', page);
-  console.log('objects', displayedCourses);
+
   return (
     <Suspense fallback={<div className="h-96 w-full rounded-xl bg-white"><Loading /></div>}>
       <div className="mt-10 mx-3 min-h-96 mb-3 flex flex-col gap-3">
@@ -73,10 +72,8 @@ const NewCourseContainer = (props) => {
                   style={{ maxWidth: "fit-content", minWidth: "fit-content" }}
                   className="keen-slider__slide min-w-fit h-96 items-center flex"
                 >
-                :  <button onClick={handleSeeMore} className="see-more-button">
-               <button className="seemore  p-3 rounded-xl w-28 flex justify-center flex-row-reverse gap-2 self-center items-center"><MdArrowBackIosNew />{loading? <Loading/> :
-               
-            "المزيد"}</button> 
+                 <button onClick={handleSeeMore} className="see-more-button">
+               <button className="seemore  p-3 rounded-xl w-28 flex justify-center flex-row-reverse gap-2 self-center h-14 items-center"><MdArrowBackIosNew />{loading ? (<Loading/>) :  (<span>المزيد</span>) }</button> 
                   </button>
                 </div>
               )}

@@ -2,7 +2,6 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react"
-import Loading from "./loading"
 
 function Arrow(props) {
   const disabled = props.disabled ? " arrow--disabled" : ""
@@ -57,7 +56,7 @@ const Keenslider = ({ children, label }) => {
         <Suspense fallback={<div className="flex gap-3 bg-white w-28 h-12"></div>}>
           {loaded && instanceRef.current && (
             <>
-              <label className='mr-3 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl '>{label}</label>
+              <label className='mr-3 text-xs sm:text-base md:text-xl lg:text-2xl xl:text-3xl '>{label}</label>
               <Arrow
                 left
                 onClick={(e) =>
