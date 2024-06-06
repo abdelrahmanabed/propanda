@@ -36,7 +36,7 @@ export const UserProvider = ({ children }) => {
             setUserEmail(decryptedEmail);
             const decryptedPN = CryptoJS.AES.decrypt(encryptedPN, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
             setUserPhone(decryptedPN);}
-    }, []);
+    }, [userId]);
     
     const handleLogout = () => {
         const cookieKeys = Object.keys(Cookies.get());
