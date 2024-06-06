@@ -1,24 +1,23 @@
 "use client";
 import "keen-slider/keen-slider.min.css";
-import dynamic from "next/dynamic";
 import { Suspense, useState, useEffect } from "react";
 import Loading from "./loading";
-const Course = dynamic(() => import("./course"), { ssr: false });
-import Keenslider from "./Keenslider";
 import axios from "axios";
+import CourseClient from "./courseClient";
+import { useCart } from "./CartContext";
 import Slider from "./Slider";
-
+import Keenslider from "./Keenslider";
 const NewCourseContainer = () => {
   const [popularCourses, setPopularCourses] = useState([]);
   const [displayedCourses, setDisplayedCourses] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const {userId} = useCart()
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_PORT}/api/courses`
+          `${process.env.NEXT_PUBLIC_PORT}/api/courses?userId=${userId}`
         );
         const data = await response.data;
         setPopularCourses(data);
@@ -46,25 +45,26 @@ const NewCourseContainer = () => {
 
   return (
     <Suspense fallback={<div className="h-96 bg-white"><Loading /></div>}>
-      <div className="mt-10 mx-3 min-h-96 mb-3 flex flex-col gap-3 overflow-hidden">
-        <span className="text-lg">اكثر الدورات شعبية</span>
+      <div className="mt-10 mx-3 min-h-96 mb-3 flex flex-col gap-3">
         {loading ? (
           <Loading />
         ) : (
-          <Slider>
+          <Keenslider label={"الدورات الاكثر شهرة"}>
             {displayedCourses.map((course) => (
               <div
                 key={course._id}
                 style={{ maxWidth: "fit-content", minWidth: "fit-content" }}
                 className="keen-slider__slide min-w-fit"
               >
-                <Course
+                <CourseClient
                   href={`/courses/${course._id}`}
                   photo={course.photo}
                   title={course.title}
                   price={course.price}
                   courseId={course._id}
-                  instructor={course.author}
+                  instructor={course.author.name}
+                  hasPurchased={course.hasPurchased} // Include the hasPurchased status
+
                 />
               </div>
             ))}
@@ -78,7 +78,7 @@ const NewCourseContainer = () => {
                 </button>
               </div>
             )}
-          </Slider>
+          </Keenslider>
         )}
       </div>
     </Suspense>
