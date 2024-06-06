@@ -1,42 +1,62 @@
 'use client'
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import jwt from 'jsonwebtoken';
+import CryptoJS from 'crypto-js';
+import Cookies from 'js-cookie';
 
-const CartContext = createContext();
+const UserContext = createContext();
 
-export const useUser = () => useContext(CartContext);
+export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
     const [userId, setUserId] = useState()
     const [userName, setUserName] = useState()
     const [userEmail, setUserEmail] = useState()
+    const [userPhone, setUserPhone] = useState()
+    const [loggedIn , setLoggedIn] = useState(false)
     useEffect(() => {
-        // This effect runs only on the client, localStorage is accessible here
-        const localData = localStorage.getItem('cartItems');
-        const items = localData ? JSON.parse(localData) : [];
-        setCartItems(items);
+        const token = Cookies.get('token');
+   if(token)  {   const token = Cookies.get('token');
+        const encryptedName = Cookies.get('encryptedName');
+        const encryptedEmail = Cookies.get('encryptedEmail');
+        const encryptedPN = Cookies.get('encryptedPN');
+        const encryptedID = Cookies.get('encryptedUserId');
+        if (encryptedID && token){
+            const decryptedId = CryptoJS.AES.decrypt(encryptedID, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+            const decodedToken = jwt.decode(token);
+            const decodedUserId = decodedToken.userId;
+            if(decodedUserId === decryptedId ){
+                setLoggedIn(true)
+            }
+            setUserId(decryptedId)
+          }
+          const decryptedName = CryptoJS.AES.decrypt(encryptedName, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+            setUserName(decryptedName);
+            const decryptedEmail = CryptoJS.AES.decrypt(encryptedEmail, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+            setUserEmail(decryptedEmail);
+            const decryptedPN = CryptoJS.AES.decrypt(encryptedPN, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
+            setUserPhone(decryptedPN);}
     }, []);
     
-    const addToCart = (itemId) => {
-        
-        const updatedCartItems = [...cartItems, itemId];
-        setCartItems(updatedCartItems);
-        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-    };
+    const handleLogout = () => {
+        const cookieKeys = Object.keys(Cookies.get());
+        cookieKeys.forEach((key) => {
+          Cookies.remove(key);
+          localStorage.clear();
 
-    const removeFromCart = (itemId) => {
-        const updatedCartItems = cartItems.filter(item => item !== itemId);
-        setCartItems(updatedCartItems);
-        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-    };
-    const clearCart = () => {
-        setCartItems([]);
-        localStorage.removeItem('cartItems');
+        });
+
+
+      
+        
+         window.location.reload()
       };
+  
     
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, setCartItems }}>
+        <UserContext.Provider value={{ userEmail, userId, userName, userPhone, loggedIn, handleLogout }}>
             {children}
-        </CartContext.Provider>
+        </UserContext.Provider>
     );
 };
 

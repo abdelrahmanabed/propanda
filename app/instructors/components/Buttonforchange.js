@@ -18,7 +18,7 @@ const Buttonforchange = ( props ) => {
            value={props.value || ''}
            onChange={handleCategoryChange}
           className='custom-select p-3 rounded-2xl border-2' >
-            <option value="">Select category</option>
+            <option value="">جميع المحاضرين</option>
             <option value="languages">اللغات</option>
             <option value="programming">البرمجة والتكنولوجيا</option>
             <option value="learning">التعلم</option>

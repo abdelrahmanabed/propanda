@@ -4,7 +4,6 @@ import axios from 'axios'; // Import Axios
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import Loading from './loading';
 
 const SearchInput = (props) => {
     const [isSearchVisible, setIsSearchVisible] = useState(false);

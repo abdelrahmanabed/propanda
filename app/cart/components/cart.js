@@ -3,37 +3,23 @@ import CourseForCart from "../../components/CourseforCart";
 import { fetchCourses } from "../../helpers/api";
 import { useEffect, useState } from "react";
 import { useCart } from "../../components/CartContext";
-import Cookies from 'js-cookie';
 import Totalprice from "./totalprice";
 import { useRouter } from "next/navigation";
-import CryptoJS from 'crypto-js';
-import jwt from 'jsonwebtoken';
 import Loading from "../../components/loading";
+import { useUser } from "../../components/UserContext";
 
 const Cart = () => {
   const router = useRouter()
   const [courses , setCourses] = useState([])
-  const [decryptedUserId , setdecryptedUserId] = useState()
-  const [jwtUserId , setjwtUserId] = useState()
+  const { loggedIn} = useUser()
+
   const [loading , setLoading] = useState(false)
   const[ messageShow,  setMessegeShow] = useState(false)
     const{cartItems} = useCart()
     useEffect(() => {
       setLoading(true)
       const fetchData = async () => {
-        const token = Cookies.get('token');
-        const encryptedUserId = Cookies.get('encryptedUserId');
-  
-        if (encryptedUserId && token) {
-          const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
-          const decodedToken = jwt.decode(token);
-          const userId = decodedToken.userId;
-          setjwtUserId(userId);
-          setdecryptedUserId(decryptedId);
-        }
-  
         const response = await fetchCourses();
-  
         if (response) {
           const courses = response.filter(course => cartItems.includes(course._id));
           setCourses(courses);
@@ -47,12 +33,9 @@ const Cart = () => {
  const totalPrice = courses.reduce((acc, course) => acc + course.price, 0);
 
 const handlepay = ()=>{
-  const token = Cookies.get('token');
- if(token && decryptedUserId === jwtUserId ){
+ if(loggedIn){
   router.push(`/checkout?amount=${totalPrice}`)
  } else{
-  
-
   setMessegeShow(true)
   router.push(`?logintopay`)
  }

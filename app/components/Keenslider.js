@@ -27,12 +27,11 @@ function Arrow(props) {
 
 
 
-const Keenslider = ({ children, elements }) => {
+const Keenslider = ({ children, label }) => {
   const [loaded, setLoaded] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const [sliderRef, instanceRef] = useKeenSlider({
-    
     renderMode:'performance',
     loop: false,
     
@@ -46,18 +45,13 @@ const Keenslider = ({ children, elements }) => {
     },
     created() {
       setLoaded(true)
-    },
-  })
-  useEffect(() => {
-    if (instanceRef.current) {
-      instanceRef.current.update();
     }
-  }, [children]);
+  })
+
   return (
-    <div className=" relative py-9 md:p-9 min-h-96  md:px-16">
-    {loaded && instanceRef.current && (
-       <Suspense fallback={<div className=" flex gap-3"><Loading/></div>}>    <>
-            <Arrow
+    <><div className=" relative"> <Suspense fallback={<div className=" flex gap-3 bg-white w-28 h-12"></div>}>  {loaded && instanceRef.current && (
+    
+         <>   <label className='mr-3 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl '>{label}</label>  <Arrow
               left
               onClick={(e) =>
                 e.stopPropagation() || instanceRef.current?.next()
@@ -84,13 +78,15 @@ const Keenslider = ({ children, elements }) => {
               }
               className={`${instanceRef.current.track.details.slides.length <= 1 && 'hidden'}`}
             />
-          </> </Suspense> 
-        )}
-{elements && elements.length > 0 &&<div ref={sliderRef} className="keen-slider rounded-2xl" style={{ maxWidth: "100%" }}>
+          </> 
+        )}</Suspense></div>
+    <div className=" relative py-9 pt-3 md:p-9 md:pt-3 min-h-96  md:px-16">
+ 
+{children && children.length> 0 &&<div ref={sliderRef} className="keen-slider rounded-2xl" style={{ maxWidth: "100%" }}>
 
      { children }
      </div>  }
-     </div>
+     </div></>
     )
 }
 

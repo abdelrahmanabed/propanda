@@ -5,24 +5,12 @@ import { IoSettings } from "react-icons/io5";
 
 import { FaBookmark,FaSignOutAlt  } from "react-icons/fa";
 import { BsFillCollectionPlayFill } from "react-icons/bs";
-import Cookies from 'js-cookie';
+import { useUser } from './UserContext';
 
 
 const Usernav = (props) => {
+   const {handleLogout} = useUser()
 
-    const handleLogout = () => {
-        const cookieKeys = Object.keys(Cookies.get());
-        cookieKeys.forEach((key) => {
-          Cookies.remove(key);
-          localStorage.clear();
-
-        });
-
-
-      
-        
-         window.location.reload()
-      };
 
   return (
     <div  id='userNav' className={` ${props.className} backdrop-blur-xl absolute flex  gap-3 flex-col overflow-hidden duration-300 top-full   md:w-fit left-3 `}>

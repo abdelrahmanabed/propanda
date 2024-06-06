@@ -1368,7 +1368,7 @@ input {
 }
 @media screen and (min-width: 768px) {
   .arrow {
-    top: calc(100% + 12px);
+    top: calc(100% + 24px);
     width: 50px;
     height: 384px;
     transform: none;
@@ -1376,7 +1376,7 @@ input {
 }
 
 .arrow--left {
-  left: 12px;
+  left: 0px;
 }
 @media screen and (min-width: 768px) {
   .arrow--left {
@@ -1393,7 +1393,7 @@ input {
 }
 
 .arrow--right {
-  left: 72px;
+  left: 60px;
   right: auto;
 }
 @media screen and (min-width: 768px) {

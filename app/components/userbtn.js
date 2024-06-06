@@ -1,20 +1,8 @@
 import React from 'react'
-import  CryptoJS from 'crypto-js';
 
 const Userbtn = () => {
-        const token = Cookies.get('token');
-        const secretKey = process.env.NEXT_PUBLIC_JWT_SECRET;
-      
-        console.log("Token:", token);
-        console.log("Encrypted Name from Cookie:", encryptedNameFromCookie);
-      
-        if (token && encryptedNameFromCookie ) {
-          const decryptedName = CryptoJS.AES.decrypt(encryptedNameFromCookie, secretKey).toString(CryptoJS.enc.Utf8);
-          console.log("Decrypted Name:", decryptedName);
-          setUserName(decryptedName);
-      } else {
-          console.log("Encrypted name cookie not found.");
-      }
+  const {userName} = useUser()
+
   return (
     <button
     onClick={toggleUserNav}

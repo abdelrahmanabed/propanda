@@ -22,9 +22,9 @@ const Page = async ({searchParams} ) => {
 <div>
   <Buttonforchange value={searchParams.category}/>
     <div className=' m-3 flex flex-col gap-3'>
-      المحاضرين
+      
           {I.length > 0  &&
-<Slider>
+<Keenslider label={"المحاضرين"}>
               { I.map((i) => (
                 <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
       className="keen-slider__slide min-w-fit">
@@ -35,7 +35,7 @@ const Page = async ({searchParams} ) => {
         href={`/instructors/${i._id}`}
         />    </div>
 
-              ))}  </Slider>}
+              ))}  </Keenslider>}
 
 
     </div>

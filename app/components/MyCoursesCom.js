@@ -5,27 +5,22 @@ import 'react-phone-input-2/lib/style.css'
 import dynamic from 'next/dynamic';
 const Course = dynamic(() => import("./course"), { ssr: false });
 import Loading from './loading';
-import Cookies from 'js-cookie';
-import CryptoJS from 'crypto-js';
+import { useUser } from './UserContext';
+import CourseClient from './courseClient';
+
 const MyCourses = () => {
   const [courses, setCourses] = useState([]);
   const [myCourses, setMyCourses] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [decryptedUserId, setDecryptedUserId] = useState(null);
 
-  useEffect(() => {
-    const encryptedUserId = Cookies.get('encryptedUserId');
-    if (encryptedUserId) {
-      const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
-      setDecryptedUserId(decryptedId);
-    }
-  }, []);
+  const {userId} = useUser()
+
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/courses`);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/courses`);
         const myCoursesData = response.data.courses; // Accessing the 'courses' property
         console.log('myCoursesData:', myCoursesData);
         
@@ -46,10 +41,10 @@ const MyCourses = () => {
       }
     };
     
-    if (decryptedUserId) {
+    if (userId) {
       fetchData();
     }
-  }, [decryptedUserId]);
+  }, [userId]);
 
 
   
@@ -65,14 +60,14 @@ const MyCourses = () => {
         {courses.map((course) => (
           <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
            className="keen-slider__slide min-w-fit">
-              <Course
+              <CourseClient
                   href={`/courses/${course._id}`}
                   photo={course.photo}
                   title={course.title}
                   price={course.price}
                   courseId={course._id}
-                  instructor={course.author}
-
+                  instructor={course.author.name}
+                  
               />
           </div>
       ))}</div>

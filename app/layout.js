@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { VideoProvider } from "./courses/components/VideoContext"; // Update the import path as necessary
 import { CartProvider } from "./components/CartContext";
 import { Suspense } from "react";
+import { UserProvider } from "./components/UserContext";
 
 const tajawal = Tajawal({
   subsets: ["arabic"],
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
     <html dir="rtl" lang="ar">
 
       <body  className={tajawal.className}>
+        <UserProvider>
    <VideoProvider>
 <CartProvider>
  <div id="thecontainer" className=" relative mx-auto">
@@ -28,7 +30,7 @@ export default function RootLayout({ children }) {
 
 <div id="maincontainer" className=" relative mx-auto">
         {children}</div>   
-        <Footer/></div></CartProvider></VideoProvider>
+        <Footer/></div></CartProvider></VideoProvider></UserProvider>
       </body>
 
     </html>

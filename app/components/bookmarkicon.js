@@ -1,120 +1,69 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import { BsBookmark } from "react-icons/bs";
+import React, { useEffect, useState, useCallback } from 'react';
+import { BsBookmark, BsBookmarkCheck } from "react-icons/bs";
 import axios from 'axios';
-import Cookies from 'js-cookie';
-import CryptoJS from 'crypto-js';
-import { BsBookmarkCheck } from "react-icons/bs";
 import Loading from "./loading";
+import { useUser } from './UserContext';
 
-const Bookmarkicon = (props) => {
+const Bookmarkicon = ({ courseId, className }) => {
+  const { userId } = useUser();
+  const [state, setState] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const [ state, setState] = useState(false)
-    const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    const favCourses = JSON.parse(localStorage.getItem('favcourses') || '[]');
+    if (favCourses.includes(courseId)) {
+      setState(true);
+    }
+  }, [courseId]);
 
-    
-    useEffect(() => {
-      if (!localStorage.getItem('favcourses')) {
-          localStorage.setItem('favcourses', JSON.stringify([]));
-      }
+  const handleBookmarkClick = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const favCourses = JSON.parse(localStorage.getItem('favcourses') || '[]');
+      if (userId) {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses`);
+        const favoriteCourses = response.data.favoriteCourses;
 
-      const favCourses = JSON.parse(localStorage.getItem('favcourses'));
-      if (favCourses.includes(props.courseId)) {
+        if (favoriteCourses.includes(courseId)) {
+          await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses/${courseId}`);
+          const newFavCourses = favCourses.filter(course => course !== courseId);
+          localStorage.setItem('favcourses', JSON.stringify(newFavCourses));
+          setState(false);
+        } else {
+          await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses`, { courseId });
+          favCourses.push(courseId);
+          localStorage.setItem('favcourses', JSON.stringify(favCourses));
           setState(true);
-      }
-  }, []);
-    
- 
-      
-      const handleBookmarkClick = async () => {
-        setIsLoading(true)
-        try {
-          const token = Cookies.get('token');
-          if (token) {
-            const encryptedUserId = Cookies.get('encryptedUserId');
-            if (encryptedUserId) {
-              const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`);
-              const userId = bytes.toString(CryptoJS.enc.Utf8);
-    
-              const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses`, {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              });
-    
-              const favoriteCourses = response.data.favoriteCourses;
-              if (Array.isArray(favoriteCourses) && favoriteCourses.includes(props.courseId)) {
-                await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses/${props.courseId}`, {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                });
-                const favCourses = JSON.parse(localStorage.getItem('favcourses'));
-                if (favCourses.includes(props.courseId)) {
-                  const newFavCourses = favCourses.filter(course => course !== props.courseId);
-                  localStorage.setItem('favcourses', JSON.stringify(newFavCourses));
-                 
-                }
-                console.log('Course removed from favoriteCourses array');
-                setIsLoading(false);
-                setTimeout(() => {
-                  setState(false);
-              }, 1);
-              } else {
-                await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/favoriteCourses`, { courseId: props.courseId }, {
-                  headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                  },
-                });
-                const favCourses = JSON.parse(localStorage.getItem('favcourses'));
-
-                const updatedFavCourses = [...favCourses, props.courseId];
-              localStorage.setItem('favcourses', JSON.stringify(updatedFavCourses));
-                console.log('Course added to favoriteCourses array');
-                setIsLoading(false);
-                setTimeout(() => {
-                  setState(true);
-              }, 1);              }
-            }
-          } else {
-            // No token, manage courses in localStorage
-            const favCourses = JSON.parse(localStorage.getItem('favcourses'));
-            if (favCourses.includes(props.courseId)) {
-              const newFavCourses = favCourses.filter(course => course !== props.courseId);
-              localStorage.setItem('favcourses', JSON.stringify(newFavCourses));
-              setIsLoading(false);
-              setTimeout(() => {
-                setState(false);
-            }, 1);            } else {
-              const updatedFavCourses = [...favCourses, props.courseId];
-              localStorage.setItem('favcourses', JSON.stringify(updatedFavCourses));
-              setIsLoading(false);
-              setTimeout(() => {
-                setState(true);
-            }, 1);            }
-          }
-        } catch (error) {
-          console.error('Error:', error);
         }
-      };
-      return (
-        <div id='lordidiv' 
-        onClick={handleBookmarkClick}
-         className={` backdrop-blur-md
-         
-         ${!state ? '' : 'clicked'}
-         duration-300 flex justify-center  items-center  top-7 left-7 ${ props.className}  `}
-        
+      } else {
+        if (favCourses.includes(courseId)) {
+          const newFavCourses = favCourses.filter(course => course !== courseId);
+          localStorage.setItem('favcourses', JSON.stringify(newFavCourses));
+          setState(false);
+        } else {
+          favCourses.push(courseId);
+          localStorage.setItem('favcourses', JSON.stringify(favCourses));
+          setState(true);
+        }
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [userId, courseId]);
 
-        >
-       {isLoading? <Loading/>:   <>
-         <BsBookmark currentState={props.currentState} className={`${ state ? " absolute opacity-0 text-4xl" : " static opacity-100 text-2xl "} duration-300`}/>
-           
-           <BsBookmarkCheck className={`${ !state ? " absolute opacity-0" : " static opacity-100 text-4xl"} duration-300`}/>
-           </>}
-          
-        </div>
-      );
-    };
-export default Bookmarkicon
+  return (
+    <div id='lordidiv' onClick={handleBookmarkClick} className={`backdrop-blur-md ${state ? 'clicked' : ''} duration-300 flex justify-center items-center top-7 left-7 ${className}`}>
+      {isLoading ? <Loading /> : (
+        <>
+          <BsBookmark className={`${state ? 'absolute opacity-0 text-4xl' : 'static opacity-100 text-2xl'} duration-300`} />
+          <BsBookmarkCheck className={`${!state ? 'absolute opacity-0' : 'static opacity-100 text-4xl'} duration-300`} />
+        </>
+      )}
+    </div>
+  );
+};
+
+export default React.memo(Bookmarkicon);

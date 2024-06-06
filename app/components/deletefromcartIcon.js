@@ -1,44 +1,27 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, {useState } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
-import CryptoJS from 'crypto-js';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useCart } from './CartContext';
 import Loading from './loading';
+import { useUser } from './UserContext';
 const DeletefromcartIcon = (props) => {
     const [showDMessage, setShowDMessage] = useState(false);
     const [loading, setLoading] = useState(false);
+    const { userId} = useUser()
 
 const {removeFromCart} = useCart()
 
-    
-
-
-      
     const handleCartClick = async () => {
         setLoading(true)
         try {
-            const token = Cookies.get('token');
-            if (token) {
-                const encryptedUserId = Cookies.get('encryptedUserId');
-                if (encryptedUserId) {
-                    const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`);
-                    const userId = bytes.toString(CryptoJS.enc.Utf8);
-
-                    const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    });
+          
+                if (userId) {
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`)
 
                     const cartItems = response.data.cart;
                     if (Array.isArray(cartItems) && cartItems.includes(props.courseId)) {
-                        await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart/${props.courseId}`, {
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                            },
-                        });
+                        await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart/${props.courseId}`);
                         
                         setShowDMessage(true);
                         setTimeout(() => {
@@ -49,7 +32,7 @@ const {removeFromCart} = useCart()
 
             } 
                 }
-            } else{
+            else{
                 setShowDMessage(true);
                 setTimeout(() => {
                     setShowDMessage(false);

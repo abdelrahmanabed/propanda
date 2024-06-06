@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsCart } from "react-icons/bs";
 
 import { useCart } from './CartContext';

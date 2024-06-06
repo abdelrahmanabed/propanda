@@ -1,3 +1,4 @@
+import CryptoJS from 'crypto-js';
 
     // Fetch courses from the server when the component mounts
   export const fetchNewCourses = async () => {
@@ -48,5 +49,17 @@
         }
       } catch (error) {
         console.error('Error fetching data:', error);
+      }
+    };
+
+    export const decryptUserId = (encryptedID) => {
+      if (!encryptedID) return null;
+      try {
+        const bytes = CryptoJS.AES.decrypt(encryptedID, process.env.NEXT_PUBLIC_JWT_SECRET);
+        const decryptedID = bytes.toString(CryptoJS.enc.Utf8);
+        return decryptedID;
+      } catch (error) {
+        console.error('Error decrypting user ID', error);
+        return null;
       }
     };

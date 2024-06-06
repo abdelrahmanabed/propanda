@@ -6,33 +6,26 @@ import { FaPlay , FaTimes,    } from 'react-icons/fa';
 import { useVideo } from './VideoContext'; 
 import Bookmarkicon from '../../components/bookmarkicon';
 import CartIcon from '../../components/carticon';
-import Cookies from 'js-cookie';
-import CryptoJS from 'crypto-js';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
 import { MdDone } from "react-icons/md";
+import { useUser } from '../../components/UserContext';
 
 const PriceDiv = (props) => {
-  
+  const {userId} = useUser()
+
   const  {_id} = useParams()
   const [hasPurchased, setHasPurchased] = useState(false);
    const priceDivRef = useRef(null); 
   const coursePageRef = useRef(null);
   const coursePromo = useRef(null);  
    const { viewPreview, togglePreview, setViewPreview } = useVideo();
-   const [decryptedUserId, setDecryptedUserId] = useState(null);
-    useEffect(() => {
-      const encryptedUserId = Cookies.get('encryptedUserId');
-      if (encryptedUserId) {
-        const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
-        setDecryptedUserId(decryptedId);
-      }
-    }, []);
+ 
     useEffect(() => {
       const fetchPurchaseStatus = async () => {
-      if( decryptedUserId !==null && _id !== null){   try {
+      if( userId && _id !== null){   try {
           const response = await axios.post(`${process.env.NEXT_PUBLIC_PORT}/api/checkPurchaseStatus`, {
-            userId: decryptedUserId,
+            userId,
             courseId : _id,
           });
           setHasPurchased(response.data.hasPurchased);
@@ -44,7 +37,7 @@ const PriceDiv = (props) => {
       };
           fetchPurchaseStatus();
 
-    }, [_id, decryptedUserId]);
+    }, [_id, userId]);
    const CourseDuration = ({ duration }) => {
     // Check if duration is available
     if (duration === undefined) {

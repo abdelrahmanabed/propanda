@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 function Arrow(props) {
   const disabled = props.disabled ? " arrow--disabled" : ""
   return (
@@ -33,57 +33,49 @@ const Slider = ({ children }) => {
   const slideWidth = 72; // Fixed slide width in Tailwind units (e.g., 96px)
   const [disableLeftArrow, setDisableLeftArrow] = useState(true);
   const [disableRightArrow, setDisableRightArrow] = useState(false);
-  const handleTouchStart = (e) => {
+
+  const handleTouchStart = useCallback((e) => {
     setIsDragging(true);
     setStartPosition(e.touches[0].clientX);
-  };
+  }, []);
 
-  const handleMouseStart = (e) => {
+  const handleMouseStart = useCallback((e) => {
     setIsDragging(true);
     setStartPosition(e.clientX);
-  };
+  }, []);
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = useCallback((e) => {
     if (!isDragging) return;
     const currentPosition = e.touches[0].clientX;
-    const movement = startPosition - currentPosition; // Reverse direction for RTL
+    const movement = startPosition - currentPosition;
     const newTranslate = prevTranslate + movement;
-    
     setCurrentTranslate(newTranslate);
-  };
-  
-  const handleMouseMove = (e) => {
+  }, [isDragging, startPosition, prevTranslate]);
+
+  const handleMouseMove = useCallback((e) => {
     if (!isDragging) return;
     const currentPosition = e.clientX;
-    const movement = startPosition - currentPosition; // Reverse direction for RTL
+    const movement = startPosition - currentPosition;
     const newTranslate = prevTranslate + movement;
-    
     setCurrentTranslate(newTranslate);
-  };
+  }, [isDragging, startPosition, prevTranslate]);
 
-  const handleEnd = () => {
+  const handleEnd = useCallback(() => {
     setIsDragging(false);
-    
-    // Calculate the closest slide index
-    const closestSlideIndex = Math.round(currentTranslate / 300);
 
-    // Ensure the closest slide index is within the valid range
+    const closestSlideIndex = Math.round(currentTranslate / 300);
     const sliderWrapper = sliderWrapperRef.current;
     const sliderContainer = containerRef.current;
     const sliderWrapperWidth = sliderWrapper.clientWidth;
-
     const containerWidth = sliderContainer.clientWidth;
     const maxTranslate = sliderWrapperWidth - containerWidth;
-    const newTranslate = Math.max(-maxTranslate - 24 , Math.min(0, closestSlideIndex * 300));
-    console.log('first', maxTranslate)
-    console.log('three', containerWidth );
-    console.log('three', sliderWrapperWidth );
+    const newTranslate = Math.max(-maxTranslate - 24, Math.min(0, closestSlideIndex * 300));
     setCurrentTranslate(newTranslate);
     setPrevTranslate(newTranslate);
-    
+
     setDisableLeftArrow(newTranslate === 0);
     setDisableRightArrow(newTranslate === -maxTranslate - 24);
-  };
+  }, [currentTranslate]);
 
   useEffect(() => {
     const sliderWrapper = sliderWrapperRef.current;
@@ -105,53 +97,47 @@ const Slider = ({ children }) => {
       sliderWrapper.removeEventListener('mouseup', handleEnd);
       sliderWrapper.removeEventListener('mouseleave', handleEnd);
     };
-  }, [isDragging, startPosition, currentTranslate, prevTranslate]);
-  const handleLeftClick = () => {
+  }, [handleTouchStart, handleMouseStart, handleTouchMove, handleMouseMove, handleEnd]);
+
+  const handleLeftClick = useCallback(() => {
     const newTranslate = Math.min(0, currentTranslate + 300);
     setCurrentTranslate(newTranslate);
     setPrevTranslate(newTranslate);
-
     setDisableLeftArrow(newTranslate === 0);
     setDisableRightArrow(false);
-  };
-  const handleRightClick = () => {
+  }, [currentTranslate]);
+
+  const handleRightClick = useCallback(() => {
     const sliderWrapper = sliderWrapperRef.current;
     const sliderWrapperWidth = sliderWrapper.clientWidth;
-
     const sliderContainer = containerRef.current;
     const containerWidth = sliderContainer.clientWidth;
-    const totalSlidesWidth = children.length * slideWidth;
     const maxTranslate = sliderWrapperWidth - containerWidth;
     const newTranslate = Math.max(-maxTranslate - 24, currentTranslate - 300);
     setCurrentTranslate(newTranslate);
     setPrevTranslate(newTranslate);
-
     setDisableLeftArrow(false);
     setDisableRightArrow(newTranslate === -maxTranslate - 24);
-  };
+  }, [currentTranslate, children.length]);
 
-  return (<><div className='pt-7 relative pb-4 flex flex-col '>
-    <span className='mr-3  sm:text-lg md:text-xl lg:text-2xl xl:text-3xl '>الكورسات الاكثر شعبية </span>
-       <Arrow
-            left onClick={handleRightClick} disabled={disableRightArrow} 
-              />
-
-            <Arrow
-onClick={handleLeftClick} disabled={disableLeftArrow}
-            /></div>
-    <div ref={containerRef} id="sliderContainer" className=" h-96 rounded-xl md:mx-16 mx-3 relative max-w-screen  overflow-hidden">
-    
-      <div
-        id="sliderWrapper"
-        ref={sliderWrapperRef}
-        className="flex absolute w-fit overflow-hidden rounded-xl h-fit gap-3"
-        style={{ transform: `translateX(${-currentTranslate}px)`, transition: isDragging ? 'none' : 'transform 0.3s ease-out' }}
-      >
-        {children}
+  return (
+    <>
+      <div className='pt-7 relative pb-4 flex flex-col '>
+        <span className='mr-3 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl '>الكورسات الاكثر شعبية </span>
+        <Arrow left onClick={handleRightClick} disabled={disableRightArrow} />
+        <Arrow onClick={handleLeftClick} disabled={disableLeftArrow} />
       </div>
-    </div>    
-
-</>
+      <div ref={containerRef} id="sliderContainer" className="h-96 rounded-xl md:mx-16 mx-3 relative max-w-screen overflow-hidden">
+        <div
+          id="sliderWrapper"
+          ref={sliderWrapperRef}
+          className="flex absolute w-fit overflow-hidden rounded-xl h-fit gap-3"
+          style={{ transform: `translateX(${-currentTranslate}px)`, transition: isDragging ? 'none' : 'transform 0.3s ease-out' }}
+        >
+          {children}
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,18 +1,17 @@
 'use client'
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
-import CryptoJS from 'crypto-js';
-import TrashIcon from './trashicon';
 import { useCart } from './CartContext';
 import { BsCart } from "react-icons/bs";
 import { BsCartCheck } from "react-icons/bs";
 import Loading from "./loading";
+import { useUser } from './UserContext';
 
 const CartIcon = (props) => {
     const{addToCart, removeFromCart, cartItems}= useCart()
     const [state, setState] = useState(false);
-   
+    const {userId} = useUser()
+
     const [isLoading, setIsLoading] = useState(false);
 
   
@@ -23,7 +22,7 @@ const CartIcon = (props) => {
            setState(true)
  
         }
-    }, [cartItems]);
+    }, [ props.courseId]);
     
  
 
@@ -34,30 +33,16 @@ const CartIcon = (props) => {
   
 
       
-    const handleCartClick = async () => {
-       setIsLoading(true)
+    const handleCartClick = useCallback(async () => {
+        setIsLoading(true)
         try {
             
-            const token = Cookies.get('token');
-            if (token) {
-                const encryptedUserId = Cookies.get('encryptedUserId');
-                if (encryptedUserId) {
-                    const bytes = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`);
-                    const userId = bytes.toString(CryptoJS.enc.Utf8);
-
-                    const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    });
+                if (userId) {
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`);
 
                     const cartItems = response.data.cart;
                     if (Array.isArray(cartItems) && cartItems.includes(props.courseId)) {
-                        await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart/${props.courseId}`, {
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                            },
-                        });
+                        await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart/${props.courseId}`);
                         removeFromCart(props.courseId)
                         console.log('Item removed from cartItems array');
                          setIsLoading(false)   
@@ -67,12 +52,7 @@ const CartIcon = (props) => {
                         }, 1);
                        
             } else {
-                        await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, { itemId: props.courseId }, {
-                            headers: {
-                                'Content-Type': 'application/json',
-                                Authorization: `Bearer ${token}`,
-                            },
-                        });
+                        await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`, { itemId: props.courseId });
                         addToCart(props.courseId)
                         console.log('Item added to cartItems array');
                         setIsLoading(false)      
@@ -83,7 +63,7 @@ const CartIcon = (props) => {
                         }, 1);
                     }
                 }
-            } else {
+             else {
                 // No token, manage items in localStorage
                 if (cartItems.includes(props.courseId)) {
                     removeFromCart(props.courseId)
@@ -104,7 +84,7 @@ const CartIcon = (props) => {
         } catch (error) {
             console.error('Error:', error);
         }
-    };
+    }, [userId, props.courseId, cartItems, addToCart, removeFromCart]);
 
     return (
         <>
@@ -124,4 +104,4 @@ const CartIcon = (props) => {
     );
 };
 
-export default CartIcon;
+export default React.memo(CartIcon);

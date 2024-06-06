@@ -1,20 +1,29 @@
 import { Suspense } from 'react';
 import CourseClient from '../../components/courseClient';
 import InstructorCard from '../../components/instructorCard';
-import Slider from '../../components/Slider';
+import { cookies } from 'next/headers';
+import { decryptUserId } from '../../helpers/api';
+import Keenslider from '../../components/Keenslider';
+import CourseLoading from '../../components/courseLoading';
 
-const Page = async ({params}) => {
+const fetchInstructors = async (category) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${category}`, { next: { revalidate:26000 } });
+  return await response.json();
+};
 
- 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${params.paths}`,{ next: { revalidate: 21600 } });
-      const I = await response.json();
-   
+const fetchCourses = async (category, userId) => {
+  const url = userId
+    ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?userId=${userId}`
+    : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}`;
+  const response = await fetch(url, { next: { revalidate: 26000} });
+  return await response.json();
+};
 
-
-      const cresponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}`,{ next: { revalidate: 21600} });
-      const courses = await cresponse.json();
-    
-
+const Page = async ({ params }) => {
+  const encryptedID = cookies().get('encryptedUserId')?.value;
+  const userId = decryptUserId(encryptedID);
+  const I = await fetchInstructors(params.paths);
+  const courses = await fetchCourses(params.paths, userId);
 
 
    
@@ -38,32 +47,30 @@ const Page = async ({params}) => {
           if (category === params.paths) {
             return (<>
               <div key={category} className="flex flex-col gap-3">
-                <h2 className='text-xs md:text-base'>  الدورات الاشهر <span className="font-extrabold">{title}</span> </h2>
                {courses.length > 0 && 
-               <Suspense fallback={<div></div>}>
-               <Slider>
+               
+               <Keenslider label={`الدورات الاكثر شهرة  `+ title}>
                   {courses.map(course => (
                       <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                       className="keen-slider__slide min-w-fit">
-                        <CourseClient
+                     <Suspense fallback={<CourseLoading/>}>   <CourseClient
                           href={`/courses/${course._id}`}
                           photo={course.photo}
                           title={course.title}
                           price={course.price}
                           courseId={course._id}
-                          instructor={course.author}
-
-                        />
+                          instructor={course.author.name} // Use the instructor's name directly
+                          hasPurchased={course.hasPurchased} // Include the hasPurchased status
+                          /></Suspense>
                       </div>    
 
                     ))}
-                </Slider></Suspense>}
+                </Keenslider>}
               </div>
                    <div id='mostrecent' key={category} className="flex flex-col gap-3">
-                   <h2 className='text-xs md:text-base' >احدث دورات في <span className="font-extrabold">{title}</span> </h2>
-                  {courses.length > 0 && 
-                          <Slider>
-                        {courses.map(course => (
+                  {courses.length >= 1 && 
+               <Keenslider label={`احدث دورات `+ title}>
+               {courses.map(course => (
                          <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                          className="keen-slider__slide min-w-fit">
                            <CourseClient
@@ -72,12 +79,13 @@ const Page = async ({params}) => {
                              title={course.title}
                              price={course.price}
                              courseId={course._id}
-                             instructor={course.author}
-   
+                             instructor={course.author.name} // Use the instructor's name directly
+                             hasPurchased={course.hasPurchased} // Include the hasPurchased status
+
                            />
                          </div>
                        ))}
-                  </Slider> }
+                  </Keenslider> }
                  </div></>
             );
           }
@@ -86,14 +94,13 @@ const Page = async ({params}) => {
       </div>
       <div>
      
-      <div className='Irelatedtosomcategories p-3 flex flex-col gap-3'>
-      <h2>محاضرين في القسم     
-        </h2>
+      <div className='Irelatedtosomcategories flex flex-col gap-3'>
+     
 <Suspense fallback={<div>..loading</div>}>
           {I.length > 0  &&
           
-          <Slider>
-              { I.map((i) => (
+          <Keenslider label={`محاضرين القسم`}>
+          { I.map((i) => (
                 <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
       className="keen-slider__slide min-w-fit">
         <InstructorCard
@@ -104,7 +111,7 @@ const Page = async ({params}) => {
         />    </div>
 
 
-              ))}  </Slider>}
+              ))}  </Keenslider>}
 
 </Suspense>
     </div>

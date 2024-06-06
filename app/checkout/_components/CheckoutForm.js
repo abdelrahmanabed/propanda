@@ -1,29 +1,21 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense,useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import Loading from '../../components/loading';
 import Image from 'next/image';
 import { useCart } from '../../components/CartContext';
 import axios from 'axios';
-import Cookies from 'js-cookie';
-import CryptoJS from 'crypto-js';
+import { useUser } from '../../components/UserContext';
+
 
 function CheckoutForm({amount}) {
   const stripe = useStripe();
   const elements = useElements();
-  const { cartItems, setCartItems, clearCart } = useCart();
+  const {userId} = useUser()
+
+  const { cartItems, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
-	const [errormessage, setErrorMessage] = useState()
-	const [decryptedUserId, setdecryptedUserId] = useState()
+	const [errormessage, setErrorMessage] = useState();
 
-  useEffect(() => {
-    const encryptedUserId = Cookies.get('encryptedUserId');
-
-  if (encryptedUserId ){
-    const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
-    setdecryptedUserId(decryptedId)
-  }
-
-  }, []);
   const handleSubmit = async (event) => {
     event.preventDefault();
   setLoading(true)
@@ -82,12 +74,12 @@ function CheckoutForm({amount}) {
   const afterPay = async()=>{
     try {
       const courseUpdatePromises = cartItems.map(item => {
-        return axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${item}/purchasedUsers`, { userId: decryptedUserId });
+        return axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${item}/purchasedUsers`, { userId });
       });
       await courseUpdatePromises;
 
-      await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/courses`, { cartItems });
-      await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${decryptedUserId}/cart`);
+      await axios.put(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/courses`, { cartItems });
+      await axios.delete(`${process.env.NEXT_PUBLIC_PORT}/api/users/${userId}/cart`);
     clearCart()
     }  catch (error) {
       console.error('Error updating purchased courses:', error);

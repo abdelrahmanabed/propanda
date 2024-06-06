@@ -15,7 +15,6 @@ export default function SignDiv(props) {
   const {cartItems, setCartItems} = useCart()
   const searchParams = useSearchParams()
   const parGet = searchParams.toString()
-  console.log( 'sPar', parGet)
   const [lformData, setLformData] = useState({
     email: '',
     password: '',

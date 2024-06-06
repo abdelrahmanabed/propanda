@@ -6,31 +6,26 @@ import SignDiv from './signupcomp';
 import { FiUser } from "react-icons/fi";
 import { FiUserPlus } from "react-icons/fi";
 import { FaTimes } from 'react-icons/fa'; // Import the close icon
-import Cookies from 'js-cookie';
 import Usernav from './usernav';
-import CryptoJS from 'crypto-js';
 import CartBtn from './cartbutton';
 import CartDiv from './cartdiv';
 import { FaArrowLeft } from "react-icons/fa";
 import SearchInput from './SearchInput';
-import jwt from 'jsonwebtoken';
 import BigNav from './BigNav';
 import MobileNav from './MobileNav';
 import { usePathname } from 'next/navigation';
+import { useUser } from "./UserContext";
 
 
 const Header = () => {
+  const { userName,loggedIn} = useUser()
   const [showSignDiv, setShowSignDiv] = useState(false); // State to control whether SignDiv should be shown or not
   const [showmobnav, setShowMobNav] = useState(false); // State to control whether SignDiv should be shown or not
   const [isHeaderFixed, setIsHeaderFixed] = useState(false); // State to track if the header is fixed or not
   const [showUserNav, setShowUserNav] = useState(false); // State to control whether SignDiv should be shown or not
   const [showCartNav, setShowCartNav] = useState(false); // State to control whether CARTNAV should be shown or not
   const [showEnterCart, setShowEnterCart] = useState(false); // State to control whether SignDiv should be shown or not
-  const [userName , setUserName] = useState("")
-  const [jwtUserId , setjwtUserId] = useState("")
-  const [decryptedUserId , setdecryptedUserId] = useState("")
   const pathname = usePathname();
-  const token = Cookies.get('token');
   const unavRef = useRef(null);
 
     useEffect(() => {
@@ -48,31 +43,7 @@ const Header = () => {
       // Cleanup function is not needed as we're not adding event listeners
     }, [pathname]);
   
-  useEffect(() => {
-    const token = Cookies.get('token');
-    const encryptedNameFromCookie = Cookies.get('encryptedName');
-    const encryptedUserId = Cookies.get('encryptedUserId');
 
-  if (encryptedUserId && token){
-    const decryptedId = CryptoJS.AES.decrypt(encryptedUserId, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
-    const decodedToken = jwt.decode(token);
-    const userId = decodedToken.userId;
-    setjwtUserId(userId)
-    setdecryptedUserId(decryptedId)
-  }
-    console.log("Token:", token);
-    console.log("Encrypted Name from Cookie:", encryptedNameFromCookie);
-  
-    if (token && encryptedNameFromCookie ) {
-      // Decrypt only if the cookie exists
-      const decryptedName = CryptoJS.AES.decrypt(encryptedNameFromCookie, `${process.env.NEXT_PUBLIC_JWT_SECRET}`).toString(CryptoJS.enc.Utf8);
-      console.log("Decrypted Name:", decryptedName);
-      setUserName(decryptedName);
-  } else {
-      // Handle missing cookie (e.g., set default name or display error message)
-      console.log("Encrypted name cookie not found.");
-  }
-  }, []);
 
    useEffect(() => {
         if (showUserNav) {
@@ -185,7 +156,7 @@ const Header = () => {
     
     
       <div className="auth flex items-center space-x-4">
-      {token && jwtUserId === decryptedUserId ? (
+      {loggedIn? (
     <button
     onClick={toggleUserNav}
       id="userbtn"
