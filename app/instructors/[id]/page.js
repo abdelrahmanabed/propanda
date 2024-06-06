@@ -74,8 +74,8 @@ const Page = async ({params}) => {
     <div className=' mt-28 flex flex-col gap-3 '>
    <span>الكورسات </span> <span className=' font-bold'>{`(${Icourses.length})`}</span>
     {Icourses.length > 0 &&<div className=' self-center flex gap-3 flex-wrap justify-center coursesIc '>
-        {Icourses.map(course => (
-          <Suspense fallback={<div className=' h-96 w-72 rounded-xl flex items-center justify-center bg-white'><Loading/></div>}>
+      <Suspense fallback={<div className=' h-96 w-72 rounded-xl flex items-center justify-center bg-white'><Loading/></div>}>
+      {Icourses.map(course => (
   <CourseClient
   key={course._id}
     href={`/courses/${course._id}`}
@@ -87,7 +87,7 @@ const Page = async ({params}) => {
     hasPurchased={course.hasPurchased}
 
 />
-</Suspense>  ))}
+  ))}</Suspense>
 
     </div>}
     </div>
