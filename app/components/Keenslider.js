@@ -45,6 +45,11 @@ const Keenslider = ({ children, label }) => {
       setLoaded(true)
     }
   })
+  useEffect(() => {
+    if (instanceRef.current) {
+      instanceRef.current.update();
+    }
+  }, [children]);
 
   return (
     <>

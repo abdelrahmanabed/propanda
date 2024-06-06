@@ -4,6 +4,7 @@ import Keenslider from '../components/Keenslider';
 import Buttonforchange from './components/Buttonforchange';
 import CourseLoading from '../components/courseLoading'
 import Slider from '../components/Slider';
+import Loading from '../components/loading';
 
 const Page = async ({searchParams} ) => {
 
@@ -28,12 +29,13 @@ const Page = async ({searchParams} ) => {
               { I.map((i) => (
                 <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
       className="keen-slider__slide min-w-fit">
+        <Suspense fallback={<div className=' w-72 h-96 bg-white rounded-xl flex justify-center items-center'> <Loading/> </div>}>
         <InstructorCard
         image={i.photo}
         name={i.name}
         des={i.bio}
         href={`/instructors/${i._id}`}
-        />    </div>
+        />  </Suspense>  </div>
 
               ))}  </Keenslider>}
 

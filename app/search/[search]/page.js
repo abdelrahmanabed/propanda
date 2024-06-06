@@ -1,9 +1,12 @@
 
+import { Suspense } from 'react';
 import Course from '../../components/course';
+import CourseClient from '../../components/courseClient';
 
 import InstructorCard from '../../components/instructorCard';
 import Keenslider from '../../components/Keenslider';
 import Slider from '../../components/Slider';
+import Loading from '../../components/loading';
 const Page = async ({searchParams}) => {
  
 
@@ -188,19 +191,22 @@ const Page = async ({searchParams}) => {
             نتائج البحث عن <span className='font-extrabold'>{searchParams.q}</span>
           </span>
           <span className='p-3 py-0 text-xs'> عدد النتائج <span className=' font-extrabold'>{I.length}</span> </span>
-<Keenslider>            {I && I.map(i => (
+<Suspense fallback={<div className=' bg-white h-96 w-full rounded-xl flex justify-center items-center'></div>}>
+<Keenslider>
+              {I && I.map(i => (
                    <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                    className="keen-slider__slide min-w-fit">
-              <InstructorCard
+        <Suspense fallback={<div className=' h-96 w-72 rounded-xl justify-center items-center bg-white'><Loading/></div>} >   
+        <InstructorCard
                 key={i._id}
                 href={`/instructor/${i._id}`}
                 image={i.photo}
                 name={i.name}
                 des={i.description}
-              />
+              /></Suspense> 
               </div>
             ))}
-          </Keenslider>
+          </Keenslider></Suspense>
         </>
       }
 
@@ -210,21 +216,27 @@ const Page = async ({searchParams}) => {
             نتائج البحث عن <span className='font-extrabold'>{searchParams.q}</span>
           </span>
           <span className='p-3 py-0 text-xs'> عدد النتائج <span className=' font-extrabold'>{courses.length}</span> </span>
+<Suspense fallback={<div className=' bg-white h-96 w-full rounded-xl flex justify-center items-center'></div>}>
+
 <Keenslider>            {courses && courses.map(course => (
                    <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                    className="keen-slider__slide min-w-fit">
-              <Course
+                     <Suspense fallback={<div className='  h-96 w-72 rounded-xl justify-center items-center bg-white'><Loading/></div>} >   
+
+              <CourseClient
                 key={course._id}
                 href={`/courses/${course._id}`}
                 photo={course.photo}
                 title={course.title}
-                authorName={course.author.name}
                 price={course.price}
                 courseId={course._id}
-              />
+                instructor={course.author.name}
+                hasPurchased={course.hasPurchased}
+              
+              /></Suspense>
               </div>
             ))}
-          </Keenslider>
+          </Keenslider></Suspense>
         </>
       ) : (
         <div className=' flex justify-center items-center'>
@@ -241,7 +253,8 @@ const Page = async ({searchParams}) => {
               <div key={category} className='  rounded-2xl overflow-hidden flex flex-col gap-3'>
                 
                 <h2> هل تبحث عن كورسات في مجال <span className=' text-xs font-extrabold'>{title}</span> </h2>
-                
+                <Suspense fallback={<div className=' bg-white h-96 w-full rounded-xl flex justify-center items-center'></div>}>
+              
                 {fCourses&& fCourses.length>0 &&
 <Keenslider>
                 {fCourses&& fCourses
@@ -249,18 +262,21 @@ const Page = async ({searchParams}) => {
                   .map(course => (
                     <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                     className="keen-slider__slide min-w-fit">
-                    <Course
+                                        <Suspense fallback={<div className=' h-96 w-72 rounded-xl justify-center items-center bg-white'><Loading/></div>} >   
+
+                    <CourseClient
                       key={course._id}
                       href={`/courses/${course._id}`}
                       photo={course.photo}
                       title={course.title}
-                      instructor={course.author}
+                      instructor={course.author.name}
+                      hasPurchased={course.hasPurchased}
                       price={course.price}
                       courseId={course._id}
-                    />
+                    /></Suspense>
                     </div>
                   ))}
-                  </Keenslider> }
+                  </Keenslider> }</Suspense>
               </div>
             );
           }

@@ -61,13 +61,13 @@ const MyCourses = () => {
           <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
            className="keen-slider__slide min-w-fit">
               <CourseClient
-                  href={`/courses/${course._id}`}
-                  photo={course.photo}
-                  title={course.title}
-                  price={course.price}
-                  courseId={course._id}
-                  instructor={course.author.name}
-                  
+                 href={`/courses/${course._id}`}
+                 photo={course.photo}
+                 title={course.title}
+                 price={course.price}
+                 courseId={course._id}
+                 instructor={course.author.name}
+                 hasPurchased={course.hasPurchased}
               />
           </div>
       ))}</div>

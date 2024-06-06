@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Suspense } from 'react'
+import Loading from '../components/loading'
 
 const Page = () => {
   return (
-    <div  className='sm:p-3 p-3 flex flex-col  gap-5 sm:px-8'> 
+    <Suspense fallback={<div className='p-3 sm:p3 sm:px-8 w-full h-96'> <div className='w-full h-full flex justify-center items-center '><Loading/></div></div>}><div  className='sm:p-3 p-3 flex flex-col  gap-5 sm:px-8'> 
          <span className=' m-5 mb-0 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'>تصنيفات الدورات التدريبية</span>
          
     <div id='categoriesdiv' className='p-3 flex flex-col gap-4 '>
@@ -63,7 +65,7 @@ const Page = () => {
 </div>
 
 
-    </div></div>
+    </div></div></Suspense>
   )
 }
 

@@ -172,7 +172,7 @@ const Header = () => {
       className={`${
         showSignDiv
           ? `" z-40 absolute top-20 showsdx  ${isHeaderFixed ? " top-24 ":" "} open rounded-2xl "`
-          : "h-12 md:h-14 w-28 absolute left-4 top-1/2 -translate-y-1/2 rounded-2xl md:rounded-2xl"
+          : "h-12 md:h-14 w-28 absolute left-3 top-1/2 -translate-y-1/2 rounded-2xl md:rounded-2xl"
       } items-center justify-center gap-2 duration-500 px-2`}
       onClick={toggleSignDiv}
     >

@@ -5,6 +5,7 @@ import { cookies } from 'next/headers';
 import { decryptUserId } from '../../helpers/api';
 import Keenslider from '../../components/Keenslider';
 import CourseLoading from '../../components/courseLoading';
+import NewCourseContainer from '../../components/NewCourseContainer';
 
 const fetchInstructors = async (category) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${category}`, { next: { revalidate:26000 } });
@@ -47,45 +48,12 @@ const Page = async ({ params }) => {
           if (category === params.paths) {
             return (<>
               <div key={category} className="flex flex-col gap-3">
-               {courses.length > 0 && 
-               
-               <Keenslider label={`الدورات الاكثر شهرة  `+ title}>
-                  {courses.map(course => (
-                      <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
-                      className="keen-slider__slide min-w-fit">
-                     <Suspense fallback={<CourseLoading/>}>   <CourseClient
-                          href={`/courses/${course._id}`}
-                          photo={course.photo}
-                          title={course.title}
-                          price={course.price}
-                          courseId={course._id}
-                          instructor={course.author.name} // Use the instructor's name directly
-                          hasPurchased={course.hasPurchased} // Include the hasPurchased status
-                          /></Suspense>
-                      </div>    
+               <NewCourseContainer api={`courses/category/${category}`} label={`اشهر دورات`+" "+ title}/>
 
-                    ))}
-                </Keenslider>}
               </div>
                    <div id='mostrecent' key={category} className="flex flex-col gap-3">
-                  {courses.length >= 1 && 
-               <Keenslider label={`احدث دورات `+ title}>
-               {courses.map(course => (
-                         <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
-                         className="keen-slider__slide min-w-fit">
-                           <CourseClient
-                             href={`/courses/${course._id}`}
-                             photo={course.photo}
-                             title={course.title}
-                             price={course.price}
-                             courseId={course._id}
-                             instructor={course.author.name} // Use the instructor's name directly
-                             hasPurchased={course.hasPurchased} // Include the hasPurchased status
+                   <NewCourseContainer api={`courses/category/${category}`} label={`احدث دورات`+" "+ title}/>
 
-                           />
-                         </div>
-                       ))}
-                  </Keenslider> }
                  </div></>
             );
           }

@@ -10,7 +10,7 @@ export default function Home() {
     <main className="">
       <div className="">
       <Hero/>
-<NewCourseContainer/>
+<NewCourseContainer api="popularCourses" label="الدورات الاكثر شهرة"/>
 
  </div>
     </main>

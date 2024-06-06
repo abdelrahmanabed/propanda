@@ -3,6 +3,9 @@ import { FaFacebook } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { RiWhatsappFill } from "react-icons/ri";
 import Course from '../../components/course';
+import { Suspense } from 'react';
+import Loading from '../../components/loading';
+import CourseClient from '../../components/courseClient';
 
 
 const Page = async ({params}) => {
@@ -33,7 +36,22 @@ const Page = async ({params}) => {
   return (<>
     { I &&   
 <div className='m-3'>
+   <Suspense fallback={
     <div className=' bg-white w-full h-64 rounded-2xl relative '>
+    <div className=' h-44  flex flex-col gap-3 items-center justify-center p-3'> 
+    <Loading/>
+
+     </div>
+
+     <div className=' rounded-3xl h-36 w-36 overflow-hidden absolute bg-white -bottom-16 left-1/2 -translate-x-1/2'>
+      <Loading/>
+     </div>   
+     <div className='-bottom-24 absolute left-1/2 -translate-x-1/2'> <Loading/> </div>
+
+ </div>
+   }>
+    
+     <div className=' bg-white w-full h-64 rounded-2xl relative '>
        <div className=' h-44  flex flex-col gap-3 items-center justify-center p-3'> 
        <span className=' font-bold text-xl lg:text-3xl xl:text-4xl  top-5 '>{I.bio}</span>
         <div className='social   top flex  gap-3'>
@@ -51,22 +69,25 @@ const Page = async ({params}) => {
         </div>   
         <span className='-bottom-24 absolute left-1/2 -translate-x-1/2'> {I && I.name}</span>
 
-    </div>
+    </div> </Suspense>
 
     <div className=' mt-28 flex flex-col gap-3 '>
    <span>الكورسات </span> <span className=' font-bold'>{`(${Icourses.length})`}</span>
     {Icourses.length > 0 &&<div className=' self-center flex gap-3 flex-wrap justify-center coursesIc '>
         {Icourses.map(course => (
-  <Course
+          <Suspense fallback={<div className=' h-96 w-72 rounded-xl flex items-center justify-center bg-white'><Loading/></div>}>
+  <CourseClient
   key={course._id}
-  href={`/courses/${course._id}`}
-  photo={course.photo}
-  title={course.title}
-  price={course.price}
-  courseId={course._id}
+    href={`/courses/${course._id}`}
+    photo={course.photo}
+    title={course.title}
+    price={course.price}
+    courseId={course._id}
+    instructor={course.author.name}
+    hasPurchased={course.hasPurchased}
 
 />
-        ))}
+</Suspense>  ))}
 
     </div>}
     </div>

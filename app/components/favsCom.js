@@ -5,6 +5,7 @@ import 'react-phone-input-2/lib/style.css'
 import dynamic from 'next/dynamic';
 const Course = dynamic(() => import("./course"), { ssr: false });
 import Loading from './loading';
+import CourseClient from './courseClient';
 const FavsCom = () => {
     const [courses, setCourses] = useState([]);
     const [favCourses, setFavCourses] = useState([]);
@@ -44,13 +45,14 @@ const FavsCom = () => {
         {courses.map((course) => (
           <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
            className="keen-slider__slide min-w-fit">
-              <Course
-                  href={`/courses/${course._id}`}
-                  photo={course.photo}
-                  title={course.title}
-                  price={course.price}
-                  courseId={course._id}
-                  instructor={course.author}
+              <CourseClient
+                    href={`/courses/${course._id}`}
+                    photo={course.photo}
+                    title={course.title}
+                    price={course.price}
+                    courseId={course._id}
+                    instructor={course.author.name}
+                    hasPurchased={course.hasPurchased}
 
               />
           </div>
