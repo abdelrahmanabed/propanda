@@ -46,21 +46,7 @@ const CourseDuration = ({ duration }) => {
         const course = await courseResponse.json();
     
 
-  const fetchAuthorData = async () => {
-    try {
-        // Fetch author data
-        if (course.author) {
-          const authorResponse = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${course.author}`,{ next: { revalidate: 21600 } });
-          const authorData = authorResponse.json();
-          return authorData
-        }
-      
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };  
 
-  const author = await fetchAuthorData()
 
 
      
@@ -78,9 +64,9 @@ const CourseDuration = ({ duration }) => {
       </div> 
 
       <div id='cauthordiv' className=' gap-4 mt-3 back flex items-center '>
-      {author.photo &&  (
- <div className='w-14 h-14 overflow-hidden rounded-2xl flex items-center '> <Image src={`${process.env.NEXT_PUBLIC_PORT}/${author.photo.replace(/\\/g, '/')}`} width={1024} height={1024} className=' rounded-2xl    w-full'/></div> 
-)}        <span id='cda' className=' text-lg'> {author.name}</span>
+      {course.author.photo &&  (
+ <div className='w-14 h-14 overflow-hidden rounded-2xl flex items-center '> <Image src={`${process.env.NEXT_PUBLIC_PORT}/${course.author.photo.replace(/\\/g, '/')}`} width={1024} height={1024} className=' rounded-2xl    w-full'/></div> 
+)}        <span id='cda' className=' text-lg'> {course.author.name}</span>
       </div>      
       <Suspense fallback={<div>...loading</div>}>
     <PriceDiv video={`${process.env.NEXT_PUBLIC_PORT}/${course.parts[0].videos[0].videoPath.replace(/\\/g, '/')}`} coursephoto={`${process.env.NEXT_PUBLIC_PORT}/${course.photo.replace(/\\/g, '/')}`} course={course}/>
