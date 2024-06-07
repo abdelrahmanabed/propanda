@@ -12,8 +12,8 @@ const fetchInstructors = async (category) => {
 
 const fetchCourses = async (category,page=1, userId, limit = 9) => {
     const url = userId
-    ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?userId=${userId}&limit=${limit}&page=${page}`
-    : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?&limit=${limit}&page=${page}`;
+    ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}/courses?userId=${userId}&limit=${limit}&page=${page}`
+    : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}/courses?&limit=${limit}&page=${page}`;
     const response = await fetch(url, { next: { revalidate: 26000 } });
     const data = await response.json();
 
