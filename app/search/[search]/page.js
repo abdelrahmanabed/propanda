@@ -262,7 +262,7 @@ const Page = async ({searchParams}) => {
                   .map(course => (
                     <div key={course._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
                     className="keen-slider__slide min-w-fit">
-                                        <Suspense fallback={<div className=' h-96 w-72 rounded-xl justify-center items-center bg-white'><Loading/></div>} >   
+                                        <Suspense fallback={<div className=' h-96  w-72 rounded-xl justify-center items-center bg-white'><Loading/></div>} >   
 
                     <CourseClient
                       key={course._id}

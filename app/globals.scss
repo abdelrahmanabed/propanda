@@ -1850,3 +1850,37 @@ border-radius: $border;
     background-color: $main-btn;
     
 }
+.allcourses{
+    max-width: 1200px;
+    .allcoursescontainer{
+        @media screen and (min-width: 950px) {
+            
+            grid-template-columns: 1fr 1fr 1fr;
+            
+        }
+    }
+}
+
+.page-indicators {
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
+  }
+  
+  .page-indicator {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: $main-color2;
+    color: $main-btn;
+    border-radius: 50%;
+
+  }
+  
+  .page-indicator.active {
+    background-color: $main-btn;
+    color: $main_color;
+    font-weight: bold;
+  }
+  

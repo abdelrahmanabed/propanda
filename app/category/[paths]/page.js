@@ -14,10 +14,10 @@ const fetchInstructors = async (category) => {
 
 const fetchCourses = async (category, userId) => {
   const url = userId
-    ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?userId=${userId}`
-    : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}`;
+    ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?userId=${userId}/limit=7`
+    : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}/limit=7`;
   const response = await fetch(url, { next: { revalidate: 26000} });
-  return await response.json();
+  return await response.json().courses;
 };
 
 const Page = async ({ params }) => {

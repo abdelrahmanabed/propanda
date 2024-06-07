@@ -21,7 +21,7 @@ const NewCourseContainer = (props) => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_PORT}/api/${props.api}?userId=${userId}&limit=7&page=${page}&sortStatue=${props.sort}`
         );
-        const data = await response.data;
+        const data = await response.data.courses;
         if (page === 1) {
           setDisplayedCourses(data);
         } else {
