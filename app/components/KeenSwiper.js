@@ -4,7 +4,7 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import Loading from "./loading"
 
-const  keenSwiper = ({children, className}) =>{
+const  KeenSwiper = ({children, className}) =>{
     const [currentSlide, setCurrentSlide] = useState(0)
     const [loaded, setLoaded] = useState(false)
     const [sliderRef, instanceRef] = useKeenSlider({
@@ -87,4 +87,4 @@ const  keenSwiper = ({children, className}) =>{
 }
 
 
-export default keenSwiper;
+export default KeenSwiper;
