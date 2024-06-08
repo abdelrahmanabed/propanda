@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="">
       <div className="">
-      <Hero/>
+     <Suspense fallback={<div></div>}> <Hero/></Suspense>
       <NewCourseContainer api="popularCourses" label="الدورات الاكثر شهرة"/>
       <NewCourseContainer api="newCourses" label="دورات مضافة حديثا"/>
 

@@ -31,6 +31,18 @@ export default function RootLayout({ children }) {
 <div id="maincontainer" className=" relative mx-auto">
         {children}</div>   
         <Footer/></div></CartProvider></VideoProvider></UserProvider>
+        <div class="background">
+   <span></span>
+   
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+
+   <span></span>
+   <span></span>  <span></span>
+   <span></span>
+</div>
       </body>
 
     </html>

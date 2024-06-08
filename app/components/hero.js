@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Particlesjs from './paeticles'
+import { Suspense } from 'react'
 
 const Hero = () => {
   return (
