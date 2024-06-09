@@ -4,32 +4,26 @@ import InstructorCard from '../../../components/instructorCard';
 import { cookies } from 'next/headers';
 import { decryptUserId } from '../../../helpers/api';
 import LoadMoreButton from './_SeeMoreButton';
+import FilterC from './_Flter';
 
-const fetchInstructors = async (category) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${category}`, { next: { revalidate:26000 } });
-  return await response.json();
-};
 
-const fetchCourses = async (category,page=1, userId, limit = 9) => {
-    const url = userId
-    ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}/courses?userId=${userId}&limit=${limit}&page=${page}`
-    : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}/courses?&limit=${limit}&page=${page}`;
-    const response = await fetch(url, { next: { revalidate: 26000 } });
-    const data = await response.json();
 
-    return {
-    courses: data.courses||[],
-    totalPages: data.totalPages||1,  // Ensure your API returns this value
-      };  };
+
 const Page = async ({ params,searchParams }) => {
+
   const encryptedID = cookies().get('encryptedUserId')?.value;
   const userId = decryptUserId(encryptedID);
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const sort = searchParams.sort ;
+  
+  const data =  userId
+  ? await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}/courses?userId=${userId}&limit=9&page=${page}&sort=${sort}`,{ next: { revalidate: 1 } })
+  : await fetch (`${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${params.paths}/courses?&limit=9&page=${page}&sort=${sort}`,{ next: { revalidate: 1 } });
+  const response =  data
+  const resdata = await response.json();
+      const courses = await resdata.courses
+      const totalPages = await resdata.totalPages
 
-  const I = await fetchInstructors(params.paths);
-  const { courses, totalPages } = await fetchCourses(params.paths, page, userId);
-
-   
 
   const categoriesKeywordsMap = {
     programming: { title: 'البرمجة و التكنولوجيا', keywords: ['code', 'js', 'software', 'لغة'] },
@@ -50,7 +44,11 @@ const Page = async ({ params,searchParams }) => {
           if (params.paths.includes(category)) {
             return (
               <div key={category} className=" ">
-                <label className=''>دورات {title}</label>
+             <div className=' flex items-center justify-between'> 
+               <label className=''>دورات {title}</label>
+               <FilterC value={sort} />
+                </div> 
+                
                 <div className='gap-3 md:gap-7 allcoursescontainer mt-5 inline-flex justify-center md:justify-start  md:grid-cols-2 md:grid flex-wrap w-fit'>
                 
         {(
@@ -66,7 +64,7 @@ const Page = async ({ params,searchParams }) => {
               />
       )))}
                         </div>
-                        <LoadMoreButton  totalPages={totalPages} category={params.paths} userId={userId} currentPage={page}/>
+                        <LoadMoreButton  totalPages={totalPages} category={params.paths} userId={userId} currentPage={page} sort={sort}/>
 
               </div>
                   
@@ -92,32 +90,7 @@ const Page = async ({ params,searchParams }) => {
           }
         })}
       </div>
-     
-    {params.paths.includes('programming')&& <div className='Irelatedtosomcategories flex flex-col gap-3'>
-     
-        <Suspense fallback={<div>..loading</div>}>
-          {I.length > 0  &&
-          
-          <div >
-            <label>
-                محاضرين القسم
-            </label>
-                <div className='gap-3 md:gap-7 allcoursescontainer mt-5 inline-flex justify-center md:justify-start  md:grid-cols-2 md:grid flex-wrap w-fit'>
-                { I.map((i) => (
-                <div key={i._id} style={{ maxWidth: "fit-content", minWidth:"fit-content" }}
-      className="keen-slider__slide min-w-fit">
-        <InstructorCard
-        image={i.photo}
-        name={i.name}
-        des={i.bio}
-        href={"/instructors/"+i._id}
-        />    </div>
-
-
-              ))}</div>  </div>}
-
-</Suspense>
-    </div>} 
+  
 
     </div>
   );

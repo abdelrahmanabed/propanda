@@ -10,8 +10,8 @@ import Image from 'next/image';
 const Footer = () => {
   return (
 
-    <div className='footer  self-end  '>
-        <div className='footercon'>
+    <div className='footer   self-end  '>
+        <div className='footercon '>
          <div id='logodiv' className="logo h-12 rounded-2xl py-2">
        <Link href={"/"}> <Image src="/imgs/prologo1.svg" className='h-8 ' alt="Logo" width={90} height={100} /></Link>
       </div>

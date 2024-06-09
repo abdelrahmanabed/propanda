@@ -19,7 +19,7 @@ const NewCourseContainer = (props) => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_PORT}/api/${props.api}?userId=${userId}&limit=7&page=${page}&sortStatue=${props.sort}`
+          `${process.env.NEXT_PUBLIC_PORT}/api/${props.api}?userId=${userId}&limit=7&page=${page}&sort=${props.sort}`
         );
         const data = await response.data.courses;
         if (page === 1) {

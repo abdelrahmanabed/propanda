@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { MdArrowBackIosNew } from "react-icons/md";
 
 const fetchInstructors = async (category) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${category}`, { next: { revalidate: 1 } });
+  const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${category}`, { next: { revalidate: 26000 } });
   return await response.json();
 };
 
@@ -18,7 +18,7 @@ const fetchCourses = async (category, userId) => {
   const url = userId
     ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?userId=${userId}&limit=7`
     : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?limit=7`;
-  const response = await fetch(url, { next: { revalidate: 1 } });
+  const response = await fetch(url, { next: { revalidate: 60 } });
   const data = await response.json();
   return data.courses || [];
 };
@@ -40,6 +40,7 @@ const Page = async ({ params }) => {
   };
 
   return (
+    
     <div className="flex flex-col min-h-96 backdrop-blur-xl gap-7">
       <div className='categoryheader w-full h-96'>
         <KeenSwiper>
@@ -61,12 +62,12 @@ const Page = async ({ params }) => {
             return (
               <>
                 <div key={category} className="flex flex-col gap-3">
-                  <NewCourseContainer api={`courses/category/${category}`} sort={'purchasedUsers.length'} label={`اشهر دورات ${title}`} />
+                  <NewCourseContainer api={`courses/category/${category}`} sort={'popular'} label={`اشهر دورات ${title}`} />
                 </div>
                 <Link href={`/category/${params.paths}/courses` } className={`toallcourses text-m sm:text-2xl font-extrabold gap-3`}>عرض جميع دورات <span className=' '>{title}</span><MdArrowBackIosNew className=' font-black'/> </Link>
 
                 <div id='mostrecent' key={category} className="flex flex-col gap-3">
-                  <NewCourseContainer api={`courses/category/${category}`} label={`احدث دورات ${title}`} />
+                  <NewCourseContainer api={`courses/category/${category}`} sort={`recent`} label={`احدث دورات ${title}`} />
                 </div>
               </>
             );

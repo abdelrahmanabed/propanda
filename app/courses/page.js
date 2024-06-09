@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import Loading from '../components/loading'
+import InstructorsAvatar from '../components/InstructorsAvatar'
 
 const Page = () => {
   return (
@@ -65,7 +66,10 @@ const Page = () => {
 </div>
 
 
-    </div></div></Suspense>
+    </div>
+    <InstructorsAvatar/>
+
+    </div></Suspense>
   )
 }
 

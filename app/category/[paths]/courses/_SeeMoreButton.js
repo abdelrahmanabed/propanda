@@ -2,13 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 
-const LoadMoreButton = ({ totalPages, category, userId, currentPage }) => {
+const LoadMoreButton = ({ totalPages, category, userId, currentPage, sort }) => {
   const router = useRouter();
 
   const handlePageClick = async (page) => {
     const url = userId
-    ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?userId=${userId}&page=${page}&limit=9`
-    : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?page=${page}&limit=9`;
+    ? `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?userId=${userId}&page=${page}&limit=9&sort=${sort}`
+    : `${process.env.NEXT_PUBLIC_PORT}/api/courses/category/${category}?page=${page}&limit=9&sort=${sort}`;
 
 
       const response = await fetch(url);

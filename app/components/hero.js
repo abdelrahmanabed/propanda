@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import Particlesjs from './paeticles'
 import { Suspense } from 'react'
+import InstructorsAvatar from './InstructorsAvatar'
 
 const Hero = () => {
   return (
@@ -16,7 +17,6 @@ const Hero = () => {
            <Link href={"/courses"}><button id='herobtn' className='  '>تصفح الكورسات</button></Link> 
         </div>
     </div></div>
-  
 </div>
   )
 }
