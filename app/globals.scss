@@ -2086,3 +2086,16 @@ border-radius: $border;
         z-index: -1;
      }
 }
+
+.pandahero{
+    filter: drop-shadow(0 0 50px rgb(0, 210, 109));
+
+}
+.pandacart{
+    filter: drop-shadow(0 10px 50px rgba(0, 0, 0, 0.473));
+
+}
+.confirmedphoto{
+    filter: drop-shadow(0 0px 100px rgb(0, 0, 0));
+
+}

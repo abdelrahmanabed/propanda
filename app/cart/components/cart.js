@@ -7,6 +7,7 @@ import Totalprice from "./totalprice";
 import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
 import { useUser } from "../../components/UserContext";
+import Image from "next/image";
 
 const Cart = () => {
   const router = useRouter()
@@ -81,7 +82,14 @@ const handlepay = ()=>{
               /></Suspense>
               
           </div>
-      )): loading? <Loading/> : <span>لا يوجد اي دورات تعليمية في السلة</span> }
+      )): loading? <Loading/> :
+      <div className=" flex flex-col gap-5 items-center justify-center">
+        <Image src='/imgs/emptycart.png' width={500} height={500} className="w-40 pandacart "/>
+        <span className=" text-lg font-bold ">لا يوجد اي دورات تعليمية في السلة</span>
+        </div> 
+      
+      
+      }
 
 
       </div>}{ courses.length>0 &&<div className=" flex flex-col p-3 items-center justify-center gap-3 cartNavPricep bottom-0  left-0 w-full  rounded-2xl font-bold min-h-32 "> 
