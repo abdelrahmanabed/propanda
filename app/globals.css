@@ -1793,12 +1793,6 @@ input {
     background-position: 100px 0px;
   }
 }
-.cbanner {
-  background: repeating-linear-gradient(45deg, #00ffae, #00ffae 5%, #008d5e 5%, #008d5e 10%);
-  background-size: 100px 100px;
-  animation: move-it 5s linear infinite;
-}
-
 .toallcourses {
   background-color: #000;
   height: 70px;
@@ -1816,6 +1810,12 @@ input {
     transform: translate3d(0, 0, 1px) rotate(360deg);
   }
 }
+.swiper {
+  background: repeating-linear-gradient(45deg, #00ffae, #00ffae 5%, #008d5e 5%, #008d5e 10%);
+  background-size: 100px 100px;
+  animation: move-it 5s linear infinite;
+}
+
 .background {
   position: fixed;
   width: 100vw;

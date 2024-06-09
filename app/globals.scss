@@ -1945,15 +1945,7 @@ border-radius: $border;
   }
   
   .cbanner {  
-    background: repeating-linear-gradient(
-    45deg,
-    $main-btn,
-    $main-btn 5%,
-    $dark-btn 5%,
-    $dark-btn 10%
-  );
-    background-size: 100px 100px;
-    animation: move-it 5s linear infinite;
+    
   }
 
   .toallcourses{
@@ -1973,7 +1965,17 @@ border-radius: $border;
         transform: translate3d(0, 0, 1px) rotate(360deg);
     }
 }
-
+.swiper{
+    background: repeating-linear-gradient(
+    45deg,
+    $main-btn,
+    $main-btn 5%,
+    $dark-btn 5%,
+    $dark-btn 10%
+  );
+    background-size: 100px 100px;
+    animation: move-it 5s linear infinite;
+}
 .background {
     position: fixed;
     width: 100vw;
