@@ -5,6 +5,7 @@ import { cookies } from 'next/headers';
 import { decryptUserId } from '../../../helpers/api';
 import LoadMoreButton from './_SeeMoreButton';
 import FilterC from './_Flter';
+import AllCourseLoad from '../../../components/AllCourseLoad';
 
 
 
@@ -38,7 +39,8 @@ const Page = async ({ params,searchParams }) => {
   return (
     <div  className=" p-3 flex flex-col items-center min-h-96 backdrop-blur-xl gap-7">
      <div className="allcourses  flex justify-center ">
-        
+           <Suspense fallback={<AllCourseLoad/>}>
+ 
         {/* Filter courses by categories */}
         {Object.entries(categoriesKeywordsMap).map(([category, { title }]) => {
           if (params.paths.includes(category)) {
@@ -89,7 +91,7 @@ const Page = async ({ params,searchParams }) => {
           </div>
           }
         })}
-      </div>
+    </Suspense>  </div>
   
 
     </div>

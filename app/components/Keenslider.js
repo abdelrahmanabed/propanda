@@ -54,7 +54,6 @@ const Keenslider = ({ children, label }) => {
   return (
     <>
       <div className="relative">
-        <Suspense fallback={<div className="flex gap-3 bg-white w-28 h-12"></div>}>
           {loaded && instanceRef.current && (
             <>
               <label className='mr-3 text-xs sm:text-base md:text-xl lg:text-2xl xl:text-3xl '>{label}</label>
@@ -75,7 +74,6 @@ const Keenslider = ({ children, label }) => {
               />
             </>
           )}
-        </Suspense>
       </div>
       <div className="relative py-9 pt-3 md:p-9 md:pt-3 min-h-96  md:px-16">
         {children && children.length > 0 && <div ref={sliderRef} className="keen-slider rounded-2xl" style={{ maxWidth: "100%" }}>

@@ -7,6 +7,8 @@ const CourseClient =lazy(()=> import("./courseClient")) ;
 const Keenslider =lazy(() =>import("./Keenslider"));
 import { useUser } from "./UserContext";
 import { MdArrowBackIosNew } from "react-icons/md";
+import SliderLoad from "./SliderLoad";
+import CourseLoad from "./SliderLoad";
 
 const NewCourseContainer = (props) => {
   const [displayedCourses, setDisplayedCourses] = useState([]);
@@ -44,7 +46,7 @@ const NewCourseContainer = (props) => {
   return (
       <div className="mt-10 mx-3 min-h-96 mb-3 flex flex-col gap-3">
         {loading && page === 1 ? (
-        <div className=" flex w-full h-96 justify-center items-center">  <Loading /> </div>
+        <SliderLoad/>
         ) : (
           displayedCourses.length > 0 && (
             <Keenslider label={props.label}>
@@ -54,7 +56,7 @@ const NewCourseContainer = (props) => {
                   style={{ maxWidth: "fit-content", minWidth: "fit-content" }}
                   className="keen-slider__slide min-w-fit"
                 >
-                  <Suspense fallback={<div className="w-72 h-96 flex justify-center items-center bg-white "><Loading/></div>}>
+                  <Suspense fallback={<CourseLoad/>}>
                   <CourseClient
                     href={`/courses/${course._id}`}
                     photo={course.photo}

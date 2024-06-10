@@ -2,13 +2,13 @@
 import { IoMdCheckmark } from "react-icons/io";
 import { FaCircle } from "react-icons/fa6";
 import Image from 'next/image';
+import { Suspense, lazy } from "react";
 
 import PriceDiv from '../components/PriceDiv';
-import Ccontainer from '../components/Ccontainer';
-import Skeleton from '../components/Skeleton';
+const Ccontainer = lazy(()=> import('../components/Ccontainer')) ;
 
 import Buttonmobvid from '../components/BgVideo';
-import { Suspense } from "react";
+import ContainerLoad from "../../components/ContainerLoader";
 
 export default async function Page({params}) {
 // Reference to the parent element you want to calculate the position against
@@ -113,7 +113,7 @@ const CourseDuration = ({ duration }) => {
         
       </div>
 </div>
-<Suspense fallback={<Skeleton/>}>
+<Suspense fallback={<ContainerLoad/>}>
 
 <Ccontainer/></Suspense>
 

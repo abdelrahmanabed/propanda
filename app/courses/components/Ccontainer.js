@@ -11,6 +11,7 @@ import Loading from '../../components/loading';
 import Skeleton from './Skeleton';
 import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js';
+import ContainerLoad from "../../components/ContainerLoader";
 const Ccontainer = () => {
     const [course, setCourse] = useState({});
     const [parts, setParts] = useState([]);
@@ -85,6 +86,7 @@ const Ccontainer = () => {
       useEffect(() => {
         const fetchData = async () => {
           try {
+            setLoading(true)
             if (_id) {
               const courseResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/courses/${_id}`);
               const courseData = courseResponse.data;
@@ -95,16 +97,21 @@ const Ccontainer = () => {
               setParts(partsArray);
               setVideos(videosArray);
               setcourseImage(courseData.photo)
+              setLoading(false)
               if (authorId) {
                 const authorResponse = await axios.get(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/${authorId}`);
                 const authorData = authorResponse.data;
                 setAuthorName(authorData.name);
                 setAuthorImage(authorData.photo);
+                setLoading(false)
+
               }
 
             }
           } catch (error) {
             console.error('Error fetching data:', error);
+                          setLoading(false)
+
           }
         };
       
@@ -134,9 +141,9 @@ const Ccontainer = () => {
             fetchPurchaseStatus();
 
       }, [_id, decryptedUserId]);
-  return (<> <div id='ccontainer' className='   flex-col flex gap-3 m-3 p-3'>
+  return (<> {loading? <ContainerLoad/>:<div id='ccontainer' className=' ccontainer  flex-col flex gap-3 m-3 p-3'>
   <span className='m-3'>محتويات الدورة التعليمية</span>
-  <Suspense fallback={<Skeleton/>}>{course.parts && course.parts.map((part, index) => (
+{course.parts && course.parts.map((part, index) => (
 
     <div key={index} id='pcontainer' className='flex flex-col gap-1'>
 
@@ -176,9 +183,9 @@ const Ccontainer = () => {
       </ul>
 
     </div>
-  ))}</Suspense>
+  ))}
 
-    </div>  
+    </div>  }
      {currentVideo && (
     <div id='coursevideosdivbg' className=' fixed backdrop-blur-lg top-0 left-0 w-full h-screen'>
    
