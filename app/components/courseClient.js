@@ -10,7 +10,7 @@ const CourseClient = (props) => {
     <div className='relative group w-fit flex flex-col gap-2'>
       <Link id='coursecomdiv' href={props.href} className='flex-col h-96 w-72 flex items-center backdrop-blur-md'>
         <div className='imgdiv'>
-          {props.photo && <Image alt='' src={`${process.env.NEXT_PUBLIC_PORT}/${props.photo.replace(/\\/g, '/')}`} width={500} height={500} quality={50} className='rounded-2xl' />}
+          {props.photo && <Image alt='' src={`${process.env.NEXT_PUBLIC_PORT}/${props.photo.replace(/\\/g, '/')}`} width={500} height={500} quality={50} className='rounded-2xl' loading="lazy"	placeholder="blur"	 blurDataURL="data:/imgs/OIG1.jpeg"	  />}
         </div>
         <div id='cct' className='h-36 absolute bottom-0 text-white right-0 flex p-3 rounded-2xl flex-col justify-between'>
           {props.title && <h1 className='w-fit text-base'>{props.title}</h1>}

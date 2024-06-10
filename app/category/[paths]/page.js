@@ -1,13 +1,14 @@
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { cookies } from 'next/headers';
 import { decryptUserId } from '../../helpers/api';
-import Keenslider from '../../components/Keenslider';
-import Coursebanner from '../../components/coursebaner';
-import NewCourseContainer from '../../components/NewCourseContainer';
-import KeenSwiper from '../../components/KeenSwiper';
-import InstructorCard from '../../components/instructorCard';
+const Keenslider = lazy(()=> import( '../../components/Keenslider'));
+const Coursebanner= lazy(()=>import('../../components/coursebaner'));
+const NewCourseContainer = lazy(()=>import('../../components/NewCourseContainer')) ;
+const KeenSwiper = lazy(()=>import('../../components/KeenSwiper')) ;
+const InstructorCard = lazy(()=> import('../../components/instructorCard')) ;
 import Link from 'next/link';
 import { MdArrowBackIosNew } from "react-icons/md";
+import Loading from '../../components/loading';
 
 const fetchInstructors = async (category) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_PORT}/api/instructors/category/${category}`, { next: { revalidate: 26000 } });
@@ -43,7 +44,8 @@ const Page = async ({ params }) => {
     
     <div className="flex flex-col min-h-96 backdrop-blur-xl gap-7">
       <div className='categoryheader w-full h-96'>
-        <KeenSwiper>
+     <Suspense fallback={<div className="h-96 w-full flex justify-center items-center bg-white"><Loading/></div>} > 
+       <KeenSwiper>
           {courses && courses.map((course) => (
             <div key={course._id}>
               <Coursebanner 
@@ -54,21 +56,24 @@ const Page = async ({ params }) => {
               />
             </div>
           ))}
-        </KeenSwiper>
+        </KeenSwiper></Suspense>
       </div>
       <div className="coursesrelatedtosomcategories flex flex-col gap-7">
         {Object.entries(categoriesKeywordsMap).map(([category, { title }]) => {
           if (category === params.paths) {
             return (
-              <>
+              <>                <Suspense fallback={<div className="h-96 w-full flex justify-center items-center bg-white"><Loading/></div>} > 
+
                 <div key={category} className="flex flex-col gap-3">
+
                   <NewCourseContainer api={`courses/category/${category}`} sort={'popular'} label={`اشهر دورات ${title}`} />
-                </div>
+                </div></Suspense>
                 <Link href={`/category/${params.paths}/courses` } className={`toallcourses text-m sm:text-2xl font-extrabold gap-3`}>عرض جميع دورات <span className=' '>{title}</span><MdArrowBackIosNew className=' font-black'/> </Link>
+                <Suspense fallback={<div className="h-96 w-full flex justify-center items-center bg-white"><Loading/></div>} > 
 
                 <div id='mostrecent' key={category} className="flex flex-col gap-3">
                   <NewCourseContainer api={`courses/category/${category}`} sort={`recent`} label={`احدث دورات ${title}`} />
-                </div>
+                </div></Suspense>
               </>
             );
           }
@@ -77,8 +82,8 @@ const Page = async ({ params }) => {
       </div>
       <div>
         <div className='Irelatedtosomcategories p-3 flex flex-col gap-3'>
-          <Suspense fallback={<div>..loading</div>}>
-            {instructors.length > 0 && (
+        <Suspense fallback={<div className="h-96 w-full flex justify-center items-center bg-white"><Loading/></div>} > 
+        {instructors.length > 0 && (
               <Keenslider label={`محاضرين القسم`}>
                 {instructors.map((instructor) => (
                   <div key={instructor._id} style={{ maxWidth: 'fit-content', minWidth: 'fit-content' }} className="keen-slider__slide min-w-fit">

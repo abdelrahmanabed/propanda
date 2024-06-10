@@ -1,30 +1,28 @@
 'use client'
 import { useEffect, useState } from "react";
+let totalPrice = 0;
 
 const Totalprice = (props) => {
-
-    const [totalPrice, setTotalPrice] = useState(0);
+  
+  const [currentTotalPrice, setCurrentTotalPrice] = useState(totalPrice);
     
     useEffect(()=>{ 
-        const  getCart= async()=>{
-                
-     
-      
-            
-              
-                 const totalPrice = props.courses.reduce((acc, course) => acc + course.price, 0);
-                 setTotalPrice(totalPrice);
-         }
-      
-         getCart()
+      const calculateTotalPrice = async () => {
+        const totalPriceValue = props.courses.reduce((acc, course) => acc + course.price, 0);
+        totalPrice = totalPriceValue.toFixed(2);
+        setCurrentTotalPrice(totalPrice);
+    };
+
+    calculateTotalPrice();
            
         
       
       },[props.courses])
      
   return (
-<div><span className=" font-light">EGP</span>  {totalPrice.toFixed(2)}</div>
+<div><span className=" font-light">EGP</span> {currentTotalPrice}</div>
   )
 }
 
 export default Totalprice
+export { totalPrice };

@@ -1,10 +1,10 @@
 "use client";
 import "keen-slider/keen-slider.min.css";
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useState, useEffect, lazy } from "react";
 import Loading from "./loading";
 import axios from "axios";
-import CourseClient from "./courseClient";
-import Keenslider from "./Keenslider";
+const CourseClient =lazy(()=> import("./courseClient")) ;
+const Keenslider =lazy(() =>import("./Keenslider"));
 import { useUser } from "./UserContext";
 import { MdArrowBackIosNew } from "react-icons/md";
 
@@ -42,7 +42,6 @@ const NewCourseContainer = (props) => {
   };
 
   return (
-    <Suspense fallback={<div className="h-96 w-full rounded-xl bg-white"><Loading /></div>}>
       <div className="mt-10 mx-3 min-h-96 mb-3 flex flex-col gap-3">
         {loading && page === 1 ? (
         <div className=" flex w-full h-96 justify-center items-center">  <Loading /> </div>
@@ -81,7 +80,6 @@ const NewCourseContainer = (props) => {
           )
         )}
       </div>
-    </Suspense>
   );
 };
 

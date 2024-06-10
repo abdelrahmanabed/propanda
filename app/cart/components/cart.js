@@ -1,14 +1,13 @@
 'use client'
-import CourseForCart from "../../components/CourseforCart";
-import { fetchCourses } from "../../helpers/api";
-import { Suspense, useEffect, useState } from "react";
+const CourseForCart = lazy(() => import("../../components/CourseforCart"));
+const Totalprice = lazy(() => import("./totalprice"));import { fetchCourses } from "../../helpers/api";
+import { Suspense, useEffect, useState, lazy } from "react";
 import { useCart } from "../../components/CartContext";
-import Totalprice from "./totalprice";
 import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
 import { useUser } from "../../components/UserContext";
 import Image from "next/image";
-
+import { totalPrice } from "./totalprice";
 const Cart = () => {
   const router = useRouter()
   const [courses , setCourses] = useState([])
@@ -31,7 +30,6 @@ const Cart = () => {
       fetchData();
     }, [cartItems]);
 
- const totalPrice = courses.reduce((acc, course) => acc + course.price, 0);
 
 const handlepay = ()=>{
  if(loggedIn){
@@ -57,7 +55,7 @@ const handlepay = ()=>{
       { courses.length>0? courses.map((course) => (
           <div key={course._id} 
            className=" w-full    ">
-            <Suspense fallback={<div className=" bg-white h-96 w-72 flex justify-center items-center"><Loading/></div>}>
+            <Suspense fallback={<div className=" bg-white h-24 w-full flex justify-center items-center"><Loading/></div>}>
               <CourseForCart
               className={"cartpage  relative flex gap-2 items-center"}
               imagedivcn="w-20  rounded-2xl h-16 flex items-center justify-center overflow-hidden"

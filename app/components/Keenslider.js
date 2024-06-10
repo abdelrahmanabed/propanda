@@ -48,6 +48,7 @@ const Keenslider = ({ children, label }) => {
     if (instanceRef.current) {
       instanceRef.current.update();
     }
+    
   }, [children]);
 
   return (

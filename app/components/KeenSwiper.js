@@ -58,8 +58,7 @@ const  KeenSwiper = ({children, className}) =>{
       }
     
     return (
-      < Suspense fallback={<div className=" h-96"> <Loading/></div>}>
-        <div className={`navigation-wrapper ${className}`}>
+<>        <div className={`navigation-wrapper ${className}`}>
           {children.length>0 &&<div ref={sliderRef} className={`keen-slider swiper ${ className}`}>
             {children}
           </div>}
@@ -82,7 +81,7 @@ const  KeenSwiper = ({children, className}) =>{
             })}
         </div>
       )}
-     </Suspense>
+     </>
   )
 }
 
