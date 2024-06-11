@@ -32,8 +32,18 @@ export default function RootLayout({ children }) {
         {children}</div>   
         <Footer/></div></CartProvider></VideoProvider></UserProvider>
         <div class="background">
+        <div class="background">
    <span></span>
-  
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+   <span></span>
+</div>  
 </div>
       </body>
 

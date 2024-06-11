@@ -12,8 +12,8 @@ export default function Home() {
     <main className="">
       <div className="">
  <Hero/>
-   <Suspense fallback={<SliderLoad/>}> <NewCourseContainer api="popularCourses" label="الدورات الاكثر شهرة"/></Suspense>  
-   <Suspense fallback={<SliderLoad/>}>    <NewCourseContainer api="newCourses" label="دورات مضافة حديثا"/></Suspense> 
+   <Suspense fallback={<div className="p-3"><SliderLoad/></div>}> <NewCourseContainer api="popularCourses" label="الدورات الاكثر شهرة"/></Suspense>  
+   <Suspense fallback={<div className="p-3"><SliderLoad/></div>}>    <NewCourseContainer api="newCourses" label="دورات مضافة حديثا"/></Suspense> 
 <InstructorsAvatar/>
  </div>
     </main>
