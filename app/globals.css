@@ -1284,7 +1284,11 @@ body #thecontainer {
 }
 
 .cartNavPricep {
-  background-color: rgba(112, 112, 112, 0.462745098);
+  background-color: #004b32;
+  color: #fff;
+}
+.cartNavPricep button {
+  color: #000;
 }
 #searchR, #searchMR {
   background-color: rgba(210, 210, 210, 0.8588235294);

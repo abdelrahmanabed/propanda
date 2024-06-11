@@ -1400,9 +1400,13 @@ max-width: 420px;}
  
 }
 .cartNavPricep{
-    background-color:$dark-colour;
+    background-color:$dark_sub;
 
-   
+   color: #fff;
+
+   button{
+    color: #000;
+   }
     @media screen and (min-width: 1024px) {
        
        
