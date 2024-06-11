@@ -66,7 +66,8 @@ export const UserProvider = ({ children }) => {
         userPhone,
         loggedIn,
         handleLogout,
-    }), [userId, userName, userEmail, userPhone, loggedIn, handleLogout]);
+        setLoggedIn,
+    }), [userId, userName, userEmail, userPhone, loggedIn, handleLogout,setLoggedIn]);
 
     return (
         <UserContext.Provider value={contextValue}>

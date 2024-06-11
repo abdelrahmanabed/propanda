@@ -11,7 +11,10 @@ import 'react-phone-input-2/lib/style.css'
 import { useSearchParams } from 'next/navigation';
 import { useCart } from './CartContext';
 import Loading from './loading';
+import { useUser } from './UserContext';
+import { totalPrice } from '../cart/components/totalprice';
 export default function SignDiv(props) {
+  const {setLoggedIn} = useUser()
   const {cartItems, setCartItems} = useCart()
   const searchParams = useSearchParams()
   const parGet = searchParams.toString()
@@ -80,10 +83,11 @@ export default function SignDiv(props) {
         localStorage.setItem('cartItems', JSON.stringify(cart || []));
 
         localStorage.setItem('favcourses', JSON.stringify(favCourses || []));
+        setLoggedIn(true)
         setlLoading(false)
 
         if(parGet==="logintopay="){
-          window.location.href = '/cart'; 
+         window.location.href= `/checkout?amount=${totalPrice}`
 
         } else{        window.location.href = '/'; 
 }
@@ -201,9 +205,11 @@ export default function SignDiv(props) {
         password: '',
         phoneNumber: '',
       });
+      setLoggedIn(true)
        setLoading(false)
+
       if(parGet==="logintopay="){
-        window.location.href = '/cart'; 
+        window.location.href=  `/checkout?amount=${totalPrice}`
 
       } else{        window.location.href = '/'; 
 }

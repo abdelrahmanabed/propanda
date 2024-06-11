@@ -8,6 +8,8 @@ const  KeenSwiper = ({children, className}) =>{
     const [currentSlide, setCurrentSlide] = useState(0)
     const [loaded, setLoaded] = useState(false)
     const [sliderRef, instanceRef] = useKeenSlider({
+      rtl: true,
+
         loop: true,
         renderMode:'performance',
       initial: 0,
