@@ -6,10 +6,12 @@ import dynamic from 'next/dynamic';
 const Course = dynamic(() => import("./course"), { ssr: false });
 import Loading from './loading';
 import CourseClient from './courseClient';
+import { useUser } from './UserContext';
 const FavsCom = () => {
     const [courses, setCourses] = useState([]);
     const [favCourses, setFavCourses] = useState([]);
     const [loading, setLoading] = useState(false)
+    const {loggedIn} = useUser
 
     useEffect(() => {
         const fetchFavCoursesAndCourses = async () => {
@@ -31,7 +33,7 @@ const FavsCom = () => {
         };
     
         fetchFavCoursesAndCourses();
-      }, []); 
+      }, [loggedIn]); 
   
 
     return (

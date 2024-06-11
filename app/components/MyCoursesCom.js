@@ -66,6 +66,7 @@ const MyCourses = () => {
                  courseId={course._id}
                  instructor={course.author.name}
                  hasPurchased={course.hasPurchased}
+                 CartIcon={"hidden"}
               />
           </div>
       ))}</div>

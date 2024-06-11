@@ -28,7 +28,7 @@ const Cart = () => {
       };
   
       fetchData();
-    }, [cartItems]);
+    }, [cartItems,loggedIn]);
 
 
 const handlepay = ()=>{
