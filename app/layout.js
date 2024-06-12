@@ -36,13 +36,7 @@ export default function RootLayout({ children }) {
    <span></span>
    <span></span>
    <span></span>
-   <span></span>
-   <span></span>
-   <span></span>
-   <span></span>
-   <span></span>
-   <span></span>
-   <span></span>
+ 
 </div>  
 </div>
       </body>
