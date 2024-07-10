@@ -67,7 +67,7 @@ body #thecontainer {
   top: -5px;
   color: #ffffff;
   font-weight: 900;
-  background-color: #007a00;
+  background-color: #007c55;
 }
 
 #header {
@@ -108,8 +108,8 @@ body #thecontainer {
 }
 #navdiv #navbtn:hover {
   background-color: transparent;
-  border: #04FC04 solid 0.5px;
-  color: #04FC04;
+  border: #00ffae solid 0.5px;
+  color: #00ffae;
 }
 #navdiv #navbtn:hover ~ ul.main {
   max-height: 320px;
@@ -131,7 +131,7 @@ body #thecontainer {
 }
 #navdiv #navbtn.open {
   background-color: transparent;
-  border: #04FC04 solid 0.5px;
+  border: #00ffae solid 0.5px;
 }
 #navdiv ul.main {
   z-index: 500;
@@ -199,7 +199,7 @@ body #thecontainer {
   background-color: #000;
   width: calc(100% + 24px);
   padding: 15px;
-  color: #04FC04;
+  color: #00ffae;
 }
 #navdiv ul.main li a.second {
   transition-delay: 0;
@@ -211,7 +211,7 @@ body #thecontainer {
   background-color: #000;
   width: calc(100% + 24px);
   padding: 15px;
-  color: #04FC04;
+  color: #00ffae;
 }
 #navdiv ul.main:hover, #navdiv ul.main.open {
   max-height: 320px;
@@ -263,7 +263,7 @@ body #thecontainer {
   }
 }
 #mainsigndiv .submit-btn {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: rgba(0, 0, 0, 0.7568627451);
   font-weight: 600;
   height: 55px;
@@ -455,7 +455,7 @@ body #thecontainer {
 
 #regbtn {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: #000;
   display: flex;
   padding: 5px;
@@ -481,25 +481,25 @@ body #thecontainer {
 }
 #regbtn:hover {
   background-color: transparent;
-  border: #04FC04 1px solid;
+  border: #00ffae 1px solid;
   color: #000;
 }
 
 #userbtn {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   background-color: #000;
-  color: #04FC04;
+  color: #00ffae;
   display: flex;
   border-radius: 18px;
   padding: 12px;
 }
 #userbtn.open {
   background-color: transparent;
-  border: #04FC04 1px solid;
+  border: #00ffae 1px solid;
 }
 #userbtn:hover {
   background-color: transparent;
-  border: #04FC04 1px solid;
+  border: #00ffae 1px solid;
 }
 
 #searchbtn {
@@ -553,14 +553,14 @@ body #thecontainer {
 }
 
 .navmlink2 {
-  background: #04FC04;
+  background: #00ffae;
   height: 120px;
   justify-content: center;
   color: #000;
 }
 
 .navmlink3 {
-  background: #04FC04;
+  background: #00ffae;
   height: 120px;
   justify-content: center;
   color: rgba(0, 0, 0, 0.7568627451);
@@ -570,7 +570,7 @@ body #thecontainer {
   background: #000;
   height: 120px;
   justify-content: center;
-  color: #04FC04;
+  color: #00ffae;
 }
 
 #navtogmob {
@@ -637,7 +637,7 @@ body #thecontainer {
   border-radius: 16px;
   font-size: large;
   font-weight: 900;
-  color: #04FC04;
+  color: #00ffae;
   transition: 0.4s;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
@@ -652,7 +652,7 @@ body #thecontainer {
   }
 }
 #herodiv #herobtn:hover {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: #000;
 }
 
@@ -691,7 +691,7 @@ body #thecontainer {
 }
 #coursecomdiv #coursecdp {
   background-color: #000;
-  color: #04FC04;
+  color: #00ffae;
 }
 #coursecomdiv #cct {
   width: 100%;
@@ -721,7 +721,7 @@ body #thecontainer {
 }
 
 .MdDone {
-  color: #04FC04;
+  color: #00ffae;
   background-color: #000;
 }
 
@@ -770,7 +770,7 @@ body #thecontainer {
   background-color: #000;
   padding: 15px;
   border-radius: 16px;
-  color: #04FC04;
+  color: #00ffae;
 }
 #coursePage #priceDiv #cdadd {
   border-radius: 16px;
@@ -959,7 +959,7 @@ body #thecontainer {
 }
 
 #ovideobutton.current {
-  color: #04FC04;
+  color: #00ffae;
   font-weight: bold;
 }
 
@@ -973,7 +973,7 @@ body #thecontainer {
   color: rgba(145, 145, 145, 0.4431372549);
 }
 .pinvideodiv .thebtn {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: rgba(0, 0, 0, 0.7568627451);
   font-weight: bold;
 }
@@ -1000,7 +1000,7 @@ body #thecontainer {
   color: white;
 }
 .pinvideodiv.open .pinvideo.current {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: rgba(0, 0, 0, 0.7568627451);
 }
 .pinvideodiv.open .pinvideo.current span {
@@ -1032,7 +1032,7 @@ body #thecontainer {
 }
 #userNav .usernavlink:hover {
   background-color: transparent;
-  border: #04FC04 1px solid;
+  border: #00ffae 1px solid;
   color: rgb(0, 0, 0);
 }
 
@@ -1049,7 +1049,7 @@ body #thecontainer {
   width: 100%;
 }
 #lordidiv.clicked, #lordcdiv.clicked {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: #000;
 }
 
@@ -1065,7 +1065,7 @@ body #thecontainer {
   }
 }
 #lordcdiv.clicked {
-  background-color: #04FC04;
+  background-color: #00ffae;
   align-items: center;
 }
 #lordcdiv.clicked ~ span {
@@ -1077,7 +1077,7 @@ body #thecontainer {
 }
 #profilelayout button {
   background-color: #000;
-  color: #04FC04;
+  color: #00ffae;
 }
 #profilelayout ul {
   background-color: rgba(255, 255, 255, 0.6784313725);
@@ -1113,7 +1113,7 @@ body #thecontainer {
   width: 100%;
 }
 #profilelayout ul li a.selected {
-  background-color: #04FC04;
+  background-color: #00ffae;
   font-size: large;
 }
 
@@ -1150,7 +1150,7 @@ body #thecontainer {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #04FC04;
+  background: #00ffae;
   transform-origin: -14px 50%;
   animation: l10-1 0.5s infinite linear;
 }
@@ -1220,7 +1220,7 @@ body #thecontainer {
   background-color: rgba(207, 207, 207, 0.5843137255);
 }
 #infocomp ul li form button {
-  background-color: #04FC04;
+  background-color: #00ffae;
   border-radius: 16px;
   transition: 0.3s;
 }
@@ -1268,7 +1268,7 @@ body #thecontainer {
 }
 #lordcbdiv:hover {
   background-color: #000;
-  color: #04FC04;
+  color: #00ffae;
 }
 
 .messageyes {
@@ -1298,7 +1298,7 @@ body #thecontainer {
   background-color: #eeeeee;
 }
 #searchR button, #searchMR button {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: #000;
 }
 
@@ -1307,7 +1307,7 @@ body #thecontainer {
   box-shadow: rgba(103, 103, 103, 0.1) 0px 0px 16px;
 }
 #searchR .searchRbtn {
-  background-color: #04FC04;
+  background-color: #00ffae;
 }
 
 #searchMR {
@@ -1338,7 +1338,7 @@ body #thecontainer {
   margin-bottom: 20px;
   font-size: 16px;
   color: #333;
-  border: 2px solid #04FC04;
+  border: 2px solid #00ffae;
   border-radius: 16px;
   background-color: #fff;
   cursor: pointer;
@@ -1366,7 +1366,7 @@ body #thecontainer {
 }
 .custom-select option {
   padding: 10px;
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: #333;
 }
 
@@ -1411,7 +1411,7 @@ input {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  fill: #04FC04;
+  fill: #00ffae;
   border-radius: 16px;
   cursor: pointer;
   padding: 10px;
@@ -1507,12 +1507,12 @@ input {
   }
 }
 .footer .footercon .we a:hover {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: rgba(0, 0, 0, 0.7568627451);
 }
 .footer .footercon .social a {
-  border: #04FC04 2px solid;
-  color: #04FC04;
+  border: #00ffae 2px solid;
+  color: #00ffae;
   background-color: transparent;
   font-size: x-large;
   border-radius: 50px;
@@ -1526,7 +1526,7 @@ input {
   }
 }
 .footer .footercon .social a:hover {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: rgba(0, 0, 0, 0.7568627451);
 }
 
@@ -1605,7 +1605,7 @@ input {
 }
 
 #paybutton {
-  background-color: #04FC04;
+  background-color: #00ffae;
   justify-content: center;
   display: flex;
 }
@@ -1626,7 +1626,7 @@ input {
   position: absolute;
   width: 3px; /* Breite eines Sterns */
   height: 3px; /* Höhe eines Sterns */
-  background-color: #04FC04; /* Farbe der Sterne (weiß) */
+  background-color: #00ffae; /* Farbe der Sterne (weiß) */
   border-radius: 50%; /* Rundung für Sterneffekt */
   animation: twinkling 3s infinite; /* Twinkle-Animation */
 }
@@ -1652,7 +1652,7 @@ input {
 }
 
 .Donepay {
-  background-color: #04FC04;
+  background-color: #00ffae;
   display: flex;
   font-size: 70px;
   padding: 10px;
@@ -1665,14 +1665,14 @@ input {
 .coursatypay a {
   background-color: #000;
   padding: 15px;
-  color: #04FC04;
+  color: #00ffae;
   border-radius: 16px;
 }
 
 .homepay {
   background-color: #000;
   padding: 15px;
-  color: #04FC04;
+  color: #00ffae;
   border-radius: 16px;
 }
 
@@ -1689,7 +1689,7 @@ input {
 }
 
 .paysubmit {
-  background-color: #04FC04;
+  background-color: #00ffae;
   border-radius: 16px;
   width: 100%;
   padding: 12px;
@@ -1698,7 +1698,7 @@ input {
 
 .totalpay {
   background: #000;
-  color: #04FC04;
+  color: #00ffae;
   padding: 12px;
   border-radius: 16px;
   display: flex;
@@ -1706,7 +1706,7 @@ input {
 }
 
 .paylogin {
-  background: #04FC04;
+  background: #00ffae;
   padding: 15px;
   width: 100%;
   font-weight: 900;
@@ -1715,7 +1715,7 @@ input {
 }
 
 .seemore {
-  background-color: #04FC04;
+  background-color: #00ffae;
 }
 
 .allcourses {
@@ -1768,18 +1768,18 @@ input {
   padding: 10px;
   cursor: pointer;
   background-color: #ffffff;
-  color: #04FC04;
+  color: #00ffae;
   border-radius: 50%;
 }
 
 .page-indicator.active {
-  background-color: #04FC04;
+  background-color: #00ffae;
   color: #000;
   font-weight: bold;
 }
 
 .navigation-wrapper {
-  background-color: #007a00;
+  background-color: #007c55;
 }
 @keyframes colorPulse {
   0% {
@@ -1812,7 +1812,7 @@ input {
   color: #ffffff;
 }
 .toallcourses span {
-  color: #04FC04;
+  color: #00ffae;
 }
 
 @keyframes move {
@@ -1821,7 +1821,7 @@ input {
   }
 }
 .swiper {
-  background: repeating-linear-gradient(45deg, #04FC04, #04FC04 5%, #007a00 5%, #007a00 10%);
+  background: repeating-linear-gradient(45deg, #00ffae, #00ffae 5%, #007c55 5%, #007c55 10%);
   background-size: 100px 100px;
   animation: move-it 5s linear infinite;
 }
