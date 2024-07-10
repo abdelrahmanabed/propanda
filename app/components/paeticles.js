@@ -31,7 +31,7 @@ class Particlesjs extends React.Component {
             color: {
               value: "fff",
             },
-            image:'linear-gradient(to right top, #daffe1, #bfffd3, #9dffc8, #71ffc1, #00ffbc)'
+            image:'linear-gradient(to right top, #04fc04, #4dfd48, #6efe6a, #89ff87, #a1ffa1)'
             
           },
           fpsLimit: 60,

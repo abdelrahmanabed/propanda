@@ -42,7 +42,7 @@ html, body {
 }
 
 body {
-  background-image: linear-gradient(to right top, #92ffdf, #abffe7, #c3feee, #dafdf4, #f0fcf9);
+  background-image: linear-gradient(to right top, #e4ecce, #dce6c1, #d4e0b5, #ccdaa8, #c4d49c);
 }
 body #maincontainer {
   max-width: 2000px;
@@ -67,7 +67,7 @@ body #thecontainer {
   top: -5px;
   color: #ffffff;
   font-weight: 900;
-  background-color: #008d5e;
+  background-color: #007a00;
 }
 
 #header {
@@ -108,8 +108,8 @@ body #thecontainer {
 }
 #navdiv #navbtn:hover {
   background-color: transparent;
-  border: #00ffae solid 0.5px;
-  color: #00ffae;
+  border: #04FC04 solid 0.5px;
+  color: #04FC04;
 }
 #navdiv #navbtn:hover ~ ul.main {
   max-height: 320px;
@@ -131,7 +131,7 @@ body #thecontainer {
 }
 #navdiv #navbtn.open {
   background-color: transparent;
-  border: #00ffae solid 0.5px;
+  border: #04FC04 solid 0.5px;
 }
 #navdiv ul.main {
   z-index: 500;
@@ -199,7 +199,7 @@ body #thecontainer {
   background-color: #000;
   width: calc(100% + 24px);
   padding: 15px;
-  color: #00ffae;
+  color: #04FC04;
 }
 #navdiv ul.main li a.second {
   transition-delay: 0;
@@ -211,7 +211,7 @@ body #thecontainer {
   background-color: #000;
   width: calc(100% + 24px);
   padding: 15px;
-  color: #00ffae;
+  color: #04FC04;
 }
 #navdiv ul.main:hover, #navdiv ul.main.open {
   max-height: 320px;
@@ -263,7 +263,7 @@ body #thecontainer {
   }
 }
 #mainsigndiv .submit-btn {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: rgba(0, 0, 0, 0.7568627451);
   font-weight: 600;
   height: 55px;
@@ -455,7 +455,7 @@ body #thecontainer {
 
 #regbtn {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: #000;
   display: flex;
   padding: 5px;
@@ -481,25 +481,25 @@ body #thecontainer {
 }
 #regbtn:hover {
   background-color: transparent;
-  border: #00ffae 1px solid;
+  border: #04FC04 1px solid;
   color: #000;
 }
 
 #userbtn {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   background-color: #000;
-  color: #00ffae;
+  color: #04FC04;
   display: flex;
   border-radius: 18px;
   padding: 12px;
 }
 #userbtn.open {
   background-color: transparent;
-  border: #00ffae 1px solid;
+  border: #04FC04 1px solid;
 }
 #userbtn:hover {
   background-color: transparent;
-  border: #00ffae 1px solid;
+  border: #04FC04 1px solid;
 }
 
 #searchbtn {
@@ -553,14 +553,14 @@ body #thecontainer {
 }
 
 .navmlink2 {
-  background: #00ffae;
+  background: #04FC04;
   height: 120px;
   justify-content: center;
   color: #000;
 }
 
 .navmlink3 {
-  background: #00ffae;
+  background: #04FC04;
   height: 120px;
   justify-content: center;
   color: rgba(0, 0, 0, 0.7568627451);
@@ -570,7 +570,7 @@ body #thecontainer {
   background: #000;
   height: 120px;
   justify-content: center;
-  color: #00ffae;
+  color: #04FC04;
 }
 
 #navtogmob {
@@ -637,7 +637,7 @@ body #thecontainer {
   border-radius: 16px;
   font-size: large;
   font-weight: 900;
-  color: #00ffae;
+  color: #04FC04;
   transition: 0.4s;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
@@ -652,7 +652,7 @@ body #thecontainer {
   }
 }
 #herodiv #herobtn:hover {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: #000;
 }
 
@@ -691,7 +691,7 @@ body #thecontainer {
 }
 #coursecomdiv #coursecdp {
   background-color: #000;
-  color: #00ffae;
+  color: #04FC04;
 }
 #coursecomdiv #cct {
   width: 100%;
@@ -721,7 +721,7 @@ body #thecontainer {
 }
 
 .MdDone {
-  color: #00ffae;
+  color: #04FC04;
   background-color: #000;
 }
 
@@ -770,7 +770,7 @@ body #thecontainer {
   background-color: #000;
   padding: 15px;
   border-radius: 16px;
-  color: #00ffae;
+  color: #04FC04;
 }
 #coursePage #priceDiv #cdadd {
   border-radius: 16px;
@@ -959,7 +959,7 @@ body #thecontainer {
 }
 
 #ovideobutton.current {
-  color: #00ffae;
+  color: #04FC04;
   font-weight: bold;
 }
 
@@ -973,7 +973,7 @@ body #thecontainer {
   color: rgba(145, 145, 145, 0.4431372549);
 }
 .pinvideodiv .thebtn {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: rgba(0, 0, 0, 0.7568627451);
   font-weight: bold;
 }
@@ -1000,7 +1000,7 @@ body #thecontainer {
   color: white;
 }
 .pinvideodiv.open .pinvideo.current {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: rgba(0, 0, 0, 0.7568627451);
 }
 .pinvideodiv.open .pinvideo.current span {
@@ -1032,7 +1032,7 @@ body #thecontainer {
 }
 #userNav .usernavlink:hover {
   background-color: transparent;
-  border: #00ffae 1px solid;
+  border: #04FC04 1px solid;
   color: rgb(0, 0, 0);
 }
 
@@ -1049,7 +1049,7 @@ body #thecontainer {
   width: 100%;
 }
 #lordidiv.clicked, #lordcdiv.clicked {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: #000;
 }
 
@@ -1065,7 +1065,7 @@ body #thecontainer {
   }
 }
 #lordcdiv.clicked {
-  background-color: #00ffae;
+  background-color: #04FC04;
   align-items: center;
 }
 #lordcdiv.clicked ~ span {
@@ -1077,7 +1077,7 @@ body #thecontainer {
 }
 #profilelayout button {
   background-color: #000;
-  color: #00ffae;
+  color: #04FC04;
 }
 #profilelayout ul {
   background-color: rgba(255, 255, 255, 0.6784313725);
@@ -1113,7 +1113,7 @@ body #thecontainer {
   width: 100%;
 }
 #profilelayout ul li a.selected {
-  background-color: #00ffae;
+  background-color: #04FC04;
   font-size: large;
 }
 
@@ -1150,7 +1150,7 @@ body #thecontainer {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #00ffae;
+  background: #04FC04;
   transform-origin: -14px 50%;
   animation: l10-1 0.5s infinite linear;
 }
@@ -1220,7 +1220,7 @@ body #thecontainer {
   background-color: rgba(207, 207, 207, 0.5843137255);
 }
 #infocomp ul li form button {
-  background-color: #00ffae;
+  background-color: #04FC04;
   border-radius: 16px;
   transition: 0.3s;
 }
@@ -1268,7 +1268,7 @@ body #thecontainer {
 }
 #lordcbdiv:hover {
   background-color: #000;
-  color: #00ffae;
+  color: #04FC04;
 }
 
 .messageyes {
@@ -1298,7 +1298,7 @@ body #thecontainer {
   background-color: #eeeeee;
 }
 #searchR button, #searchMR button {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: #000;
 }
 
@@ -1307,7 +1307,7 @@ body #thecontainer {
   box-shadow: rgba(103, 103, 103, 0.1) 0px 0px 16px;
 }
 #searchR .searchRbtn {
-  background-color: #00ffae;
+  background-color: #04FC04;
 }
 
 #searchMR {
@@ -1338,7 +1338,7 @@ body #thecontainer {
   margin-bottom: 20px;
   font-size: 16px;
   color: #333;
-  border: 2px solid #00ffae;
+  border: 2px solid #04FC04;
   border-radius: 16px;
   background-color: #fff;
   cursor: pointer;
@@ -1366,7 +1366,7 @@ body #thecontainer {
 }
 .custom-select option {
   padding: 10px;
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: #333;
 }
 
@@ -1411,7 +1411,7 @@ input {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  fill: #00ffae;
+  fill: #04FC04;
   border-radius: 16px;
   cursor: pointer;
   padding: 10px;
@@ -1507,12 +1507,12 @@ input {
   }
 }
 .footer .footercon .we a:hover {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: rgba(0, 0, 0, 0.7568627451);
 }
 .footer .footercon .social a {
-  border: #00ffae 2px solid;
-  color: #00ffae;
+  border: #04FC04 2px solid;
+  color: #04FC04;
   background-color: transparent;
   font-size: x-large;
   border-radius: 50px;
@@ -1526,7 +1526,7 @@ input {
   }
 }
 .footer .footercon .social a:hover {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: rgba(0, 0, 0, 0.7568627451);
 }
 
@@ -1605,7 +1605,7 @@ input {
 }
 
 #paybutton {
-  background-color: #00ffae;
+  background-color: #04FC04;
   justify-content: center;
   display: flex;
 }
@@ -1626,7 +1626,7 @@ input {
   position: absolute;
   width: 3px; /* Breite eines Sterns */
   height: 3px; /* Höhe eines Sterns */
-  background-color: #00ffae; /* Farbe der Sterne (weiß) */
+  background-color: #04FC04; /* Farbe der Sterne (weiß) */
   border-radius: 50%; /* Rundung für Sterneffekt */
   animation: twinkling 3s infinite; /* Twinkle-Animation */
 }
@@ -1652,7 +1652,7 @@ input {
 }
 
 .Donepay {
-  background-color: #00ffae;
+  background-color: #04FC04;
   display: flex;
   font-size: 70px;
   padding: 10px;
@@ -1665,14 +1665,14 @@ input {
 .coursatypay a {
   background-color: #000;
   padding: 15px;
-  color: #00ffae;
+  color: #04FC04;
   border-radius: 16px;
 }
 
 .homepay {
   background-color: #000;
   padding: 15px;
-  color: #00ffae;
+  color: #04FC04;
   border-radius: 16px;
 }
 
@@ -1689,7 +1689,7 @@ input {
 }
 
 .paysubmit {
-  background-color: #00ffae;
+  background-color: #04FC04;
   border-radius: 16px;
   width: 100%;
   padding: 12px;
@@ -1698,7 +1698,7 @@ input {
 
 .totalpay {
   background: #000;
-  color: #00ffae;
+  color: #04FC04;
   padding: 12px;
   border-radius: 16px;
   display: flex;
@@ -1706,7 +1706,7 @@ input {
 }
 
 .paylogin {
-  background: #00ffae;
+  background: #04FC04;
   padding: 15px;
   width: 100%;
   font-weight: 900;
@@ -1715,7 +1715,7 @@ input {
 }
 
 .seemore {
-  background-color: #00ffae;
+  background-color: #04FC04;
 }
 
 .allcourses {
@@ -1768,18 +1768,18 @@ input {
   padding: 10px;
   cursor: pointer;
   background-color: #ffffff;
-  color: #00ffae;
+  color: #04FC04;
   border-radius: 50%;
 }
 
 .page-indicator.active {
-  background-color: #00ffae;
+  background-color: #04FC04;
   color: #000;
   font-weight: bold;
 }
 
 .navigation-wrapper {
-  background-color: #008d5e;
+  background-color: #007a00;
 }
 @keyframes colorPulse {
   0% {
@@ -1812,7 +1812,7 @@ input {
   color: #ffffff;
 }
 .toallcourses span {
-  color: #00ffae;
+  color: #04FC04;
 }
 
 @keyframes move {
@@ -1821,7 +1821,7 @@ input {
   }
 }
 .swiper {
-  background: repeating-linear-gradient(45deg, #00ffae, #00ffae 5%, #008d5e 5%, #008d5e 10%);
+  background: repeating-linear-gradient(45deg, #04FC04, #04FC04 5%, #007a00 5%, #007a00 10%);
   background-size: 100px 100px;
   animation: move-it 5s linear infinite;
 }
@@ -1860,7 +1860,7 @@ input {
 }
 
 .background span:nth-child(1) {
-  color: #bcffeb;
+  color: #58ffcd;
   top: 22%;
   left: 8%;
   animation-duration: 150s;
@@ -1877,76 +1877,6 @@ input {
   animation-delay: -313s;
   transform-origin: -13vw 2vh;
   box-shadow: -100vmin 0 12.7300587325vmin currentColor;
-}
-
-.background span:nth-child(3) {
-  color: #dbdbdb;
-  top: 81%;
-  left: 38%;
-  animation-duration: 265s;
-  animation-delay: -25s;
-  transform-origin: 11vw 7vh;
-  box-shadow: -100vmin 0 12.7083783327vmin currentColor;
-}
-
-.background span:nth-child(4) {
-  color: #bcfbe8;
-  top: 41%;
-  left: 96%;
-  animation-duration: 336s;
-  animation-delay: -237s;
-  transform-origin: 11vw -19vh;
-  box-shadow: -100vmin 0 12.6931056481vmin currentColor;
-}
-
-.background span:nth-child(5) {
-  color: #3efec4;
-  top: 63%;
-  left: 95%;
-  animation-duration: 35s;
-  animation-delay: -262s;
-  transform-origin: -13vw 24vh;
-  box-shadow: 100vmin 0 12.7775086649vmin currentColor;
-}
-
-.background span:nth-child(6) {
-  color: #ffffff;
-  top: 9%;
-  left: 23%;
-  animation-duration: 91s;
-  animation-delay: -2s;
-  transform-origin: -17vw 25vh;
-  box-shadow: 100vmin 0 13.4743118465vmin currentColor;
-}
-
-.background span:nth-child(7) {
-  color: #92ffdc;
-  top: 86%;
-  left: 96%;
-  animation-duration: 107s;
-  animation-delay: -11s;
-  transform-origin: 4vw -16vh;
-  box-shadow: 100vmin 0 12.8661305781vmin currentColor;
-}
-
-.background span:nth-child(8) {
-  color: #b9ffe9;
-  top: 14%;
-  left: 42%;
-  animation-duration: 219s;
-  animation-delay: -148s;
-  transform-origin: -6vw 15vh;
-  box-shadow: 100vmin 0 12.8649348979vmin currentColor;
-}
-
-.background span:nth-child(9) {
-  color: #aeffe5;
-  top: 85%;
-  left: 39%;
-  animation-duration: 105s;
-  animation-delay: -14s;
-  transform-origin: -22vw 3vh;
-  box-shadow: -100vmin 0 12.6221557376vmin currentColor;
 }
 
 .InstructorsAvatar img {
